@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Your Name</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-logo">YN</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="nav-hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- PAGE HERO -->
+<header class="page-hero">
+    <div class="page-hero-content">
+        <h1>Projects</h1>
+        <p>Click a project to see the details</p>
+    </div>
+</header>
+
+<!-- PROJECT DETAIL PANEL (hidden until a card is clicked) -->
+<section id="project-detail" class="project-detail project-detail--hidden">
+    <div class="container">
+        <button class="project-detail-close" id="detailClose">
+            <svg viewBox="0 0 24 24" width="24" height="24"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" fill="none" stroke-width="2.5" stroke-linecap="round"/></svg>
+            Close
+        </button>
+        <div class="project-detail-inner">
+            <div class="project-detail-img-wrap">
+                <img id="detailImage" src="" alt="">
+                <div class="project-detail-img-placeholder" id="detailPlaceholder"></div>
+            </div>
+            <h2 id="detailTitle">Project Title</h2>
+            <span class="project-tag" id="detailTag">Category</span>
+            <p id="detailDesc">Project description goes here.</p>
+            <div id="detailExtra" class="project-detail-extra"></div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECT GRID -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-label">All Projects</h2>
+
+        <div class="project-grid">
+
+            <!-- 1 -->
+            <div
+                class="project-card"
+                id="project-1"
+                data-title="Apple Internship – iPhone 14"
+                data-tag="Internship"
+                data-img="assets/images/project1.jpg"
+                data-desc="Mechanical design and development of the iPhone 14 lineup. Worked on tolerance analysis, thermal management solutions, and coordinated with supply chain for mass production validation. Contributed to the physical design review process and prototype builds."
+                data-extra="<strong>Tools:</strong> SolidWorks, CATIA, Tolerance Analysis Software<br><strong>Duration:</strong> Sept 2021 – Sept 2022<br><strong>Location:</strong> Cupertino, CA"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/project1.jpg" alt="Project 1" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 1</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>Apple Internship</h3>
+                    <span class="project-tag">Internship</span>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div
+                class="project-card"
+                id="project-2"
+                data-title="SpaceX – Starship Nosecone"
+                data-tag="Internship"
+                data-img="assets/images/project2.jpg"
+                data-desc="Responsible for the build process of Starship nosecone and driving internal structures design. Coordinated assembly sequences, conducted design reviews, and supported rapid iteration between CAD and physical hardware."
+                data-extra="<strong>Tools:</strong> SolidWorks, CAD Review, DFM Analysis<br><strong>Duration:</strong> June – Sept 2021<br><strong>Location:</strong> Brownsville, TX"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/project2.jpg" alt="Project 2" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 2</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>SpaceX Internship</h3>
+                    <span class="project-tag">Internship</span>
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div
+                class="project-card"
+                id="project-3"
+                data-title="FSAE Planetary Gearbox"
+                data-tag="Student Team"
+                data-img="assets/images/project3.jpg"
+                data-desc="Designed and built a planetary gearbox for the Formula Student electric race car. Optimized gear ratios for maximum torque delivery, performed stress analysis on all rotating components, and led the machining and assembly of the final unit."
+                data-extra="<strong>Tools:</strong> SolidWorks, ANSYS, CNC Machining<br><strong>Duration:</strong> Academic Year<br><strong>Location:</strong> Virginia Tech"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/project3.jpg" alt="Project 3" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 3</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>FSAE Planetary Gearbox</h3>
+                    <span class="project-tag">Student Team</span>
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div
+                class="project-card"
+                id="project-4"
+                data-title="Plastic Injection Mold"
+                data-tag="Personal"
+                data-img="assets/images/project4.jpg"
+                data-desc="Designed a two-piece injection mold for a custom plastic bracket. Performed mold flow analysis, drafted all tooling drawings, and supervised the machining of the mold inserts. Successfully produced functional parts on the first trial run."
+                data-extra="<strong>Tools:</strong> SolidWorks, Moldflow, CNC Milling<br><strong>Duration:</strong> 3 Months<br><strong>Location:</strong> Virginia Tech Machine Shop"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/project4.jpg" alt="Project 4" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 4</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>Plastic Injection Mold</h3>
+                    <span class="project-tag">Personal</span>
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div
+                class="project-card"
+                id="project-5"
+                data-title="FSAE Suspension Uprights"
+                data-tag="Student Team"
+                data-img="assets/images/project5.jpg"
+                data-desc="Designed lightweight suspension uprights for the FSAE race car using topology optimization. Reduced weight by 30% compared to previous design while maintaining required strength margins. Parts were manufactured via CNC machining from billet aluminum."
+                data-extra="<strong>Tools:</strong> SolidWorks, ANSYS Topology Optimization, CNC Machining<br><strong>Duration:</strong> Academic Year<br><strong>Location:</strong> Virginia Tech"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/project5.jpg" alt="Project 5" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 5</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>FSAE Suspension Uprights</h3>
+                    <span class="project-tag">Student Team</span>
+                </div>
+            </div>
+
+            <!-- 6 -->
+            <div
+                class="project-card"
+                id="project-6"
+                data-title="Electric Motor Dynamometer"
+                data-tag="Student Team"
+                data-img="assets/images/project6.jpg"
+                data-desc="Built a dynamometer test stand to characterize the electric motor for the FSAE vehicle. Designed the mounting structure, torque arm, and sensor integration. Collected and analyzed performance data that informed the final motor selection."
+                data-extra="<strong>Tools:</strong> SolidWorks, Data Acquisition, MATLAB<br><strong>Duration:</strong> Academic Year<br><strong>Location:</strong> Virginia Tech"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/project6.jpg" alt="Project 6" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 6</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>Electric Motor Dynamometer</h3>
+                    <span class="project-tag">Student Team</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-links">
+            <a href="linkedin.com/in/luis-ronquillo-hernandez-ba2809367" target="_blank" class="footer-link">
+                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" fill="currentColor"/></svg>
+                LinkedIn
+            </a>
+            <a href="mailto:Ronquilm@rose-hulman.edu" class="footer-link">
+                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M22 6l-10 7L2 6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+                Ronquilm@rose-hulman.edu
+            </a>
+        </div>
+        <p class="footer-copy">&copy; 2026 Luis Ronquillo. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
