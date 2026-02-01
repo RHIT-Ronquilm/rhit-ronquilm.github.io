@@ -228,7 +228,7 @@ input, textarea, button { font-family: inherit; }
 
 .hero-scroll-hint {
     position: absolute;
-    bottom: 5rem;
+    bottom: 1rem;
     left: 50%;
     transform: translateX(-50%);
     color: rgba(255,255,255,0.4);
