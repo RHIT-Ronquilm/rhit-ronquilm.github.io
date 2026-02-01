@@ -1,0 +1,21 @@
+PUT YOUR RESUME IN THIS FOLDER
+================================
+
+1. Export your resume as a PDF.
+2. Drop it in this folder.
+3. Rename it to exactly this:
+
+   resume.pdf
+
+That's it. The download button on the Resume page will automatically pick it up.
+
+Do NOT put it inside the images/ folder — it goes here, right next to it.
+
+Your folder should look like this when done:
+
+assets/
+├── resume.pdf              ← your resume goes here
+└── images/
+    ├── project1.jpg
+    ├── project2.jpg
+    └── ...

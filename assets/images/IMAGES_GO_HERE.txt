@@ -1,0 +1,25 @@
+PUT YOUR IMAGES IN THIS FOLDER
+================================
+
+Rename your images to match these exact filenames:
+
+--- PROJECT CARDS (shown on Home + Projects pages) ---
+project1.jpg
+project2.jpg
+project3.jpg
+project4.jpg
+project5.jpg
+project6.jpg
+
+--- EXPERIENCE TIMELINE (shown on Experience page) ---
+exp-google.jpg
+exp-apple.jpg
+exp-spacex.jpg
+exp-blueorigin.jpg
+exp-tesla.jpg
+exp-boeing.jpg
+
+--- ABOUT PAGE ---
+headshot.jpg
+
+If you skip any of these, the site just shows a blank placeholder — nothing breaks.
