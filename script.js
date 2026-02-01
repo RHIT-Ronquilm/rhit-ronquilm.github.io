@@ -149,8 +149,8 @@ document.addEventListener('DOMContentLoaded', () => {
             );
             const mailto  = `mailto:${TO}?subject=${subject}&body=${body}`;
 
-            // Open in new tab (triggers user's email client)
-            window.open(mailto, '_blank');
+            // Use location.href for better browser compatibility
+            window.location.href = mailto;
 
             // Feedback
             formStatus.textContent = 'Your email client should open now. If not, email me directly at ' + TO;
