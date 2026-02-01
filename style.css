@@ -161,11 +161,13 @@ input, textarea, button { font-family: inherit; }
     position: relative;
     min-height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;       /* stack content vertically */
+    justify-content: center;      /* center main content vertically */
+    align-items: center;          /* center horizontally */
     overflow: hidden;
     background: var(--clr-text);
     color: #fff;
+    padding-bottom: 4rem;         /* space for scroll button */
 }
 
 /* subtle geometric lines bg */
@@ -187,9 +189,13 @@ input, textarea, button { font-family: inherit; }
     position: relative;
     z-index: 1;
     text-align: center;
-    padding: 2rem;
     animation: heroFade 0.9s ease-out both;
+    display: flex;
+    flex-direction: column;      /* stack hero text vertically */
+    align-items: center;          /* center text horizontally */
+    gap: 0.6rem;                  /* spacing between lines */
 }
+
 @keyframes heroFade {
     from { opacity:0; transform:translateY(24px); }
     to   { opacity:1; transform:translateY(0); }
@@ -200,7 +206,6 @@ input, textarea, button { font-family: inherit; }
     text-transform: uppercase;
     letter-spacing: 3px;
     color: var(--clr-accent);
-    margin-bottom: 1.2rem;
     font-weight: 500;
 }
 
@@ -209,7 +214,6 @@ input, textarea, button { font-family: inherit; }
     font-size: clamp(2.8rem, 7vw, 5.5rem);
     font-weight: 900;
     line-height: 1.05;
-    margin-bottom: 0.8rem;
     letter-spacing: -2px;
 }
 
@@ -217,7 +221,6 @@ input, textarea, button { font-family: inherit; }
     font-size: 1.25rem;
     font-weight: 300;
     color: rgba(255,255,255,0.7);
-    margin-bottom: 0.4rem;
 }
 
 .hero-sub {
@@ -226,24 +229,24 @@ input, textarea, button { font-family: inherit; }
     font-weight: 400;
 }
 
+/* ---------------- Dynamic Scroll Button ---------------- */
 .hero-scroll-hint {
-    position: absolute;
-    bottom: 4rem;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-top: 2rem;              /* space below the last line of text */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     color: rgba(255,255,255,0.4);
     font-size: 0.78rem;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
     animation: bobble 2s ease-in-out infinite;
 }
+
 @keyframes bobble {
-    0%,100% { transform: translateX(-50%) translateY(0); }
-    50%     { transform: translateX(-50%) translateY(8px); }
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(8px); }
 }
+
 
 /* ============================================================
    PAGE HERO (inner pages)
