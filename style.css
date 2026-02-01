@@ -255,7 +255,10 @@ input, textarea, button { font-family: inherit; }
     padding-top: var(--nav-h);
     padding-bottom: 3rem;
     padding-left: 2rem;
-    background: var(--clr-text);
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('assets/images/ground.png');
+    background-size: cover;
+    background-position: center;
     color: #fff;
     text-align: center;
 }
