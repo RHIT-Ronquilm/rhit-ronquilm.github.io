@@ -658,6 +658,11 @@ input, textarea, button { font-family: inherit; }
     z-index: 1;
 }
 
+/* Hide placeholder when image is successfully loaded */
+.project-card-img img:not([style*="display: none"]) ~ .project-card-placeholder {
+    display: none;
+}
+
 .project-card-info {
     padding: 1.1rem 1.3rem;
 }
