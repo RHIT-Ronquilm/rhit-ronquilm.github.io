@@ -192,6 +192,9 @@ input, textarea, button { font-family: inherit; }
     text-align: center;
     padding: 2rem;
     animation: heroFade 0.9s ease-out both;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 @keyframes heroFade {
     from { opacity:0; transform:translateY(24px); }
