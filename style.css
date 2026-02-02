@@ -230,10 +230,9 @@ input, textarea, button { font-family: inherit; }
 }
 
 .hero-scroll-hint {
-    position: absolute;
-    bottom: 5rem;
-    left: 50%;
-    transform: translateX(-50%);
+    .hero-scroll-hint {
+    display: inline-flex;
+    margin-top: 2rem;
     color: rgba(255,255,255,0.4);
     font-size: 0.78rem;
     letter-spacing: 1.5px;
@@ -244,8 +243,8 @@ input, textarea, button { font-family: inherit; }
     animation: bobble 2s ease-in-out infinite;
 }
 @keyframes bobble {
-    0%,100% { transform: translateX(-50%) translateY(0); }
-    50%     { transform: translateX(-50%) translateY(8px); }
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(8px); }
 }
 
 /* ============================================================
