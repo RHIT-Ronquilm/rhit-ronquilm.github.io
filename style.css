@@ -808,8 +808,10 @@ input, textarea, button { font-family: inherit; }
 .about-photo-placeholder img {
     position: absolute;
     inset: 0;
-    width: 100%; height: 100%;
+    width: 100%; 
+    height: 100%;
     object-fit: cover;
+    z-index: 1;  /* ADD THIS LINE */
 }
 .about-photo-fallback {
     position: absolute;
@@ -823,6 +825,7 @@ input, textarea, button { font-family: inherit; }
     letter-spacing: 2px;
     font-weight: 600;
     background: linear-gradient(135deg, var(--clr-bg-alt) 0%, #ddd9d2 100%);
+    z-index: 0;  /* ADD THIS LINE */
 }
 
 .about-intro-text h2 {
