@@ -202,6 +202,91 @@
     </div>
 </footer>
 
-<script src="script.js"></script>
+<script>
+// Mobile menu toggle
+const hamburger = document.querySelector('.nav-hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('nav-links--active');
+        hamburger.classList.toggle('nav-hamburger--active');
+    });
+}
+
+// Project detail functionality
+const projectCards = document.querySelectorAll('.project-card');
+const projectDetail = document.getElementById('project-detail');
+const detailClose = document.getElementById('detailClose');
+const detailImage = document.getElementById('detailImage');
+const detailPlaceholder = document.getElementById('detailPlaceholder');
+const detailTitle = document.getElementById('detailTitle');
+const detailTag = document.getElementById('detailTag');
+const detailDesc = document.getElementById('detailDesc');
+const detailExtra = document.getElementById('detailExtra');
+
+projectCards.forEach(card => {
+    card.addEventListener('click', () => {
+        const title = card.getAttribute('data-title');
+        const tag = card.getAttribute('data-tag');
+        const imgSrc = card.getAttribute('data-img');
+        const desc = card.getAttribute('data-desc');
+        const extra = card.getAttribute('data-extra');
+
+        // Update detail panel content
+        detailTitle.textContent = title;
+        detailTag.textContent = tag;
+        detailDesc.textContent = desc;
+        detailExtra.innerHTML = extra;
+
+        // Handle image loading
+        if (imgSrc) {
+            detailImage.src = imgSrc;
+            detailImage.style.display = 'block';
+            detailPlaceholder.style.display = 'none';
+            
+            // Show placeholder if image fails to load
+            detailImage.onerror = function() {
+                this.style.display = 'none';
+                detailPlaceholder.style.display = 'flex';
+                detailPlaceholder.textContent = title;
+            };
+        } else {
+            detailImage.style.display = 'none';
+            detailPlaceholder.style.display = 'flex';
+            detailPlaceholder.textContent = title;
+        }
+
+        // Show the detail panel
+        projectDetail.classList.remove('project-detail--hidden');
+        document.body.style.overflow = 'hidden';
+    });
+});
+
+// Close detail panel
+if (detailClose) {
+    detailClose.addEventListener('click', () => {
+        projectDetail.classList.add('project-detail--hidden');
+        document.body.style.overflow = '';
+    });
+}
+
+// Close on background click
+projectDetail.addEventListener('click', (e) => {
+    if (e.target === projectDetail) {
+        projectDetail.classList.add('project-detail--hidden');
+        document.body.style.overflow = '';
+    }
+});
+
+// Close on escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !projectDetail.classList.contains('project-detail--hidden')) {
+        projectDetail.classList.add('project-detail--hidden');
+        document.body.style.overflow = '';
+    }
+});
+</script>
+
 </body>
 </html>
