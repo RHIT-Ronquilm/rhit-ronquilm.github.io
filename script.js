@@ -141,8 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Build mailto URI
-            // Replace "your.email@example.com" with your actual email below:
-            const TO = 'your.email@example.com';
+            const TO = 'Ronquilm@rose-hulman.edu';
             const subject = encodeURIComponent(`Message from ${name} (Portfolio Contact)`);
             const body    = encodeURIComponent(
                 `Name: ${name}\nEmail: ${email}\n\n${message}`
