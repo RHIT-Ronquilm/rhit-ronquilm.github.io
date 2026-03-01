@@ -697,6 +697,17 @@ input, textarea, button { font-family: inherit; }
     font-weight: 600;
 }
 
+.project-card--coming-soon {
+    cursor: default;
+    opacity: 0.5;
+    pointer-events: none;
+}
+.project-card--coming-soon .project-card-placeholder {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    color: var(--clr-text-light);
+}
+
 /* ============================================================
    PROJECT DETAIL PANEL (projects.html)
    ============================================================ */
@@ -788,7 +799,7 @@ input, textarea, button { font-family: inherit; }
 }
 
 /* ============================================================
-   ABOUT / INDEX — About Me section styles
+   ABOUT PAGE
    ============================================================ */
 .about-intro {
     display: grid;
