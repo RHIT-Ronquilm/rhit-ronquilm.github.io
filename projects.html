@@ -33,43 +33,21 @@
     </div>
 </header>
 
-<!-- PROJECT DETAIL MODAL (fixed overlay, hidden until a card is clicked) -->
-<div id="project-detail" class="project-detail project-detail--hidden">
-    <div class="project-modal-card">
-        <button class="project-detail-close" id="detailClose">
-            <svg viewBox="0 0 24 24" width="24" height="24"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" fill="none" stroke-width="2.5" stroke-linecap="round"/></svg>
-            Close
-        </button>
-        <div class="project-detail-inner">
-            <div class="project-detail-img-wrap">
-                <img id="detailImage" src="" alt="">
-                <div class="project-detail-img-placeholder" id="detailPlaceholder"></div>
-            </div>
-            <h2 id="detailTitle">Project Title</h2>
-            <span class="project-tag" id="detailTag">Category</span>
-            <p id="detailDesc">Project description goes here.</p>
-            <div id="detailExtra" class="project-detail-extra"></div>
-        </div>
-    </div>
-</div>
-
-<!-- PROJECT GRID -->
+<!-- PROJECT GRID + ACCORDION -->
 <section class="section">
     <div class="container">
         <h2 class="section-label">All Projects</h2>
 
-        <div class="project-grid">
+        <div class="project-grid" id="projectGrid">
 
             <!-- 1 -->
-            <div
-                class="project-card"
-                id="project-1"
+            <div class="project-card" id="project-1"
                 data-title="Mechanical Differential Assembly"
                 data-tag="Personal"
                 data-img="assets/images/gearbox.png"
+                data-imgs="assets/images/gearbox.png||"
                 data-desc="Designed and modeled a complex drivetrain assembly featuring a bevel gear differential integrated with a parallel gear reduction stage. The project involved precise gear tooth profiling to ensure proper meshing and the integration of keyed shafts and bearing supports for structural rigidity. This assembly was designed to facilitate variable speed distribution between two output shafts, simulating a real-world automotive or robotic drivetrain."
-                data-extra="<strong>Tools:</strong> SolidWorks, Mechanical Design (MD) Simulations<br><strong>Duration:</strong> 2 weeks<br><strong>Location:</strong> Academic Design Lab"
-            >
+                data-extra="<strong>Tools:</strong> SolidWorks, Mechanical Design (MD) Simulations&nbsp;&nbsp;|&nbsp;&nbsp;<strong>Duration:</strong> 2 weeks&nbsp;&nbsp;|&nbsp;&nbsp;<strong>Location:</strong> Academic Design Lab">
                 <div class="project-card-img">
                     <img src="assets/images/gearbox.png" alt="Mechanical Differential Assembly" onerror="this.style.display='none'">
                     <div class="project-card-placeholder">Project 1</div>
@@ -81,15 +59,13 @@
             </div>
 
             <!-- 2 -->
-            <div
-                class="project-card"
-                id="project-2"
+            <div class="project-card" id="project-2"
                 data-title="Garmin Smartwatch Housing & Strap"
                 data-tag="Personal"
                 data-img="assets/images/watch.png"
+                data-imgs="assets/images/watch.png||"
                 data-desc="Developed a high-fidelity CAD assembly of a Garmin-style smartwatch, focusing on ergonomic industrial design and multi-part integration. The project involved modeling the main watch body with precise button placement, a textured silicone strap with a functional buckle mechanism, and the underside sensor array including charging contact points. Special attention was paid to the assembly mating of the strap lugs and the surface detailing of the display bezel for a production-ready aesthetic."
-                data-extra="<strong>Tools:</strong> SolidWorks, CAD Review, DFM Analysis<br><strong>Duration:</strong> Personal Project"
-            >
+                data-extra="<strong>Tools:</strong> SolidWorks, CAD Review, DFM Analysis&nbsp;&nbsp;|&nbsp;&nbsp;<strong>Duration:</strong> Personal Project">
                 <div class="project-card-img">
                     <img src="assets/images/watch.png" alt="Garmin Smartwatch Housing & Strap" onerror="this.style.display='none'">
                     <div class="project-card-placeholder">Project 2</div>
@@ -101,15 +77,13 @@
             </div>
 
             <!-- 3 -->
-            <div
-                class="project-card"
-                id="project-3"
+            <div class="project-card" id="project-3"
                 data-title="Single-Cylinder Piston Engine Assembly"
                 data-tag="School Project"
                 data-img="assets/images/crank.png"
+                data-imgs="assets/images/crank.png||"
                 data-desc="Designed and modeled a single-cylinder piston engine assembly including the crankshaft, connecting rod, piston, and cylinder block. The project focused on understanding kinematic relationships between components and applying correct tolerancing and fits for moving parts."
-                data-extra="<strong>Tools:</strong> SolidWorks<br><strong>Duration:</strong> Academic Project<br><strong>Institution:</strong> Rose-Hulman Institute of Technology"
-            >
+                data-extra="<strong>Tools:</strong> SolidWorks&nbsp;&nbsp;|&nbsp;&nbsp;<strong>Duration:</strong> Academic Project&nbsp;&nbsp;|&nbsp;&nbsp;<strong>Institution:</strong> Rose-Hulman Institute of Technology">
                 <div class="project-card-img">
                     <img src="assets/images/crank.png" alt="Single-Cylinder Piston Engine Assembly" onerror="this.style.display='none'">
                     <div class="project-card-placeholder">Project 3</div>
@@ -117,6 +91,28 @@
                 <div class="project-card-info">
                     <h3>Single-Cylinder Piston Engine Assembly</h3>
                     <span class="project-tag">School Project</span>
+                </div>
+            </div>
+
+            <!-- Accordion panel (spans full grid row) -->
+            <div class="project-accordion" id="projectAccordion">
+                <div class="project-accordion-inner">
+                    <button class="project-accordion-close" id="accordionClose">
+                        <svg viewBox="0 0 24 24" width="16" height="16"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" fill="none" stroke-width="2.5" stroke-linecap="round"/></svg>
+                        Close
+                    </button>
+                    <div class="project-accordion-header">
+                        <h2 id="accTitle"></h2>
+                        <span class="project-tag" id="accTag"></span>
+                    </div>
+                    <!-- Gallery: 3 slots, grey placeholders until real images added -->
+                    <div class="project-accordion-gallery" id="accGallery">
+                        <div class="project-accordion-gallery-img">Photo 1</div>
+                        <div class="project-accordion-gallery-img">Photo 2</div>
+                        <div class="project-accordion-gallery-img">Photo 3</div>
+                    </div>
+                    <p class="project-accordion-desc" id="accDesc"></p>
+                    <div class="project-accordion-extra" id="accExtra"></div>
                 </div>
             </div>
 
@@ -176,70 +172,77 @@
 
 <script src="script.js"></script>
 <script>
-const projectCards  = document.querySelectorAll('.project-card[data-title]');
-const projectDetail = document.getElementById('project-detail');
-const detailClose   = document.getElementById('detailClose');
-const detailImage   = document.getElementById('detailImage');
-const detailPlaceholder = document.getElementById('detailPlaceholder');
-const detailTitle   = document.getElementById('detailTitle');
-const detailTag     = document.getElementById('detailTag');
-const detailDesc    = document.getElementById('detailDesc');
-const detailExtra   = document.getElementById('detailExtra');
+const grid       = document.getElementById('projectGrid');
+const accordion  = document.getElementById('projectAccordion');
+const accClose   = document.getElementById('accordionClose');
+const accTitle   = document.getElementById('accTitle');
+const accTag     = document.getElementById('accTag');
+const accDesc    = document.getElementById('accDesc');
+const accExtra   = document.getElementById('accExtra');
+const accGallery = document.getElementById('accGallery');
 
-function openModal(card) {
-    const title = card.dataset.title;
-    detailTitle.textContent = title;
-    detailTag.textContent   = card.dataset.tag;
-    detailDesc.textContent  = card.dataset.desc;
-    detailExtra.innerHTML   = card.dataset.extra || '';
+let activeCard = null;
 
-    if (card.dataset.img) {
-        detailImage.src = card.dataset.img;
-        detailImage.alt = title;
-        detailImage.style.display = 'block';
-        detailPlaceholder.style.display = 'none';
-        detailImage.onerror = function() {
-            this.style.display = 'none';
-            detailPlaceholder.style.display = 'flex';
-            detailPlaceholder.textContent = title;
-        };
-    } else {
-        detailImage.style.display = 'none';
-        detailPlaceholder.style.display = 'flex';
-        detailPlaceholder.textContent = title;
+function openAccordion(card) {
+    // Populate content
+    accTitle.textContent  = card.dataset.title;
+    accTag.textContent    = card.dataset.tag;
+    accDesc.textContent   = card.dataset.desc;
+    accExtra.innerHTML    = card.dataset.extra || '';
+
+    // Build gallery — split data-imgs on "||", always show 3 slots
+    const imgs = (card.dataset.imgs || '').split('||').filter(s => s.trim());
+    accGallery.innerHTML = '';
+    for (let i = 0; i < 3; i++) {
+        const slot = document.createElement('div');
+        slot.className = 'project-accordion-gallery-img';
+        if (imgs[i]) {
+            const im = document.createElement('img');
+            im.src = imgs[i];
+            im.alt = card.dataset.title + ' photo ' + (i + 1);
+            im.onerror = () => im.remove();
+            slot.appendChild(im);
+        }
+        slot.textContent = slot.children.length ? '' : 'Photo ' + (i + 1);
+        accGallery.appendChild(slot);
     }
 
-    projectDetail.classList.remove('project-detail--hidden');
-    document.body.style.overflow = 'hidden';
+    // Mark active card
+    if (activeCard) activeCard.classList.remove('project-card--active');
+    card.classList.add('project-card--active');
+    activeCard = card;
+
+    // Move accordion in DOM to just after the clicked card, then open
+    card.after(accordion);
+    accordion.classList.add('project-accordion--open');
 }
 
-function closeModal() {
-    projectDetail.classList.add('project-detail--hidden');
-    document.body.style.overflow = '';
+function closeAccordion() {
+    accordion.classList.remove('project-accordion--open');
+    if (activeCard) {
+        activeCard.classList.remove('project-card--active');
+        activeCard = null;
+    }
 }
 
-projectCards.forEach(card => card.addEventListener('click', (e) => {
-    e.preventDefault();
-    openModal(card);
-}));
-
-detailClose.addEventListener('click', closeModal);
-
-// Click dark backdrop (not the white card) to close
-projectDetail.addEventListener('click', (e) => {
-    if (e.target === projectDetail) closeModal();
+document.querySelectorAll('.project-card[data-title]').forEach(card => {
+    card.addEventListener('click', () => {
+        // Toggle: clicking the same open card closes it
+        if (activeCard === card) {
+            closeAccordion();
+        } else {
+            openAccordion(card);
+        }
+    });
 });
 
-// Escape key to close
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
-});
+accClose.addEventListener('click', closeAccordion);
 
-// Auto-open if navigated via hash (e.g. projects.html#project-2)
+// Hash auto-open (e.g. projects.html#project-2)
 if (window.location.hash) {
-    const targetCard = document.getElementById(window.location.hash.replace('#', ''));
-    if (targetCard && targetCard.dataset.title) {
-        setTimeout(() => openModal(targetCard), 300);
+    const target = document.getElementById(window.location.hash.replace('#', ''));
+    if (target && target.dataset.title) {
+        setTimeout(() => openAccordion(target), 300);
     }
 }
 </script>
