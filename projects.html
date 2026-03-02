@@ -33,32 +33,12 @@
     </div>
 </header>
 
-<!-- PROJECT DETAIL MODAL (fixed overlay, hidden until a card is clicked) -->
-<div id="project-detail" class="project-detail project-detail--hidden">
-    <div class="project-modal-card">
-        <button class="project-detail-close" id="detailClose">
-            <svg viewBox="0 0 24 24" width="24" height="24"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" fill="none" stroke-width="2.5" stroke-linecap="round"/></svg>
-            Close
-        </button>
-        <div class="project-detail-inner">
-            <div class="project-detail-img-wrap">
-                <img id="detailImage" src="" alt="">
-                <div class="project-detail-img-placeholder" id="detailPlaceholder"></div>
-            </div>
-            <h2 id="detailTitle">Project Title</h2>
-            <span class="project-tag" id="detailTag">Category</span>
-            <p id="detailDesc">Project description goes here.</p>
-            <div id="detailExtra" class="project-detail-extra"></div>
-        </div>
-    </div>
-</div>
-
 <!-- PROJECT GRID -->
 <section class="section">
     <div class="container">
         <h2 class="section-label">All Projects</h2>
 
-        <div class="project-grid">
+        <div class="project-grid" id="projectGrid">
 
             <!-- 1 -->
             <div
@@ -153,6 +133,18 @@
                 </div>
             </div>
 
+            <!-- Accordion -->
+            <div id="projectAccordion" style="display:none; grid-column: 1 / -1; background: var(--clr-surface); border-top: 3px solid var(--clr-accent); border-radius: var(--radius); box-shadow: var(--shadow-md); padding: 2rem 2.2rem; margin-top: 0.5rem;">
+                <button id="accordionClose" style="display:flex; align-items:center; gap:0.4rem; background:none; border:none; color:var(--clr-text-light); font-size:0.8rem; font-weight:600; cursor:pointer; margin-bottom:1.5rem; text-transform:uppercase; letter-spacing:1px;">
+                    <svg viewBox="0 0 24 24" width="16" height="16"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" fill="none" stroke-width="2.5" stroke-linecap="round"/></svg>
+                    Close
+                </button>
+                <h2 id="accTitle" style="font-family:var(--font-display); font-size:1.7rem; font-weight:700; margin-bottom:0.4rem;"></h2>
+                <span class="project-tag" id="accTag" style="margin-bottom:1rem; display:inline-block;"></span>
+                <p id="accDesc" style="color:var(--clr-text-mid); font-size:0.94rem; line-height:1.75; margin-bottom:1rem;"></p>
+                <div id="accExtra" style="font-size:0.84rem; color:var(--clr-text-light); line-height:1.9;"></div>
+            </div>
+
         </div>
     </div>
 </section>
@@ -176,72 +168,49 @@
 
 <script src="script.js"></script>
 <script>
-const projectCards  = document.querySelectorAll('.project-card[data-title]');
-const projectDetail = document.getElementById('project-detail');
-const detailClose   = document.getElementById('detailClose');
-const detailImage   = document.getElementById('detailImage');
-const detailPlaceholder = document.getElementById('detailPlaceholder');
-const detailTitle   = document.getElementById('detailTitle');
-const detailTag     = document.getElementById('detailTag');
-const detailDesc    = document.getElementById('detailDesc');
-const detailExtra   = document.getElementById('detailExtra');
+const grid      = document.getElementById('projectGrid');
+const accordion = document.getElementById('projectAccordion');
+const accClose  = document.getElementById('accordionClose');
+const accTitle  = document.getElementById('accTitle');
+const accTag    = document.getElementById('accTag');
+const accDesc   = document.getElementById('accDesc');
+const accExtra  = document.getElementById('accExtra');
 
-function openModal(card) {
-    const title = card.dataset.title;
-    detailTitle.textContent = title;
-    detailTag.textContent   = card.dataset.tag;
-    detailDesc.textContent  = card.dataset.desc;
-    detailExtra.innerHTML   = card.dataset.extra || '';
+let activeCard = null;
 
-    if (card.dataset.img) {
-        detailImage.src = card.dataset.img;
-        detailImage.alt = title;
-        detailImage.style.display = 'block';
-        detailPlaceholder.style.display = 'none';
-        detailImage.onerror = function() {
-            this.style.display = 'none';
-            detailPlaceholder.style.display = 'flex';
-            detailPlaceholder.textContent = title;
-        };
-    } else {
-        detailImage.style.display = 'none';
-        detailPlaceholder.style.display = 'flex';
-        detailPlaceholder.textContent = title;
-    }
+function openAccordion(card) {
+    accTitle.textContent = card.dataset.title;
+    accTag.textContent   = card.dataset.tag;
+    accDesc.textContent  = card.dataset.desc;
+    accExtra.innerHTML   = card.dataset.extra || '';
 
-    projectDetail.classList.remove('project-detail--hidden');
-    document.body.style.overflow = 'hidden';
+    if (activeCard) activeCard.classList.remove('project-card--active');
+    card.classList.add('project-card--active');
+    activeCard = card;
+
+    card.after(accordion);
+    accordion.style.display = 'block';
 }
 
-function closeModal() {
-    projectDetail.classList.add('project-detail--hidden');
-    document.body.style.overflow = '';
-}
-
-projectCards.forEach(card => card.addEventListener('click', (e) => {
-    e.preventDefault();
-    openModal(card);
-}));
-
-detailClose.addEventListener('click', closeModal);
-
-// Click dark backdrop (not the white card) to close
-projectDetail.addEventListener('click', (e) => {
-    if (e.target === projectDetail) closeModal();
-});
-
-// Escape key to close
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
-});
-
-// Auto-open if navigated via hash (e.g. projects.html#project-2)
-if (window.location.hash) {
-    const targetCard = document.getElementById(window.location.hash.replace('#', ''));
-    if (targetCard && targetCard.dataset.title) {
-        setTimeout(() => openModal(targetCard), 300);
+function closeAccordion() {
+    accordion.style.display = 'none';
+    if (activeCard) {
+        activeCard.classList.remove('project-card--active');
+        activeCard = null;
     }
 }
+
+document.querySelectorAll('.project-card[data-title]').forEach(card => {
+    card.addEventListener('click', () => {
+        if (activeCard === card) {
+            closeAccordion();
+        } else {
+            openAccordion(card);
+        }
+    });
+});
+
+accClose.addEventListener('click', closeAccordion);
 </script>
 
 </body>
