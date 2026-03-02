@@ -23,14 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-    // If we landed on projects.html via a hash (e.g. #project-2), auto-open that accordion
-    if (accordion && window.location.hash) {
-        const targetId   = window.location.hash.replace('#', '');
-        const targetCard = document.getElementById(targetId);
-        if (targetCard && targetCard.dataset.title) {
-            setTimeout(() => { targetCard.click(); }, 300);
-        }
-    }
+    
 
     // --------------------------------------------------------
     // PROJECTS PAGE — Accordion
@@ -87,6 +80,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (accClose) {
             accClose.addEventListener('click', closeAccordion);
         }
+
+        // If we landed on projects.html via a hash (e.g. #project-2), auto-open that accordion
+        if (window.location.hash) {
+            const targetId   = window.location.hash.replace('#', '');
+            const targetCard = document.getElementById(targetId);
+            if (targetCard && targetCard.dataset.title) {
+                setTimeout(() => { targetCard.click(); }, 300);
+            }
+        }
+    
     }
     // --------------------------------------------------------
     // CONTACT FORM — mailto fallback
