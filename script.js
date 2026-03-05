@@ -57,6 +57,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             grid.before(accordion);
             accordion.style.display = 'block';
+
+            // Show extended content only for detailed projects
+            const extended = document.getElementById('accExtended');
+            if (extended) {
+                extended.style.display = card.dataset.content === 'full' ? 'block' : 'none';
+            }
         }
 
         function closeAccordion() {
