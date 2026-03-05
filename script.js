@@ -58,6 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
             grid.before(accordion);
             accordion.style.display = 'block';
 
+            // Scroll to top of accordion
+            setTimeout(() => {
+                const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 68;
+                const top = accordion.getBoundingClientRect().top + window.scrollY - navH - 16;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }, 50);
+
             // Show extended content only for detailed projects
             const extended = document.getElementById('accExtended');
             if (extended) {
