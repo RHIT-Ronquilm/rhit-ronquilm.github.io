@@ -142,14 +142,24 @@
                 </div>
             </div>
 
-            <!-- 6 — Coming Soon -->
-            <div class="project-card project-card--coming-soon">
+            <!-- 6 — V6 Engine -->
+            <div
+                class="project-card"
+                id="project-6"
+                data-title="V6 Engine CAD Development (Work in Progress)"
+                data-tag="Personal"
+                data-img="assets/images/Vengine.png"
+                data-desc="This project documents the ongoing development of a complete V6 internal combustion engine modeled in SolidWorks. The objective is to design and assemble a fully detailed multi-component engine system while developing proficiency in parametric part modeling, advanced assemblies, and mechanical motion relationships."
+                data-extra="<strong>Tools:</strong> SolidWorks, Parametric CAD Modeling, Mechanical Systems Design<br><strong>Status:</strong> Component modeling and subsystem assemblies currently in progress."
+                data-content="v6"
+            >
                 <div class="project-card-img">
-                    <div class="project-card-placeholder">Coming Soon</div>
+                    <img src="assets/images/Vengine.png" alt="V6 Engine CAD" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 6</div>
                 </div>
                 <div class="project-card-info">
-                    <h3>Future Project</h3>
-                    <span class="project-tag">TBD</span>
+                    <h3>V6 Engine CAD Development (Work in Progress)</h3>
+                    <span class="project-tag">Personal</span>
                 </div>
             </div>
 
@@ -270,6 +280,52 @@
                     <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:0.5rem;">Reflection</h3>
                     <p style="font-size:0.9rem; color:var(--clr-text-mid); line-height:1.8;">
                         This project provided practical experience with radio frequency circuits, signal demodulation, and PCB population. It helped bridge theoretical concepts from electromagnetic and circuit theory with real hardware implementation, reinforcing how inductors, capacitors, and amplifiers interact within a communication system.
+                    </p>
+
+                </div>
+
+                <!-- Extended content for project-6 (V6 Engine) -->
+                <div id="accExtendedV6" style="display:none; margin-top:2rem; border-top: 1px solid var(--clr-border); padding-top:2rem;">
+
+                    <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:0.8rem;">Current Progress</h3>
+                    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.8rem; margin-bottom:2rem;">
+                        <div style="aspect-ratio:4/3; background:linear-gradient(135deg,var(--clr-bg-alt) 0%,#ddd9d2 100%); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; position:relative;">
+                            <img src="assets/images/Vblock.png" alt="Engine Block" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border-radius:var(--radius);display:block;cursor:zoom-in;" onclick="openLightbox(this.src)">
+                        </div>
+                        <div style="aspect-ratio:4/3; background:linear-gradient(135deg,var(--clr-bg-alt) 0%,#ddd9d2 100%); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; position:relative;">
+                            <img src="assets/images/Vcrank.png" alt="Crankshaft" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border-radius:var(--radius);display:block;cursor:zoom-in;" onclick="openLightbox(this.src)">
+                        </div>
+                        <div style="aspect-ratio:4/3; background:linear-gradient(135deg,var(--clr-bg-alt) 0%,#ddd9d2 100%); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; position:relative;">
+                            <img src="assets/images/Vpiston.png" alt="Piston" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border-radius:var(--radius);display:block;cursor:zoom-in;" onclick="openLightbox(this.src)">
+                        </div>
+                    </div>
+
+                    <p style="font-size:0.9rem; color:var(--clr-text-mid); line-height:1.8; margin-bottom:1.5rem;">
+                        The project is being completed component-by-component, beginning with the core structural and rotating elements. Current completed components — crankshaft, piston, and engine block — establish the primary kinematic relationship between the pistons and crankshaft, converting reciprocating piston motion into rotational output.
+                    </p>
+
+                    <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:0.5rem;">Assembly Stages</h3>
+                    <p style="font-size:0.9rem; color:var(--clr-text-mid); line-height:1.8; margin-bottom:1.5rem;">
+                        1. <strong>Lower Block Assembly</strong> — integration of crankshaft, pistons, and block<br>
+                        2. <strong>Upper Block Assembly</strong> — cylinder head, valvetrain, and camshaft components<br>
+                        3. <strong>Final System Assembly</strong> — belt drive, accessory components, and intake/exhaust systems
+                    </p>
+
+                    <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:0.5rem;">Planned Components</h3>
+                    <p style="font-size:0.9rem; color:var(--clr-text-mid); line-height:1.8; margin-bottom:1.5rem;">
+                        Rocker Arm, Cylinder Head, Exhaust Manifold, Air Filter, Camshaft, Rocker Spring and Valve, Belt Wheels, Valves Cover, Front Cover, Oil Pan, Turbocharger, Intake Manifold, Bushings and Camshaft Retainer
+                    </p>
+
+                    <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:0.5rem;">Mechanical Principles</h3>
+                    <p style="font-size:0.9rem; color:var(--clr-text-mid); line-height:1.8; margin-bottom:1.5rem;">
+                        The engine operates using a crank-slider mechanism where piston motion is transferred to the crankshaft through connecting rods. Piston position is governed by:<br><br>
+                        <strong>x = r·cos(θ) + √(l² − (r·sin(θ))²)</strong><br><br>
+                        where r = crank radius, l = connecting rod length, θ = crank angle. This relationship determines stroke length and volumetric displacement.
+                    </p>
+
+                    <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:0.5rem;">Goal</h3>
+                    <p style="font-size:0.9rem; color:var(--clr-text-mid); line-height:1.8;">
+                        The completed project will result in a fully detailed V6 engine assembly capable of motion simulation, providing a deeper understanding of engine architecture, mechanical linkages, and multi-part CAD system integration. The final assembly will consist of 16 engineered components across 3 major assembly stages.
                     </p>
 
                 </div>
