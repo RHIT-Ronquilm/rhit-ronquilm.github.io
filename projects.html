@@ -121,14 +121,24 @@
                 </div>
             </div>
 
-            <!-- 5 — Coming Soon -->
-            <div class="project-card project-card--coming-soon">
+            <!-- 5 — FM Radio -->
+            <div
+                class="project-card"
+                id="project-5"
+                data-title="FM-88K Auto-Scan Receiver Assembly & Analysis"
+                data-tag="School Project"
+                data-img="assets/images/DoneBoard.png"
+                data-desc="Constructed and analyzed a monophonic FM receiver capable of automatically scanning the 88–108 MHz broadcast band. The project involved precision through-hole soldering, RF tuning using an LC resonant circuit, and audio amplification through a dedicated power amplifier stage."
+                data-extra="<strong>Tools:</strong> Soldering Iron, Multimeter, Wire Strippers<br><strong>Key Components:</strong> TDA7088T FM Receiver IC, LM386 Audio Amplifier<br><strong>Institution:</strong> Rose-Hulman Institute of Technology"
+                data-content="radio"
+            >
                 <div class="project-card-img">
-                    <div class="project-card-placeholder">Coming Soon</div>
+                    <img src="assets/images/DoneBoard.png" alt="FM-88K Auto-Scan Receiver" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 5</div>
                 </div>
                 <div class="project-card-info">
-                    <h3>Future Project</h3>
-                    <span class="project-tag">TBD</span>
+                    <h3>FM-88K Auto-Scan Receiver Assembly & Analysis</h3>
+                    <span class="project-tag">School Project</span>
                 </div>
             </div>
 
@@ -213,6 +223,53 @@
                     <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:0.5rem; margin-top:1.5rem;">Reflection</h3>
                     <p style="font-size:0.9rem; color:var(--clr-text-mid); line-height:1.8;">
                         The link exhibited lower deformation than predicted by the simplified FL/EA model. This difference is likely due to the dogbone geometry, where the widened ends and fillets increase the average stiffness compared to the uniform cross-section assumed in the analytical model. Selecting Pin 4 also reduced the required link length by over 12% compared to standard Pin 6 designs, resulting in a lighter and more competitive component.
+                    </p>
+
+                </div>
+
+                <!-- Radio project extended content -->
+                <div id="accExtendedRadio" style="display:none; margin-top:0;">
+
+                    <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:0.8rem;">System Overview</h3>
+                    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.8rem; margin-bottom:2rem;">
+                        <div style="aspect-ratio:4/3; background:linear-gradient(135deg,var(--clr-bg-alt) 0%,#ddd9d2 100%); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; position:relative;">
+                            <img src="assets/images/HalfBoard.png" alt="Board during assembly" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border-radius:var(--radius);display:block;cursor:zoom-in;" onclick="openLightbox(this.src)">
+                        </div>
+                        <div style="aspect-ratio:4/3; background:linear-gradient(135deg,var(--clr-bg-alt) 0%,#ddd9d2 100%); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; position:relative;">
+                            <img src="assets/images/Parts.png" alt="All components" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border-radius:var(--radius);display:block;cursor:zoom-in;" onclick="openLightbox(this.src)">
+                        </div>
+                        <div style="aspect-ratio:4/3; background:linear-gradient(135deg,var(--clr-bg-alt) 0%,#ddd9d2 100%); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; position:relative;">
+                            <img src="assets/images/Sheet.png" alt="Resistor color code sheet" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border-radius:var(--radius);display:block;cursor:zoom-in;" onclick="openLightbox(this.src)">
+                        </div>
+                    </div>
+
+                    <p style="font-size:0.9rem; color:var(--clr-text-mid); line-height:1.8; margin-bottom:1.5rem;">
+                        The receiver is composed of three primary subsystems: an <strong>RF Tuning Circuit</strong> using an LC resonant network and varactor diode to select the desired frequency, a <strong>Receiver IC (TDA7088T)</strong> that demodulates the FM signal and extracts audio, and an <strong>Audio Amplifier (LM386)</strong> that drives an 8Ω speaker.
+                    </p>
+
+                    <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:0.5rem;">RF Tuning Principle</h3>
+                    <p style="font-size:0.9rem; color:var(--clr-text-mid); line-height:1.8; margin-bottom:1.5rem;">
+                        The radio selects stations using a resonant LC circuit. By varying capacitance using a varactor diode, the circuit shifts its resonant frequency, enabling the receiver to automatically scan across the 88–108 MHz FM spectrum.
+                    </p>
+
+                    <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:0.5rem;">Audio Amplification</h3>
+                    <p style="font-size:0.9rem; color:var(--clr-text-mid); line-height:1.8; margin-bottom:1.5rem;">
+                        The demodulated audio signal is amplified using an LM386 low-voltage audio power amplifier. Default gain: 20 (26 dB), capable of driving an 8Ω speaker, designed for low-power portable audio applications.
+                    </p>
+
+                    <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:0.5rem;">Assembly & Manufacturing</h3>
+                    <p style="font-size:0.9rem; color:var(--clr-text-mid); line-height:1.8; margin-bottom:1.5rem;">
+                        The PCB was populated with 40+ through-hole electronic components including resistors (5% tolerance), ceramic and electrolytic capacitors, RF tuning inductors, and integrated circuits. Proper component orientation and clean solder joints were essential for reliable circuit operation.
+                    </p>
+
+                    <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:0.5rem;">Challenges</h3>
+                    <p style="font-size:0.9rem; color:var(--clr-text-mid); line-height:1.8; margin-bottom:1.5rem;">
+                        One challenge was ensuring the inductor coils used in the RF tuning stage were properly formed and spaced, as coil geometry directly affects inductance and therefore the tuning range of the receiver. Additional troubleshooting included verifying solder joints and confirming signal flow through the amplifier stage using a multimeter.
+                    </p>
+
+                    <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:0.5rem;">Reflection</h3>
+                    <p style="font-size:0.9rem; color:var(--clr-text-mid); line-height:1.8;">
+                        This project provided practical experience with radio frequency circuits, signal demodulation, and PCB population. It helped bridge theoretical concepts from electromagnetic and circuit theory with real hardware implementation, reinforcing how inductors, capacitors, and amplifiers interact within a communication system.
                     </p>
 
                 </div>

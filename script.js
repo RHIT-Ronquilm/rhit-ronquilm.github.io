@@ -64,6 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 extended.style.display = card.dataset.content === 'full' ? 'block' : 'none';
             }
 
+            const extendedRadio = document.getElementById('accExtendedRadio');
+            if (extendedRadio) {
+                extendedRadio.style.display = card.dataset.content === 'radio' ? 'block' : 'none';
+            }
+
             // Set video speed
             const vid = document.getElementById('extVideo');
             if (vid) {
