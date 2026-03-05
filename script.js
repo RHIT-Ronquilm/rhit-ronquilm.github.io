@@ -63,6 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (extended) {
                 extended.style.display = card.dataset.content === 'full' ? 'block' : 'none';
             }
+
+            // Set video speed
+            const vid = document.getElementById('extVideo');
+            if (vid) {
+                vid.playbackRate = 4.0;
+                vid.onplay = function() { this.playbackRate = 4.0; };
+            }
         }
 
         function closeAccordion() {
