@@ -106,12 +106,13 @@
                 id="project-4"
                 data-title="Optimized Aircraft Landing Gear Link Design"
                 data-tag="School Project"
-                data-img=""
+                data-img="assets/images/Link1.jpeg"
                 data-desc="Designed and manufactured a lightweight structural tension member for a landing gear retraction system capable of sustaining a 155 lb axial load. The design targeted a Factor of Safety of 1.78 using Nylon 6/6, balancing structural integrity with weight reduction for aerospace competition scoring."
                 data-extra="<strong>Tools:</strong> SolidWorks, Laser Cutting<br><strong>Material:</strong> 0.094 in Nylon 6/6<br><strong>Institution:</strong> Rose-Hulman Institute of Technology"
                 data-content="full"
             >
                 <div class="project-card-img">
+                    <img src="assets/images/Link1.jpeg" alt="Landing Gear Link" onerror="this.style.display='none'">
                     <div class="project-card-placeholder">Project 4</div>
                 </div>
                 <div class="project-card-info">
@@ -148,29 +149,33 @@
                     <svg viewBox="0 0 24 24" width="16" height="16"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" fill="none" stroke-width="2.5" stroke-linecap="round"/></svg>
                     Close
                 </button>
+
+                <!-- Top two-column: text left, image right -->
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start;">
                     <div>
                         <h2 id="accTitle" style="font-family:var(--font-display); font-size:1.7rem; font-weight:700; margin-bottom:0.4rem;"></h2>
                         <span class="project-tag" id="accTag" style="margin-bottom:1rem; display:inline-block;"></span>
                         <p id="accDesc" style="color:var(--clr-text-mid); font-size:0.94rem; line-height:1.75; margin-bottom:1rem;"></p>
                         <div id="accExtra" style="font-size:0.84rem; color:var(--clr-text-light); line-height:1.9;"></div>
+                    </div>
+                    <div style="display:flex; align-items:center; justify-content:center;">
+                        <img id="accImage" src="" alt="" style="width:100%; max-height:420px; object-fit:contain; border-radius:var(--radius); background:var(--clr-bg-alt);">
+                    </div>
+                </div>
 
-                <!-- Extended content for detailed projects -->
+                <!-- Extended content for detailed projects (project-4 only) -->
                 <div id="accExtended" style="display:none; margin-top:2rem; border-top: 1px solid var(--clr-border); padding-top:2rem;">
 
                     <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:0.8rem;">Design & CAD</h3>
                     <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.8rem; margin-bottom:2rem;">
-                        <div style="aspect-ratio:4/3; background:linear-gradient(135deg,var(--clr-bg-alt) 0%,#ddd9d2 100%); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; font-size:0.72rem; font-weight:600; color:var(--clr-text-light); text-transform:uppercase; letter-spacing:2px; position:relative;">
-                            <img id="extImg1" src="" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border-radius:var(--radius);display:none;">
-                            <span id="extImg1Label">CAD Image</span>
+                        <div style="aspect-ratio:4/3; background:linear-gradient(135deg,var(--clr-bg-alt) 0%,#ddd9d2 100%); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; position:relative;">
+                            <img id="extImg1" src="assets/images/CADLink.jpeg" alt="CAD Image" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border-radius:var(--radius);display:block;">
                         </div>
-                        <div style="aspect-ratio:4/3; background:linear-gradient(135deg,var(--clr-bg-alt) 0%,#ddd9d2 100%); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; font-size:0.72rem; font-weight:600; color:var(--clr-text-light); text-transform:uppercase; letter-spacing:2px; position:relative;">
-                            <img id="extImg2" src="" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border-radius:var(--radius);display:none;">
-                            <span id="extImg2Label">Calculation Image</span>
+                        <div style="aspect-ratio:4/3; background:linear-gradient(135deg,var(--clr-bg-alt) 0%,#ddd9d2 100%); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; position:relative;">
+                            <img id="extImg2" src="assets/images/Link2.jpeg" alt="Calculation Image" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border-radius:var(--radius);display:block;">
                         </div>
-                        <div style="aspect-ratio:4/3; background:linear-gradient(135deg,var(--clr-bg-alt) 0%,#ddd9d2 100%); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; font-size:0.72rem; font-weight:600; color:var(--clr-text-light); text-transform:uppercase; letter-spacing:2px; position:relative;">
-                            <img id="extImg3" src="" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border-radius:var(--radius);display:none;">
-                            <span id="extImg3Label">Physical Link Photo</span>
+                        <div style="aspect-ratio:4/3; background:linear-gradient(135deg,var(--clr-bg-alt) 0%,#ddd9d2 100%); border-radius:var(--radius); display:flex; align-items:center; justify-content:center; position:relative;">
+                            <img id="extImg3" src="assets/images/Link1.jpeg" alt="Physical Link Photo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border-radius:var(--radius);display:block;">
                         </div>
                     </div>
 
@@ -192,9 +197,10 @@
                     </p>
 
                     <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:0.5rem;">Load Test Validation</h3>
-                    <div style="margin-bottom:1.5rem; background:linear-gradient(135deg,var(--clr-bg-alt) 0%,#ddd9d2 100%); border-radius:var(--radius); aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:600; color:var(--clr-text-light); text-transform:uppercase; letter-spacing:2px; position:relative; overflow:hidden;">
-                        <video id="extVideo" controls style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border-radius:var(--radius);display:none;"></video>
-                        <span id="extVideoLabel">Video Placeholder</span>
+                    <div style="margin-bottom:1.5rem; background:linear-gradient(135deg,var(--clr-bg-alt) 0%,#ddd9d2 100%); border-radius:var(--radius); aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+                        <video id="extVideo" controls style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border-radius:var(--radius);display:block;">
+                            <source src="assets/images/Link.mov" type="video/mp4">
+                        </video>
                     </div>
 
                     <h3 style="font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:0.5rem;">Results</h3>
@@ -209,11 +215,6 @@
                         The link exhibited lower deformation than predicted by the simplified FL/EA model. This difference is likely due to the dogbone geometry, where the widened ends and fillets increase the average stiffness compared to the uniform cross-section assumed in the analytical model. Selecting Pin 4 also reduced the required link length by over 12% compared to standard Pin 6 designs, resulting in a lighter and more competitive component.
                     </p>
 
-                </div>
-                    </div>
-                    <div style="display:flex; align-items:center; justify-content:center;">
-                        <img id="accImage" src="" alt="" style="width:100%; max-height:420px; object-fit:contain; border-radius:var(--radius); background:var(--clr-bg-alt);">
-                    </div>
                 </div>
             </div>
 
@@ -239,51 +240,6 @@
 </footer>
 
 <script src="script.js"></script>
-<script>
-const grid      = document.getElementById('projectGrid');
-const accordion = document.getElementById('projectAccordion');
-const accClose  = document.getElementById('accordionClose');
-const accTitle  = document.getElementById('accTitle');
-const accTag    = document.getElementById('accTag');
-const accDesc   = document.getElementById('accDesc');
-const accExtra  = document.getElementById('accExtra');
-
-let activeCard = null;
-
-function openAccordion(card) {
-    accTitle.textContent = card.dataset.title;
-    accTag.textContent   = card.dataset.tag;
-    accDesc.textContent  = card.dataset.desc;
-    accExtra.innerHTML   = card.dataset.extra || '';
-
-    if (activeCard) activeCard.classList.remove('project-card--active');
-    card.classList.add('project-card--active');
-    activeCard = card;
-
-    grid.before(accordion);
-    accordion.style.display = 'block';
-}
-
-function closeAccordion() {
-    accordion.style.display = 'none';
-    if (activeCard) {
-        activeCard.classList.remove('project-card--active');
-        activeCard = null;
-    }
-}
-
-document.querySelectorAll('.project-card[data-title]').forEach(card => {
-    card.addEventListener('click', () => {
-        if (activeCard === card) {
-            closeAccordion();
-        } else {
-            openAccordion(card);
-        }
-    });
-});
-
-accClose.addEventListener('click', closeAccordion);
-</script>
 
 </body>
 </html>
