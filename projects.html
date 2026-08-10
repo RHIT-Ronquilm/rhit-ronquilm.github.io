@@ -370,7 +370,10 @@
                     </div>
                     <div style="display:flex; flex-direction:column; align-items:center; gap:1rem;">
                         <img id="accImage" src="" alt="" style="width:100%; max-height:420px; object-fit:contain; border-radius:var(--radius); background:var(--clr-bg-alt); cursor:zoom-in;" onclick="openLightbox(this.src)">
-                        <div id="accGallery" style="display:flex; flex-wrap:wrap; gap:0.8rem; justify-content:center; width:100%;"></div>
+                        <div style="display:flex; align-items:center; gap:0.8rem; flex-wrap:wrap; width:100%;">
+                            <div id="accGallery" style="display:flex; flex-wrap:wrap; gap:0.8rem;"></div>
+                            <span id="accGalleryHint" style="display:none; font-size:0.78rem; color:var(--clr-text-light); font-style:italic;">Click a photo to view it larger</span>
+                        </div>
                     </div>
                 </div>
 

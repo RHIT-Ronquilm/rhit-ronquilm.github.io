@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const accExtra  = document.getElementById('accExtra');
     const accImage  = document.getElementById('accImage');
     const accGallery = document.getElementById('accGallery');
+    const accGalleryHint = document.getElementById('accGalleryHint');
     const grid      = document.getElementById('projectGrid');
 
     const projectCards = document.querySelectorAll('.project-card[data-title]');
@@ -70,6 +71,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                     accGallery.appendChild(thumb);
                 });
+
+                if (accGalleryHint) {
+                    accGalleryHint.style.display = galleryUrls.length > 1 ? 'block' : 'none';
+                }
             }
 
             if (activeCard) activeCard.classList.remove('project-card--active');
