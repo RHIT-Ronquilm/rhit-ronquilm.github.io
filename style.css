@@ -698,10 +698,10 @@ input, textarea, button { font-family: inherit; }
 }
 
 .acc-gallery-thumb {
-    width: 66%;
-    max-height: 280px;
-    object-fit: contain;
-    border-radius: var(--radius);
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 6px;
     background: var(--clr-bg-alt);
     box-shadow: var(--shadow-sm);
     cursor: pointer;
