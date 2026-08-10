@@ -489,7 +489,9 @@ input, textarea, button { font-family: inherit; }
 .timeline {
     position: relative;
     padding-left: 0;  /* Remove left padding */
-    max-width: 720px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .timeline::before {
     display: none;  /* Remove the line */
@@ -503,6 +505,8 @@ input, textarea, button { font-family: inherit; }
 }
 .timeline-item:last-child {
     border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 .timeline-dot {
@@ -548,7 +552,7 @@ input, textarea, button { font-family: inherit; }
     font-size: 0.92rem;
     color: var(--clr-text-mid);
     line-height: 1.7;
-    max-width: 650px;
+    max-width: 100%;
 }
 
 /* Detailed timeline cards */
