@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const accDesc   = document.getElementById('accDesc');
     const accExtra  = document.getElementById('accExtra');
     const accImage  = document.getElementById('accImage');
+    const accGallery = document.getElementById('accGallery');
     const grid      = document.getElementById('projectGrid');
 
     const projectCards = document.querySelectorAll('.project-card[data-title]');
@@ -50,6 +51,26 @@ document.addEventListener('DOMContentLoaded', () => {
             accDesc.textContent  = card.dataset.desc;
             accExtra.innerHTML   = card.dataset.extra || '';
             if (accImage) accImage.src = card.dataset.img || '';
+
+            // Gallery thumbnails — clicking one swaps it into the big image spot
+            if (accGallery) {
+                accGallery.innerHTML = '';
+                const galleryUrls = (card.dataset.gallery || '')
+                    .split(',')
+                    .map(u => u.trim())
+                    .filter(Boolean);
+
+                galleryUrls.forEach(url => {
+                    const thumb = document.createElement('img');
+                    thumb.src = url;
+                    thumb.alt = card.dataset.title;
+                    thumb.className = 'acc-gallery-thumb';
+                    thumb.addEventListener('click', () => {
+                        accImage.src = url;
+                    });
+                    accGallery.appendChild(thumb);
+                });
+            }
 
             if (activeCard) activeCard.classList.remove('project-card--active');
             card.classList.add('project-card--active');

@@ -697,6 +697,21 @@ input, textarea, button { font-family: inherit; }
     font-weight: 600;
 }
 
+.acc-gallery-thumb {
+    width: 66%;
+    max-height: 280px;
+    object-fit: contain;
+    border-radius: var(--radius);
+    background: var(--clr-bg-alt);
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+.acc-gallery-thumb:hover {
+    transform: scale(1.03);
+    box-shadow: var(--shadow-md);
+}
+
 .project-card--coming-soon {
     cursor: default;
     opacity: 0.5;
