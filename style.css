@@ -688,22 +688,22 @@ input, textarea, button { font-family: inherit; }
     justify-content: center;
     gap: 0.5rem;
     width: 100%;
-    background: var(--clr-surface);
-    border: 1px solid var(--clr-border);
+    background: var(--clr-text);
+    border: 1px solid var(--clr-text);
     border-radius: var(--radius);
     padding: 0.85rem 1.5rem;
     margin-bottom: 1.8rem;
     font-family: var(--font-display);
     font-size: 0.95rem;
     font-weight: 700;
-    color: var(--clr-text-mid);
+    color: #fff;
     cursor: pointer;
     transition: background var(--transition), border-color var(--transition), color var(--transition);
 }
 .grid-close-bar:hover {
-    background: var(--clr-bg-alt);
-    border-color: var(--clr-accent);
-    color: var(--clr-accent);
+    background: #333;
+    border-color: #333;
+    color: #fff;
 }
 
 /* ============================================================
