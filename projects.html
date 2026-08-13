@@ -38,8 +38,43 @@
 <section class="section">
     <div class="container">
         <h2 class="section-label">All Projects</h2>
+        <p class="section-desc">Browse by category, or expand the full list below.</p>
 
-        <div class="project-grid" id="projectGrid">
+        <!-- CATEGORY TILES -->
+        <div class="category-grid" id="categoryGrid">
+            <button class="project-card category-card" data-filter="School Project" type="button">
+                <div class="project-card-img">
+                    <div class="project-card-placeholder">🎓</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>School Projects</h3>
+                </div>
+            </button>
+            <button class="project-card category-card" data-filter="Internship" type="button">
+                <div class="project-card-img">
+                    <div class="project-card-placeholder">🏭</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>Internships</h3>
+                </div>
+            </button>
+            <button class="project-card category-card" data-filter="Personal" type="button">
+                <div class="project-card-img">
+                    <div class="project-card-placeholder">🔧</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>Personal Projects</h3>
+                </div>
+            </button>
+        </div>
+
+        <!-- ALL PROJECTS TOGGLE BAR -->
+        <button class="all-projects-bar" id="allProjectsBar" type="button">
+            <span id="allProjectsBarLabel">All Projects</span>
+            <svg viewBox="0 0 24 24" width="20" height="20" id="allProjectsChevron" style="transition: transform var(--transition);"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <div class="project-grid" id="projectGrid" style="display:none;">
 
             <!-- 1 — ProAmpac: Modular Packing Station -->
             <div
@@ -62,7 +97,7 @@
                 </div>
             </div>
 
-            <!-- 1b — ProAmpac: Packing Station Arm Joint Prototypes (split out from Project 1) -->
+            <!-- 1b — ProAmpac: Packing Station Arm Joint Prototypes -->
             <div
                 class="project-card"
                 id="project-15"
@@ -83,7 +118,7 @@
                 </div>
             </div>
 
-            <!-- 3 — ProAmpac: Reverse-Engineered Vacuum Plate -->
+            <!-- 2 — ProAmpac: Reverse-Engineered Vacuum Plate -->
             <div
                 class="project-card"
                 id="project-8"
@@ -104,7 +139,7 @@
                 </div>
             </div>
 
-            <!-- 4 — ProAmpac: Precision Punch Mechanism Rebuild -->
+            <!-- 3 — ProAmpac: Precision Punch Mechanism Rebuild -->
             <div
                 class="project-card"
                 id="project-11"
@@ -125,7 +160,7 @@
                 </div>
             </div>
 
-            <!-- 5 — ProAmpac: Micro-Flute Nip Roller Redesign -->
+            <!-- 4 — ProAmpac: Micro-Flute Nip Roller Redesign -->
             <div
                 class="project-card"
                 id="project-10"
@@ -146,7 +181,7 @@
                 </div>
             </div>
 
-            <!-- 6 — ProAmpac: Custom Encoder Test Fixture -->
+            <!-- 5 — ProAmpac: Custom Encoder Test Fixture -->
             <div
                 class="project-card"
                 id="project-9"
@@ -167,7 +202,7 @@
                 </div>
             </div>
 
-            <!-- 7 — ProAmpac: Machine Safety Guard Design -->
+            <!-- 6 — ProAmpac: Machine Safety Guard Design -->
             <div
                 class="project-card"
                 id="project-13"
@@ -188,7 +223,7 @@
                 </div>
             </div>
 
-            <!-- 8 — ProAmpac: Production Floor Layout Drafting -->
+            <!-- 7 — ProAmpac: Production Floor Layout Drafting -->
             <div
                 class="project-card"
                 id="project-12"
@@ -209,7 +244,7 @@
                 </div>
             </div>
 
-            <!-- 9 — ProAmpac: Custom Ratchet Wrench End Cap -->
+            <!-- 8 — ProAmpac: Custom Ratchet Wrench End Cap -->
             <div
                 class="project-card"
                 id="project-14"
@@ -457,7 +492,28 @@
                 </div>
             </div>
 
-            <!-- 21 — V6 Engine (work in progress, kept last) -->
+            <!-- 21 — Desktop CNC Mill (work in progress) -->
+            <div
+                class="project-card"
+                id="project-22"
+                data-title="Desktop CNC Mill (Work in Progress)"
+                data-tag="Personal"
+                data-img="assets/images/personal-cnc-mill-cad.jpg"
+                data-desc="A desktop CNC milling machine with a 300×400 mm work area, built around an Arduino GRBL controller and CNC Shield driving stepper motors along linear rails and leadscrews for XYZ motion, powering a spindle motor to mill various materials."
+                data-extra="<strong>Specs:</strong> 300×400 mm work area, Arduino + GRBL control, CNC Shield, NEMA stepper motors, linear rail &amp; leadscrew XYZ motion<br><strong>Parts:</strong> 64 total — Electrical: 13 ($163.50), Mechanical: 51 ($424.00) — Total: $587.50<br><strong>Status:</strong> Sourcing and assembly in progress"
+                data-gallery="assets/images/personal-cnc-mill-cad.jpg,assets/images/personal-cnc-mill-render.jpg,assets/images/personal-cnc-mill-parts.jpg"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/personal-cnc-mill-cad.jpg" alt="Desktop CNC Mill (Work in Progress)" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 21</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>Desktop CNC Mill (Work in Progress)</h3>
+                    <span class="project-tag">Personal</span>
+                </div>
+            </div>
+
+            <!-- 22 — V6 Engine (work in progress, kept last) -->
             <div
                 class="project-card"
                 id="project-6"
@@ -470,7 +526,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/Vengine.png" alt="V6 Engine CAD" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 21</div>
+                    <div class="project-card-placeholder">Project 22</div>
                 </div>
                 <div class="project-card-info">
                     <h3>V6 Engine CAD Development (Work in Progress)</h3>
@@ -493,7 +549,7 @@
                         <p id="accDesc" style="color:var(--clr-text-mid); font-size:0.94rem; line-height:1.75; margin-bottom:1rem;"></p>
                         <div id="accExtra" style="font-size:0.84rem; color:var(--clr-text-light); line-height:1.9;"></div>
                     </div>
-                    <div style="display:flex; flex-direction:column; align-items:center; gap:1rem;">
+                    <div id="accImageCol" style="display:flex; flex-direction:column; align-items:center; gap:1rem;">
                         <img id="accImage" src="" alt="" style="width:100%; max-height:420px; object-fit:contain; border-radius:var(--radius); background:var(--clr-bg-alt); cursor:zoom-in;" onclick="openLightbox(this.src)">
                         <div style="display:flex; align-items:center; gap:0.8rem; flex-wrap:wrap; width:100%;">
                             <div id="accGallery" style="display:flex; flex-wrap:wrap; gap:0.8rem;"></div>

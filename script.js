@@ -137,15 +137,67 @@ document.addEventListener('DOMContentLoaded', () => {
             accClose.addEventListener('click', closeAccordion);
         }
 
-        // If we landed on projects.html via a hash (e.g. #project-2), auto-open that accordion
+        // --------------------------------------------------------
+        // CATEGORY TILES + "ALL PROJECTS" TOGGLE BAR
+        // The grid is hidden until a category tile or the All
+        // Projects bar reveals it (optionally filtered by tag).
+        // --------------------------------------------------------
+        const categoryGrid   = document.getElementById('categoryGrid');
+        const allProjectsBar = document.getElementById('allProjectsBar');
+        const allProjectsChevron = document.getElementById('allProjectsChevron');
+        const topLevelCards = grid ? grid.querySelectorAll(':scope > .project-card') : [];
+
+        function revealGrid(filterTag) {
+            grid.style.display = 'grid';
+            if (allProjectsChevron) allProjectsChevron.style.transform = 'rotate(180deg)';
+
+            topLevelCards.forEach(card => {
+                const show = !filterTag || card.dataset.tag === filterTag;
+                card.style.display = show ? '' : 'none';
+            });
+
+            setTimeout(() => {
+                const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 68;
+                const top = grid.getBoundingClientRect().top + window.scrollY - navH - 16;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }, 100);
+        }
+
+        function collapseGrid() {
+            grid.style.display = 'none';
+            if (allProjectsChevron) allProjectsChevron.style.transform = 'rotate(0deg)';
+            closeAccordion();
+        }
+
+        if (allProjectsBar && grid) {
+            allProjectsBar.addEventListener('click', () => {
+                if (grid.style.display === 'none') {
+                    revealGrid(null);
+                } else {
+                    collapseGrid();
+                }
+            });
+        }
+
+        if (categoryGrid && grid) {
+            categoryGrid.querySelectorAll('.category-card').forEach(tile => {
+                tile.addEventListener('click', () => {
+                    revealGrid(tile.dataset.filter);
+                });
+            });
+        }
+
+        // If we landed on projects.html via a hash (e.g. #project-2), reveal
+        // the full grid and auto-open that project
         if (window.location.hash) {
             const targetId   = window.location.hash.replace('#', '');
             const targetCard = document.getElementById(targetId);
             if (targetCard && targetCard.dataset.title) {
+                revealGrid(null);
                 setTimeout(() => { targetCard.click(); }, 300);
             }
         }
-    
+
     }
     // --------------------------------------------------------
     // CONTACT FORM — mailto fallback
