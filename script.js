@@ -138,18 +138,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // --------------------------------------------------------
-        // CATEGORY TILES + "ALL PROJECTS" TOGGLE BAR
+        // CATEGORY TILES + "ALL PROJECTS" BAR + CLOSE BUTTON
         // The grid is hidden until a category tile or the All
         // Projects bar reveals it (optionally filtered by tag).
+        // All Projects always shows everything unfiltered — it is
+        // not a toggle. The Close button is the only way to hide
+        // the grid again, regardless of how it was opened.
         // --------------------------------------------------------
         const categoryGrid   = document.getElementById('categoryGrid');
         const allProjectsBar = document.getElementById('allProjectsBar');
-        const allProjectsChevron = document.getElementById('allProjectsChevron');
+        const gridCloseBtn   = document.getElementById('gridCloseBtn');
         const topLevelCards = grid ? grid.querySelectorAll(':scope > .project-card') : [];
 
         function revealGrid(filterTag) {
             grid.style.display = 'grid';
-            if (allProjectsChevron) allProjectsChevron.style.transform = 'rotate(180deg)';
+            if (gridCloseBtn) gridCloseBtn.style.display = 'flex';
 
             topLevelCards.forEach(card => {
                 const show = !filterTag || card.dataset.tag === filterTag;
@@ -165,18 +168,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function collapseGrid() {
             grid.style.display = 'none';
-            if (allProjectsChevron) allProjectsChevron.style.transform = 'rotate(0deg)';
+            if (gridCloseBtn) gridCloseBtn.style.display = 'none';
             closeAccordion();
         }
 
         if (allProjectsBar && grid) {
-            allProjectsBar.addEventListener('click', () => {
-                if (grid.style.display === 'none') {
-                    revealGrid(null);
-                } else {
-                    collapseGrid();
-                }
-            });
+            allProjectsBar.addEventListener('click', () => revealGrid(null));
+        }
+
+        if (gridCloseBtn && grid) {
+            gridCloseBtn.addEventListener('click', collapseGrid);
         }
 
         if (categoryGrid && grid) {

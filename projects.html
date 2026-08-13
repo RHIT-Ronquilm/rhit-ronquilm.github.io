@@ -68,10 +68,16 @@
             </button>
         </div>
 
-        <!-- ALL PROJECTS TOGGLE BAR -->
+        <!-- ALL PROJECTS BAR — always shows every project, unfiltered -->
         <button class="all-projects-bar" id="allProjectsBar" type="button">
             <span id="allProjectsBarLabel">All Projects</span>
-            <svg viewBox="0 0 24 24" width="20" height="20" id="allProjectsChevron" style="transition: transform var(--transition);"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg viewBox="0 0 24 24" width="20" height="20" id="allProjectsChevron"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <!-- CLOSE — shown above the grid whenever it's open (via a category tile or All Projects) -->
+        <button class="grid-close-bar" id="gridCloseBtn" type="button" style="display:none;">
+            <svg viewBox="0 0 24 24" width="16" height="16"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" fill="none" stroke-width="2.5" stroke-linecap="round"/></svg>
+            Close
         </button>
 
         <div class="project-grid" id="projectGrid" style="display:none;">
@@ -97,175 +103,7 @@
                 </div>
             </div>
 
-            <!-- 1b — ProAmpac: Packing Station Arm Joint Prototypes -->
-            <div
-                class="project-card"
-                id="project-15"
-                data-title="Packing Station Arm Joint Prototypes"
-                data-tag="Internship"
-                data-img="assets/images/proampac-packing-station-arms-exploded.jpg"
-                data-desc="Designed distinct prototype double-joint arms — sheet metal and machined — for the packing station's articulating mount, testing movement, joint rigidity, and deflection under load."
-                data-extra="<strong>Approach:</strong> Iterated joint geometries to keep costs down while maintaining operational optimization.<br><strong>Tools:</strong> SolidWorks<br><strong>Company:</strong> ProAmpac · Summer 2026"
-                data-gallery="assets/images/proampac-packing-station-arms-exploded.jpg,assets/images/proampac-packing-station-arms-assembled.jpg,assets/images/proampac-packing-station-arms-fea-1.jpg,assets/images/proampac-packing-station-arms-fea-2.jpg,assets/images/proampac-packing-station-arms-fea-3.jpg,assets/images/proampac-packing-station-arms-fea-4.jpg"
-            >
-                <div class="project-card-img">
-                    <img src="assets/images/proampac-packing-station-arms-exploded.jpg" alt="Packing Station Arm Joint Prototypes" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 2</div>
-                </div>
-                <div class="project-card-info">
-                    <h3>Packing Station Arm Joint Prototypes</h3>
-                    <span class="project-tag">Internship</span>
-                </div>
-            </div>
-
-            <!-- 2 — ProAmpac: Reverse-Engineered Vacuum Plate -->
-            <div
-                class="project-card"
-                id="project-8"
-                data-title="Reverse-Engineered Vacuum Plate"
-                data-tag="Internship"
-                data-img="assets/images/proampac-vacuum-plate.jpg"
-                data-desc="Reverse engineered a complex release liner vacuum plate using optical comparator measurements and hands-on inspection, rebuilding it as a precise CAD model to replace the current vacuum plate on the Garant Maschinen Matador Series."
-                data-extra="<strong>Approach:</strong> Got help from a senior engineer and visited an outside vendor's facility to use their optical comparator, translating physical hardware into accurate parametric CAD via section views and toleranced drawings.<br><strong>Tools:</strong> SolidWorks, Optical Comparator<br><strong>Company:</strong> ProAmpac · Summer 2026"
-                data-gallery="assets/images/proampac-vacuum-plate.jpg,assets/images/proampac-vacuum-plate-drawing1.jpg,assets/images/proampac-vacuum-plate-drawing2.png,assets/images/proampac-vacuum-plate-photo.jpg"
-            >
-                <div class="project-card-img">
-                    <img src="assets/images/proampac-vacuum-plate.jpg" alt="Reverse-Engineered Vacuum Plate" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 3</div>
-                </div>
-                <div class="project-card-info">
-                    <h3>Reverse-Engineered Vacuum Plate</h3>
-                    <span class="project-tag">Internship</span>
-                </div>
-            </div>
-
-            <!-- 3 — ProAmpac: Precision Punch Mechanism Rebuild -->
-            <div
-                class="project-card"
-                id="project-11"
-                data-title="Precision Punch Mechanism Rebuild"
-                data-tag="Internship"
-                data-img="assets/images/proampac-punch-mechanism.jpg"
-                data-desc="Assembled a V taper punch mechanism that lifts the release liner, cuts the corners off, then puts the release liner back on — replacing worn components on an existing production tool."
-                data-extra="<strong>Approach:</strong> Hands-on mechanical assembly and troubleshooting on the plant floor to replace old parts and modifications.<br><strong>Tools:</strong> Hand Tools, Mechanical Assembly<br><strong>Company:</strong> ProAmpac · Summer 2026"
-                data-gallery="assets/images/proampac-punch-mechanism.jpg,assets/images/proampac-punch-mechanism-photo.jpg,assets/images/proampac-punch-mechanism-package1.jpg,assets/images/proampac-punch-mechanism-package2.jpg"
-            >
-                <div class="project-card-img">
-                    <img src="assets/images/proampac-punch-mechanism.jpg" alt="Precision Punch Mechanism Rebuild" style="object-fit:contain;" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 4</div>
-                </div>
-                <div class="project-card-info">
-                    <h3>Precision Punch Mechanism Rebuild</h3>
-                    <span class="project-tag">Internship</span>
-                </div>
-            </div>
-
-            <!-- 4 — ProAmpac: Micro-Flute Nip Roller Redesign -->
-            <div
-                class="project-card"
-                id="project-10"
-                data-title="Micro-Flute Nip Roller Redesign"
-                data-tag="Internship"
-                data-img="assets/images/proampac-flute-roller.jpg"
-                data-desc="Designed new micro-flute creasing geometry into the current PAC Jacket machine's nip roller assembly to enable a new packaging feature."
-                data-extra="<strong>Approach:</strong> Worked from an existing machine platform, integrating a new mechanical feature without disrupting the surrounding design.<br><strong>Tools:</strong> SolidWorks<br><strong>Company:</strong> ProAmpac · Summer 2026"
-                data-gallery="assets/images/proampac-flute-roller.jpg,assets/images/proampac-flute-roller-shaft.jpg,assets/images/proampac-flute-roller-drawing.png"
-            >
-                <div class="project-card-img">
-                    <img src="assets/images/proampac-flute-roller.jpg" alt="Micro-Flute Nip Roller Redesign" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 5</div>
-                </div>
-                <div class="project-card-info">
-                    <h3>Micro-Flute Nip Roller Redesign</h3>
-                    <span class="project-tag">Internship</span>
-                </div>
-            </div>
-
-            <!-- 5 — ProAmpac: Custom Encoder Test Fixture -->
-            <div
-                class="project-card"
-                id="project-9"
-                data-title="Custom Encoder Test Fixture"
-                data-tag="Internship"
-                data-img="assets/images/proampac-encoder-fixture.jpg"
-                data-desc="Designed a custom 3D-printed mounting fixture to couple a motor drive directly to a rotary encoder, feeding false active line speed pulse signals into the machine controller to test new lines before commissioning."
-                data-extra="<strong>Approach:</strong> Hands-on collaboration with a senior engineer on machine controller integration and signal testing.<br><strong>Tools:</strong> SolidWorks, 3D Printing<br><strong>Company:</strong> ProAmpac · Summer 2026"
-                data-gallery="assets/images/proampac-encoder-fixture.jpg,assets/images/proampac-encoder-fixture-photo.jpg,assets/images/proampac-encoder-fixture-detail1.jpg,assets/images/proampac-encoder-fixture-detail2.jpg"
-            >
-                <div class="project-card-img">
-                    <img src="assets/images/proampac-encoder-fixture.jpg" alt="Custom Encoder Test Fixture" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 6</div>
-                </div>
-                <div class="project-card-info">
-                    <h3>Custom Encoder Test Fixture</h3>
-                    <span class="project-tag">Internship</span>
-                </div>
-            </div>
-
-            <!-- 6 — ProAmpac: Machine Safety Guard Design -->
-            <div
-                class="project-card"
-                id="project-13"
-                data-title="Machine Safety Guard Design"
-                data-tag="Internship"
-                data-img="assets/images/proampac-safety-guard.jpg"
-                data-desc="Successfully designed and implemented machine safety guards for the A054 ECO-Jacket production line, from concept through installed hardware."
-                data-extra="<strong>Approach:</strong> Focus on OSHA-informed guarding design and coordination with senior engineers on implementation.<br><strong>Tools:</strong> SolidWorks<br><strong>Company:</strong> ProAmpac · Summer 2026"
-                data-gallery="assets/images/proampac-safety-guard.jpg,assets/images/proampac-safety-guard-line.jpg,assets/images/proampac-safety-guard-floor-machine.jpg,assets/images/proampac-safety-guard-floor-line.jpg,assets/images/proampac-safety-guard-floor-screenshot.jpg"
-            >
-                <div class="project-card-img">
-                    <img src="assets/images/proampac-safety-guard.jpg" alt="Machine Safety Guard Design" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 7</div>
-                </div>
-                <div class="project-card-info">
-                    <h3>Machine Safety Guard Design</h3>
-                    <span class="project-tag">Internship</span>
-                </div>
-            </div>
-
-            <!-- 7 — ProAmpac: Production Floor Layout Drafting -->
-            <div
-                class="project-card"
-                id="project-12"
-                data-title="Production Floor Layout Drafting"
-                data-tag="Internship"
-                data-img="assets/images/proampac-floor-layout.png"
-                data-desc="Adjusted dimensioning and moved production machinery within a vendor's draft floor plan to fit an existing facility layout."
-                data-extra="<strong>Approach:</strong> Cross-functional coordination translating vendor drawings into an accurate, implementable floor plan.<br><strong>Tools:</strong> Technical Drafting<br><strong>Company:</strong> ProAmpac · Summer 2026"
-                data-gallery="assets/images/proampac-floor-layout.png,assets/images/proampac-floor-layout-detail1.png,assets/images/proampac-floor-layout-detail2.png"
-            >
-                <div class="project-card-img">
-                    <img src="assets/images/proampac-floor-layout.png" alt="Production Floor Layout Drafting" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 8</div>
-                </div>
-                <div class="project-card-info">
-                    <h3>Production Floor Layout Drafting</h3>
-                    <span class="project-tag">Internship</span>
-                </div>
-            </div>
-
-            <!-- 8 — ProAmpac: Custom Ratchet Wrench End Cap -->
-            <div
-                class="project-card"
-                id="project-14"
-                data-title="Custom Ratchet Wrench End Cap"
-                data-tag="Internship"
-                data-img="assets/images/proampac-ratchet-endcap.jpg"
-                data-desc="Created and 3D printed a set of end caps to fit tightly on the end of a mini adjustable ratchet wrench, improving grip quality of life and easier maintenance of PAC Jacket machines."
-                data-extra="<strong>Approach:</strong> Rapid-prototyped multiple fit iterations with a 3D printer to dial in a tight, comfortable press-fit.<br><strong>Tools:</strong> SolidWorks, 3D Printing<br><strong>Company:</strong> ProAmpac · Summer 2026"
-                data-gallery="assets/images/proampac-ratchet-endcap.jpg,assets/images/proampac-ratchet-endcap-photo.jpg,assets/images/proampac-ratchet-endcap-parts.jpg"
-            >
-                <div class="project-card-img">
-                    <img src="assets/images/proampac-ratchet-endcap.jpg" alt="Custom Ratchet Wrench End Cap" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 9</div>
-                </div>
-                <div class="project-card-info">
-                    <h3>Custom Ratchet Wrench End Cap</h3>
-                    <span class="project-tag">Internship</span>
-                </div>
-            </div>
-
-            <!-- 10 — Landing Gear Link -->
+            <!-- 2 — Landing Gear Link -->
             <div
                 class="project-card"
                 id="project-4"
@@ -278,7 +116,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/Link2.jpeg" alt="Landing Gear Link" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 10</div>
+                    <div class="project-card-placeholder">Project 2</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Optimized Aircraft Landing Gear Link Design</h3>
@@ -286,7 +124,7 @@
                 </div>
             </div>
 
-            <!-- 11 — Hovercraft Engine Mount -->
+            <!-- 3 — Hovercraft Engine Mount -->
             <div
                 class="project-card"
                 id="project-16"
@@ -299,11 +137,179 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/hovercraft-mount-cad-engine1.jpg" alt="Hovercraft Engine Mount Design" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 11</div>
+                    <div class="project-card-placeholder">Project 3</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Hovercraft Engine Mount Design</h3>
                     <span class="project-tag">School Project</span>
+                </div>
+            </div>
+
+            <!-- 4 — Desktop CNC Mill (work in progress) -->
+            <div
+                class="project-card"
+                id="project-22"
+                data-title="Desktop CNC Mill (Work in Progress)"
+                data-tag="Personal"
+                data-img="assets/images/personal-cnc-mill-cad.jpg"
+                data-desc="A desktop CNC milling machine with a 300×400 mm work area, built around an Arduino GRBL controller and CNC Shield driving stepper motors along linear rails and leadscrews for XYZ motion, powering a spindle motor to mill various materials."
+                data-extra="<strong>Specs:</strong> 300×400 mm work area, Arduino + GRBL control, CNC Shield, NEMA stepper motors, linear rail &amp; leadscrew XYZ motion<br><strong>Parts:</strong> 64 total — Electrical: 13 ($163.50), Mechanical: 51 ($424.00) — Total: $587.50<br><strong>Status:</strong> Sourcing and assembly in progress"
+                data-gallery="assets/images/personal-cnc-mill-cad.jpg,assets/images/personal-cnc-mill-render.jpg,assets/images/personal-cnc-mill-parts.jpg"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/personal-cnc-mill-cad.jpg" alt="Desktop CNC Mill (Work in Progress)" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 4</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>Desktop CNC Mill (Work in Progress)</h3>
+                    <span class="project-tag">Personal</span>
+                </div>
+            </div>
+
+            <!-- 5 — 4-Axis SCARA Robot Arm (work in progress) -->
+            <div
+                class="project-card"
+                id="project-23"
+                data-title="4-Axis SCARA Robot Arm (Work in Progress)"
+                data-tag="Personal"
+                data-img="assets/images/personal-scara-arm-cad.jpg"
+                data-desc="A four-axis SCARA robot arm designed for customizable manipulation tasks, integrating an ESP32 main controller, base/shoulder/elbow/gripper actuation servos, a 2-finger gripper, and a mix of aluminum and 3D-printed structural components."
+                data-extra="<strong>Electronics:</strong> ESP32-WROOM-32D controller, TowerPro MG996R servos (base, shoulder, elbow), SG90 micro servo (gripper), 5V 10A power supply, terminal block power distribution<br><strong>Structure:</strong> Aluminum base plate, 608ZZ bearings, PETG/PLA 3D-printed links, servo mounts, and 2-finger gripper<br><strong>Est. Cost:</strong> ~$105<br><strong>Status:</strong> Sourcing and assembly in progress"
+                data-gallery="assets/images/personal-scara-arm-cad.jpg,assets/images/personal-scara-arm-render.jpg,assets/images/personal-scara-arm-parts.jpg"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/personal-scara-arm-cad.jpg" alt="4-Axis SCARA Robot Arm (Work in Progress)" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 5</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>4-Axis SCARA Robot Arm (Work in Progress)</h3>
+                    <span class="project-tag">Personal</span>
+                </div>
+            </div>
+
+            <!-- 6 — ProAmpac: Reverse-Engineered Vacuum Plate -->
+            <div
+                class="project-card"
+                id="project-8"
+                data-title="Reverse-Engineered Vacuum Plate"
+                data-tag="Internship"
+                data-img="assets/images/proampac-vacuum-plate.jpg"
+                data-desc="Reverse engineered a complex release liner vacuum plate using optical comparator measurements and hands-on inspection, rebuilding it as a precise CAD model to replace the current vacuum plate on the Garant Maschinen Matador Series."
+                data-extra="<strong>Approach:</strong> Got help from a senior engineer and visited an outside vendor's facility to use their optical comparator, translating physical hardware into accurate parametric CAD via section views and toleranced drawings.<br><strong>Tools:</strong> SolidWorks, Optical Comparator<br><strong>Company:</strong> ProAmpac · Summer 2026"
+                data-gallery="assets/images/proampac-vacuum-plate.jpg,assets/images/proampac-vacuum-plate-drawing1.jpg,assets/images/proampac-vacuum-plate-drawing2.png,assets/images/proampac-vacuum-plate-photo.jpg"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/proampac-vacuum-plate.jpg" alt="Reverse-Engineered Vacuum Plate" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 6</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>Reverse-Engineered Vacuum Plate</h3>
+                    <span class="project-tag">Internship</span>
+                </div>
+            </div>
+
+            <!-- 7 — ProAmpac: Precision Punch Mechanism Rebuild -->
+            <div
+                class="project-card"
+                id="project-11"
+                data-title="Precision Punch Mechanism Rebuild"
+                data-tag="Internship"
+                data-img="assets/images/proampac-punch-mechanism.jpg"
+                data-desc="Assembled a V taper punch mechanism that lifts the release liner, cuts the corners off, then puts the release liner back on — replacing worn components on an existing production tool."
+                data-extra="<strong>Approach:</strong> Hands-on mechanical assembly and troubleshooting on the plant floor to replace old parts and modifications.<br><strong>Tools:</strong> Hand Tools, Mechanical Assembly<br><strong>Company:</strong> ProAmpac · Summer 2026"
+                data-gallery="assets/images/proampac-punch-mechanism.jpg,assets/images/proampac-punch-mechanism-photo.jpg,assets/images/proampac-punch-mechanism-package1.jpg,assets/images/proampac-punch-mechanism-package2.jpg"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/proampac-punch-mechanism.jpg" alt="Precision Punch Mechanism Rebuild" style="object-fit:contain;" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 7</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>Precision Punch Mechanism Rebuild</h3>
+                    <span class="project-tag">Internship</span>
+                </div>
+            </div>
+
+            <!-- 8 — ProAmpac: Packing Station Arm Joint Prototypes -->
+            <div
+                class="project-card"
+                id="project-15"
+                data-title="Packing Station Arm Joint Prototypes"
+                data-tag="Internship"
+                data-img="assets/images/proampac-packing-station-arms-exploded.jpg"
+                data-desc="Designed distinct prototype double-joint arms — sheet metal and machined — for the packing station's articulating mount, testing movement, joint rigidity, and deflection under load."
+                data-extra="<strong>Approach:</strong> Iterated joint geometries to keep costs down while maintaining operational optimization.<br><strong>Tools:</strong> SolidWorks<br><strong>Company:</strong> ProAmpac · Summer 2026"
+                data-gallery="assets/images/proampac-packing-station-arms-exploded.jpg,assets/images/proampac-packing-station-arms-assembled.jpg,assets/images/proampac-packing-station-arms-fea-1.jpg,assets/images/proampac-packing-station-arms-fea-2.jpg,assets/images/proampac-packing-station-arms-fea-3.jpg,assets/images/proampac-packing-station-arms-fea-4.jpg"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/proampac-packing-station-arms-exploded.jpg" alt="Packing Station Arm Joint Prototypes" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 8</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>Packing Station Arm Joint Prototypes</h3>
+                    <span class="project-tag">Internship</span>
+                </div>
+            </div>
+
+            <!-- 9 — ProAmpac: Micro-Flute Nip Roller Redesign -->
+            <div
+                class="project-card"
+                id="project-10"
+                data-title="Micro-Flute Nip Roller Redesign"
+                data-tag="Internship"
+                data-img="assets/images/proampac-flute-roller.jpg"
+                data-desc="Designed new micro-flute creasing geometry into the current PAC Jacket machine's nip roller assembly to enable a new packaging feature."
+                data-extra="<strong>Approach:</strong> Worked from an existing machine platform, integrating a new mechanical feature without disrupting the surrounding design.<br><strong>Tools:</strong> SolidWorks<br><strong>Company:</strong> ProAmpac · Summer 2026"
+                data-gallery="assets/images/proampac-flute-roller.jpg,assets/images/proampac-flute-roller-shaft.jpg,assets/images/proampac-flute-roller-drawing.png"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/proampac-flute-roller.jpg" alt="Micro-Flute Nip Roller Redesign" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 9</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>Micro-Flute Nip Roller Redesign</h3>
+                    <span class="project-tag">Internship</span>
+                </div>
+            </div>
+
+            <!-- 10 — ProAmpac: Custom Encoder Test Fixture -->
+            <div
+                class="project-card"
+                id="project-9"
+                data-title="Custom Encoder Test Fixture"
+                data-tag="Internship"
+                data-img="assets/images/proampac-encoder-fixture.jpg"
+                data-desc="Designed a custom 3D-printed mounting fixture to couple a motor drive directly to a rotary encoder, feeding false active line speed pulse signals into the machine controller to test new lines before commissioning."
+                data-extra="<strong>Approach:</strong> Hands-on collaboration with a senior engineer on machine controller integration and signal testing.<br><strong>Tools:</strong> SolidWorks, 3D Printing<br><strong>Company:</strong> ProAmpac · Summer 2026"
+                data-gallery="assets/images/proampac-encoder-fixture.jpg,assets/images/proampac-encoder-fixture-photo.jpg,assets/images/proampac-encoder-fixture-detail1.jpg,assets/images/proampac-encoder-fixture-detail2.jpg"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/proampac-encoder-fixture.jpg" alt="Custom Encoder Test Fixture" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 10</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>Custom Encoder Test Fixture</h3>
+                    <span class="project-tag">Internship</span>
+                </div>
+            </div>
+
+            <!-- 11 — ProAmpac: Machine Safety Guard Design -->
+            <div
+                class="project-card"
+                id="project-13"
+                data-title="Machine Safety Guard Design"
+                data-tag="Internship"
+                data-img="assets/images/proampac-safety-guard.jpg"
+                data-desc="Successfully designed and implemented machine safety guards for the A054 ECO-Jacket production line, from concept through installed hardware."
+                data-extra="<strong>Approach:</strong> Focus on OSHA-informed guarding design and coordination with senior engineers on implementation.<br><strong>Tools:</strong> SolidWorks<br><strong>Company:</strong> ProAmpac · Summer 2026"
+                data-gallery="assets/images/proampac-safety-guard.jpg,assets/images/proampac-safety-guard-line.jpg,assets/images/proampac-safety-guard-floor-machine.jpg,assets/images/proampac-safety-guard-floor-line.jpg,assets/images/proampac-safety-guard-floor-screenshot.jpg"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/proampac-safety-guard.jpg" alt="Machine Safety Guard Design" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 11</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>Machine Safety Guard Design</h3>
+                    <span class="project-tag">Internship</span>
                 </div>
             </div>
 
@@ -348,7 +354,49 @@
                 </div>
             </div>
 
-            <!-- 14 -->
+            <!-- 14 — ProAmpac: Production Floor Layout Drafting -->
+            <div
+                class="project-card"
+                id="project-12"
+                data-title="Production Floor Layout Drafting"
+                data-tag="Internship"
+                data-img="assets/images/proampac-floor-layout.png"
+                data-desc="Adjusted dimensioning and moved production machinery within a vendor's draft floor plan to fit an existing facility layout."
+                data-extra="<strong>Approach:</strong> Cross-functional coordination translating vendor drawings into an accurate, implementable floor plan.<br><strong>Tools:</strong> Technical Drafting<br><strong>Company:</strong> ProAmpac · Summer 2026"
+                data-gallery="assets/images/proampac-floor-layout.png,assets/images/proampac-floor-layout-detail1.png,assets/images/proampac-floor-layout-detail2.png"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/proampac-floor-layout.png" alt="Production Floor Layout Drafting" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 14</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>Production Floor Layout Drafting</h3>
+                    <span class="project-tag">Internship</span>
+                </div>
+            </div>
+
+            <!-- 15 — ProAmpac: Custom Ratchet Wrench End Cap -->
+            <div
+                class="project-card"
+                id="project-14"
+                data-title="Custom Ratchet Wrench End Cap"
+                data-tag="Internship"
+                data-img="assets/images/proampac-ratchet-endcap.jpg"
+                data-desc="Created and 3D printed a set of end caps to fit tightly on the end of a mini adjustable ratchet wrench, improving grip quality of life and easier maintenance of PAC Jacket machines."
+                data-extra="<strong>Approach:</strong> Rapid-prototyped multiple fit iterations with a 3D printer to dial in a tight, comfortable press-fit.<br><strong>Tools:</strong> SolidWorks, 3D Printing<br><strong>Company:</strong> ProAmpac · Summer 2026"
+                data-gallery="assets/images/proampac-ratchet-endcap.jpg,assets/images/proampac-ratchet-endcap-photo.jpg,assets/images/proampac-ratchet-endcap-parts.jpg"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/proampac-ratchet-endcap.jpg" alt="Custom Ratchet Wrench End Cap" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 15</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>Custom Ratchet Wrench End Cap</h3>
+                    <span class="project-tag">Internship</span>
+                </div>
+            </div>
+
+            <!-- 16 -->
             <div
                 class="project-card"
                 id="project-2"
@@ -360,7 +408,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/watch.png" alt="Garmin Smartwatch Housing & Strap" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 14</div>
+                    <div class="project-card-placeholder">Project 16</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Garmin Smartwatch Housing & Strap</h3>
@@ -368,7 +416,7 @@
                 </div>
             </div>
 
-            <!-- 15 — FM Radio -->
+            <!-- 17 — FM Radio -->
             <div
                 class="project-card"
                 id="project-5"
@@ -382,7 +430,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/DoneBoard.png" alt="FM-88K Auto-Scan Receiver" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 15</div>
+                    <div class="project-card-placeholder">Project 17</div>
                 </div>
                 <div class="project-card-info">
                     <h3>FM-88K Auto-Scan Receiver Assembly & Analysis</h3>
@@ -390,7 +438,7 @@
                 </div>
             </div>
 
-            <!-- 16 -->
+            <!-- 18 -->
             <div
                 class="project-card"
                 id="project-3"
@@ -402,7 +450,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/crank.png" alt="Single-Cylinder Piston Engine Assembly" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 16</div>
+                    <div class="project-card-placeholder">Project 18</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Single-Cylinder Piston Engine Assembly</h3>
@@ -410,7 +458,7 @@
                 </div>
             </div>
 
-            <!-- 17 — Custom PC Build -->
+            <!-- 19 — Custom PC Build -->
             <div
                 class="project-card"
                 id="project-18"
@@ -423,7 +471,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-pcbuild-final.jpg" alt="Custom Gaming PC Build" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 17</div>
+                    <div class="project-card-placeholder">Project 19</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Custom Gaming PC Build</h3>
@@ -431,7 +479,7 @@
                 </div>
             </div>
 
-            <!-- 18 — PS4 Controller Mod -->
+            <!-- 20 — PS4 Controller Mod -->
             <div
                 class="project-card"
                 id="project-19"
@@ -443,7 +491,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-ps4-controller-mod.jpg" alt="PS4 Controller Refurbishment & USB-C Mod" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 18</div>
+                    <div class="project-card-placeholder">Project 20</div>
                 </div>
                 <div class="project-card-info">
                     <h3>PS4 Controller Refurbishment & USB-C Mod</h3>
@@ -451,7 +499,7 @@
                 </div>
             </div>
 
-            <!-- 19 — Mouse Mod -->
+            <!-- 21 — Mouse Mod -->
             <div
                 class="project-card"
                 id="project-20"
@@ -463,7 +511,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-mouse-mod.jpg" alt="Custom Gaming Mouse Build" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 19</div>
+                    <div class="project-card-placeholder">Project 21</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Custom Gaming Mouse Build</h3>
@@ -471,7 +519,7 @@
                 </div>
             </div>
 
-            <!-- 20 — Nerf Mods -->
+            <!-- 22 — Nerf Mods -->
             <div
                 class="project-card"
                 id="project-21"
@@ -484,7 +532,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-nerf-mods.jpg" alt="Nerf Blaster Modifications" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 20</div>
+                    <div class="project-card-placeholder">Project 22</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Nerf Blaster Modifications</h3>
@@ -492,28 +540,7 @@
                 </div>
             </div>
 
-            <!-- 21 — Desktop CNC Mill (work in progress) -->
-            <div
-                class="project-card"
-                id="project-22"
-                data-title="Desktop CNC Mill (Work in Progress)"
-                data-tag="Personal"
-                data-img="assets/images/personal-cnc-mill-cad.jpg"
-                data-desc="A desktop CNC milling machine with a 300×400 mm work area, built around an Arduino GRBL controller and CNC Shield driving stepper motors along linear rails and leadscrews for XYZ motion, powering a spindle motor to mill various materials."
-                data-extra="<strong>Specs:</strong> 300×400 mm work area, Arduino + GRBL control, CNC Shield, NEMA stepper motors, linear rail &amp; leadscrew XYZ motion<br><strong>Parts:</strong> 64 total — Electrical: 13 ($163.50), Mechanical: 51 ($424.00) — Total: $587.50<br><strong>Status:</strong> Sourcing and assembly in progress"
-                data-gallery="assets/images/personal-cnc-mill-cad.jpg,assets/images/personal-cnc-mill-render.jpg,assets/images/personal-cnc-mill-parts.jpg"
-            >
-                <div class="project-card-img">
-                    <img src="assets/images/personal-cnc-mill-cad.jpg" alt="Desktop CNC Mill (Work in Progress)" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 21</div>
-                </div>
-                <div class="project-card-info">
-                    <h3>Desktop CNC Mill (Work in Progress)</h3>
-                    <span class="project-tag">Personal</span>
-                </div>
-            </div>
-
-            <!-- 22 — V6 Engine (work in progress, kept last) -->
+            <!-- 23 — V6 Engine (work in progress, kept last) -->
             <div
                 class="project-card"
                 id="project-6"
@@ -526,7 +553,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/Vengine.png" alt="V6 Engine CAD" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 22</div>
+                    <div class="project-card-placeholder">Project 23</div>
                 </div>
                 <div class="project-card-info">
                     <h3>V6 Engine CAD Development (Work in Progress)</h3>
