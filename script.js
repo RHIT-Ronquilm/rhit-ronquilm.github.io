@@ -195,42 +195,74 @@ document.addEventListener('DOMContentLoaded', () => {
         // ADMIN DOT — personal quick-peek toggle for the on-hold
         // ProAmpac cards. Not real security: the cards' full HTML
         // already ships in the page, this just gates the UI toggle.
+        // Uses an in-page modal rather than prompt()/alert(), which
+        // browsers can silently suppress after repeated use.
         // --------------------------------------------------------
-        const adminDot = document.getElementById('adminDot');
+        const adminDot     = document.getElementById('adminDot');
         const holdContainer = document.getElementById('proampac-projects-hold');
-        if (adminDot && holdContainer) {
+        const adminModal   = document.getElementById('adminModal');
+        const adminUser    = document.getElementById('adminUser');
+        const adminPass    = document.getElementById('adminPass');
+        const adminError   = document.getElementById('adminError');
+        const adminSubmit  = document.getElementById('adminSubmit');
+        const adminCancel  = document.getElementById('adminCancel');
+
+        function unlockHoldContainer() {
+            holdContainer.style.display = 'grid';
+            holdContainer.querySelectorAll('.project-card[data-title]').forEach(card => {
+                if (!card.dataset.unlocked) {
+                    card.dataset.unlocked = 'true';
+                    card.addEventListener('click', () => {
+                        if (activeCard === card) {
+                            closeAccordion();
+                        } else {
+                            openAccordion(card);
+                        }
+                    });
+                }
+            });
+            setTimeout(() => {
+                const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 68;
+                const top = holdContainer.getBoundingClientRect().top + window.scrollY - navH - 16;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }, 100);
+        }
+
+        function closeAdminModal() {
+            adminModal.style.display = 'none';
+            adminError.style.display = 'none';
+            adminUser.value = '';
+            adminPass.value = '';
+        }
+
+        if (adminDot && holdContainer && adminModal) {
             adminDot.addEventListener('click', () => {
                 if (holdContainer.style.display !== 'none') {
                     holdContainer.style.display = 'none';
                     return;
                 }
-                const user = prompt('Username:');
-                if (user === null) return;
-                const pass = prompt('Password:');
-                if (pass === null) return;
+                adminModal.style.display = 'flex';
+                adminUser.focus();
+            });
 
-                if (user === 'luisronquillo' && pass === 'password') {
-                    holdContainer.style.display = 'grid';
-                    holdContainer.querySelectorAll('.project-card[data-title]').forEach(card => {
-                        if (!card.dataset.unlocked) {
-                            card.dataset.unlocked = 'true';
-                            card.addEventListener('click', () => {
-                                if (activeCard === card) {
-                                    closeAccordion();
-                                } else {
-                                    openAccordion(card);
-                                }
-                            });
-                        }
-                    });
-                    setTimeout(() => {
-                        const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 68;
-                        const top = holdContainer.getBoundingClientRect().top + window.scrollY - navH - 16;
-                        window.scrollTo({ top, behavior: 'smooth' });
-                    }, 100);
+            function attemptUnlock() {
+                if (adminUser.value === 'luisronquillo' && adminPass.value === 'password') {
+                    closeAdminModal();
+                    unlockHoldContainer();
                 } else {
-                    alert('Incorrect username or password.');
+                    adminError.style.display = 'block';
                 }
+            }
+
+            adminSubmit.addEventListener('click', attemptUnlock);
+            adminCancel.addEventListener('click', closeAdminModal);
+            adminModal.addEventListener('click', (e) => {
+                if (e.target === adminModal) closeAdminModal();
+            });
+            [adminUser, adminPass].forEach(input => {
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') attemptUnlock();
+                });
             });
         }
 
