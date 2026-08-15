@@ -40,7 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const accGalleryHint = document.getElementById('accGalleryHint');
     const grid      = document.getElementById('projectGrid');
 
-    const projectCards = document.querySelectorAll('.project-card[data-title]');
+    // Exclude any cards parked in an on-hold container (e.g. proampac-projects-hold) —
+    // kept in the DOM for easy restoration later, but not clickable or reachable.
+    const projectCards = Array.from(document.querySelectorAll('.project-card[data-title]'))
+        .filter(card => !card.closest('[id$="-hold"]'));
 
     let activeCard = null;
 
@@ -188,12 +191,56 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        // --------------------------------------------------------
+        // ADMIN DOT — personal quick-peek toggle for the on-hold
+        // ProAmpac cards. Not real security: the cards' full HTML
+        // already ships in the page, this just gates the UI toggle.
+        // --------------------------------------------------------
+        const adminDot = document.getElementById('adminDot');
+        const holdContainer = document.getElementById('proampac-projects-hold');
+        if (adminDot && holdContainer) {
+            adminDot.addEventListener('click', () => {
+                if (holdContainer.style.display !== 'none') {
+                    holdContainer.style.display = 'none';
+                    return;
+                }
+                const user = prompt('Username:');
+                if (user === null) return;
+                const pass = prompt('Password:');
+                if (pass === null) return;
+
+                if (user === 'luisronquillo' && pass === 'password') {
+                    holdContainer.style.display = 'grid';
+                    holdContainer.querySelectorAll('.project-card[data-title]').forEach(card => {
+                        if (!card.dataset.unlocked) {
+                            card.dataset.unlocked = 'true';
+                            card.addEventListener('click', () => {
+                                if (activeCard === card) {
+                                    closeAccordion();
+                                } else {
+                                    openAccordion(card);
+                                }
+                            });
+                        }
+                    });
+                    setTimeout(() => {
+                        const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 68;
+                        const top = holdContainer.getBoundingClientRect().top + window.scrollY - navH - 16;
+                        window.scrollTo({ top, behavior: 'smooth' });
+                    }, 100);
+                } else {
+                    alert('Incorrect username or password.');
+                }
+            });
+        }
+
         // If we landed on projects.html via a hash (e.g. #project-2), reveal
-        // the full grid and auto-open that project
+        // the full grid and auto-open that project — unless it's on hold
         if (window.location.hash) {
             const targetId   = window.location.hash.replace('#', '');
             const targetCard = document.getElementById(targetId);
-            if (targetCard && targetCard.dataset.title) {
+            const onHold = targetCard && targetCard.closest('[id$="-hold"]');
+            if (targetCard && targetCard.dataset.title && !onHold) {
                 revealGrid(null);
                 setTimeout(() => { targetCard.click(); }, 300);
             }
