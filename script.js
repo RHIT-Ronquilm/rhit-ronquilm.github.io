@@ -40,10 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const accGalleryHint = document.getElementById('accGalleryHint');
     const grid      = document.getElementById('projectGrid');
 
-    // Exclude any cards parked in an on-hold container (e.g. proampac-projects-hold) —
-    // kept in the DOM for easy restoration later, but not clickable or reachable.
-    const projectCards = Array.from(document.querySelectorAll('.project-card[data-title]'))
-        .filter(card => !card.closest('[id$="-hold"]'));
+    const projectCards = Array.from(document.querySelectorAll('.project-card[data-title]'));
 
     let activeCard = null;
 
@@ -158,6 +155,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (gridCloseBtn) gridCloseBtn.style.display = 'flex';
 
             topLevelCards.forEach(card => {
+                // Internship-only cards (e.g. the ProAmpac R&D summary) are excluded
+                // from the unfiltered "All Projects" view — only shown when the
+                // Internship category tile is the active filter.
+                if (card.dataset.internshipOnly === 'true') {
+                    card.style.display = (filterTag === 'Internship') ? '' : 'none';
+                    return;
+                }
                 const show = !filterTag || card.dataset.tag === filterTag;
                 card.style.display = show ? '' : 'none';
             });
@@ -191,89 +195,16 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // --------------------------------------------------------
-        // ADMIN DOT — personal quick-peek toggle for the on-hold
-        // ProAmpac cards. Not real security: the cards' full HTML
-        // already ships in the page, this just gates the UI toggle.
-        // Uses an in-page modal rather than prompt()/alert(), which
-        // browsers can silently suppress after repeated use.
-        // --------------------------------------------------------
-        const adminDot     = document.getElementById('adminDot');
-        const holdContainer = document.getElementById('proampac-projects-hold');
-        const adminModal   = document.getElementById('adminModal');
-        const adminUser    = document.getElementById('adminUser');
-        const adminPass    = document.getElementById('adminPass');
-        const adminError   = document.getElementById('adminError');
-        const adminSubmit  = document.getElementById('adminSubmit');
-        const adminCancel  = document.getElementById('adminCancel');
-
-        function unlockHoldContainer() {
-            holdContainer.style.display = 'grid';
-            holdContainer.querySelectorAll('.project-card[data-title]').forEach(card => {
-                if (!card.dataset.unlocked) {
-                    card.dataset.unlocked = 'true';
-                    card.addEventListener('click', () => {
-                        if (activeCard === card) {
-                            closeAccordion();
-                        } else {
-                            openAccordion(card);
-                        }
-                    });
-                }
-            });
-            setTimeout(() => {
-                const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 68;
-                const top = holdContainer.getBoundingClientRect().top + window.scrollY - navH - 16;
-                window.scrollTo({ top, behavior: 'smooth' });
-            }, 100);
-        }
-
-        function closeAdminModal() {
-            adminModal.style.display = 'none';
-            adminError.style.display = 'none';
-            adminUser.value = '';
-            adminPass.value = '';
-        }
-
-        if (adminDot && holdContainer && adminModal) {
-            adminDot.addEventListener('click', () => {
-                if (holdContainer.style.display !== 'none') {
-                    holdContainer.style.display = 'none';
-                    return;
-                }
-                adminModal.style.display = 'flex';
-                adminUser.focus();
-            });
-
-            function attemptUnlock() {
-                if (adminUser.value === 'luisronquillo' && adminPass.value === 'password') {
-                    closeAdminModal();
-                    unlockHoldContainer();
-                } else {
-                    adminError.style.display = 'block';
-                }
-            }
-
-            adminSubmit.addEventListener('click', attemptUnlock);
-            adminCancel.addEventListener('click', closeAdminModal);
-            adminModal.addEventListener('click', (e) => {
-                if (e.target === adminModal) closeAdminModal();
-            });
-            [adminUser, adminPass].forEach(input => {
-                input.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter') attemptUnlock();
-                });
-            });
-        }
-
         // If we landed on projects.html via a hash (e.g. #project-2), reveal
-        // the full grid and auto-open that project — unless it's on hold
+        // the full grid and auto-open that project. Internship-only cards
+        // (e.g. the ProAmpac summary) need the Internship filter rather than
+        // the unfiltered view to actually be visible.
         if (window.location.hash) {
             const targetId   = window.location.hash.replace('#', '');
             const targetCard = document.getElementById(targetId);
-            const onHold = targetCard && targetCard.closest('[id$="-hold"]');
-            if (targetCard && targetCard.dataset.title && !onHold) {
-                revealGrid(null);
+            if (targetCard && targetCard.dataset.title) {
+                const filterTag = targetCard.dataset.internshipOnly === 'true' ? 'Internship' : null;
+                revealGrid(filterTag);
                 setTimeout(() => { targetCard.click(); }, 300);
             }
         }
