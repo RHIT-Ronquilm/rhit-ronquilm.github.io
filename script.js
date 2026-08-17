@@ -3,6 +3,26 @@
    Shared logic for all pages.
    ============================================================ */
 
+// --------------------------------------------------------
+// LIGHTBOX — global (called from inline onclick="" attributes
+// on any page that includes a #lightbox element, e.g. project
+// gallery images, accordion photos, the certificate link).
+// --------------------------------------------------------
+function openLightbox(src) {
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightboxImg');
+    if (!lb || !lbImg) return;
+    lbImg.src = src;
+    lb.style.display = 'flex';
+}
+function closeLightbox() {
+    const lb = document.getElementById('lightbox');
+    if (lb) lb.style.display = 'none';
+}
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+});
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // --------------------------------------------------------
@@ -35,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const accTag    = document.getElementById('accTag');
     const accDesc   = document.getElementById('accDesc');
     const accExtra  = document.getElementById('accExtra');
+    const accDetails = document.getElementById('accDetails');
     const accImage  = document.getElementById('accImage');
     const accGallery = document.getElementById('accGallery');
     const accGalleryHint = document.getElementById('accGalleryHint');
@@ -51,6 +72,11 @@ document.addEventListener('DOMContentLoaded', () => {
             accTag.textContent   = card.dataset.tag;
             accDesc.textContent  = card.dataset.desc;
             accExtra.innerHTML   = card.dataset.extra || '';
+            if (accDetails) {
+                const detailsHTML = card.dataset.details || '';
+                accDetails.innerHTML = detailsHTML;
+                accDetails.style.display = detailsHTML ? 'block' : 'none';
+            }
             if (accImage) accImage.src = card.dataset.img || '';
 
             // Gallery thumbnails — clicking one swaps it into the big image spot

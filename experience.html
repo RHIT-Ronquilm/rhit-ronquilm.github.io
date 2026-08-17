@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Experience - Luis Ronquillo</title>
+    <meta name="description" content="Internships, project teams, research, and work experience for Luis Ronquillo, a mechanical engineering student at Rose-Hulman Institute of Technology.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Luis Ronquillo — Portfolio">
+    <meta property="og:title" content="Experience - Luis Ronquillo">
+    <meta property="og:description" content="Internships, project teams, research, and work experience for Luis Ronquillo, a mechanical engineering student at Rose-Hulman Institute of Technology.">
+    <meta property="og:image" content="https://lronquillo.com/assets/images/og-share-card.png">
+    <meta property="og:url" content="https://lronquillo.com/experience.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Experience - Luis Ronquillo">
+    <meta name="twitter:description" content="Internships, project teams, research, and work experience for Luis Ronquillo, a mechanical engineering student at Rose-Hulman Institute of Technology.">
+    <meta name="twitter:image" content="https://lronquillo.com/assets/images/og-share-card.png">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 </head>
@@ -98,7 +109,7 @@
         </div>
 
         <!-- WORK EXPERIENCE -->
-        <h2 class="section-label" style="margin-top: 4rem; max-width:900px; margin-left:auto; margin-right:auto;">Work Experience</h2>
+        <h2 class="section-label" style="margin-top: 3rem; max-width:900px; margin-left:auto; margin-right:auto;">Work Experience</h2>
         <p class="section-desc" style="max-width:900px; margin-left:auto; margin-right:auto;">Professional roles that shaped my work ethic and communication skills.</p>
 
         <div class="timeline timeline--full">
@@ -110,8 +121,7 @@
                         <div>
                             <span class="timeline-date">Jun 2026 – Aug 2026 (12 weeks)</span>
                             <h3>R&D Engineering Intern</h3>
-                            <!-- TODO: fill in plant location -->
-                            <p class="timeline-company">ProAmpac · [Plant Location]</p>
+                            <p class="timeline-company">ProAmpac</p>
                         </div>
                         <span class="timeline-badge">Internship</span>
                     </div>
@@ -120,8 +130,7 @@
                         <p style="margin-top:0.8rem;"><strong>Key skills demonstrated:</strong> CAD modeling (SolidWorks &amp; Siemens Solid Edge), reverse engineering, 3D printing / rapid prototyping, sheet metal design, CNC machining, machine safety guarding, technical drafting.</p>
                         <p style="margin-top:0.8rem;">Working with senior engineers, plant floor technicians, and outside vendors reinforced the value of active communication, hands-on troubleshooting, and iterative testing. The internship confirmed a genuine interest in R&D — the blend of design, prototyping, and real-world problem solving. Next up: gaining experience with injection molding for higher-resolution prototypes.</p>
                         <p style="margin-top:0.8rem;"><a href="projects.html#project-proampac-summary">More on my Projects page →</a></p>
-                        <!-- TODO: drop the actual certificate file at assets/proampac-certificate.pdf -->
-                        <p style="margin-top:0.4rem;"><a href="assets/proampac-certificate.pdf" target="_blank">View Certificate of Completion →</a></p>
+                        <p style="margin-top:0.4rem;"><a href="assets/images/proampac-certificate-of-completion.png" onclick="openLightbox(this.href); return false;">View Certificate of Completion →</a></p>
                     </div>
                 </div>
             </div>
@@ -145,7 +154,7 @@
         </div>
 
         <!-- VOLUNTEER EXPERIENCE -->
-        <h2 class="section-label" style="margin-top: 4rem; max-width:900px; margin-left:auto; margin-right:auto;">Volunteer Experience</h2>
+        <h2 class="section-label" style="margin-top: 3rem; max-width:900px; margin-left:auto; margin-right:auto;">Volunteer Experience</h2>
         <p class="section-desc" style="max-width:900px; margin-left:auto; margin-right:auto;">Giving back to the community.</p>
 
         <div class="timeline timeline--full">
@@ -169,7 +178,7 @@
         </div>
 
         <!-- ACTIVITIES -->
-        <h2 class="section-label" style="margin-top: 4rem; max-width:900px; margin-left:auto; margin-right:auto;">Activities & Organizations</h2>
+        <h2 class="section-label" style="margin-top: 3rem; max-width:900px; margin-left:auto; margin-right:auto;">Activities & Organizations</h2>
         <p class="section-desc" style="max-width:900px; margin-left:auto; margin-right:auto;">Getting involved, building community, and growing as an engineer.</p>
 
         <div class="timeline timeline--full">
@@ -246,6 +255,11 @@
     </div>
 </footer>
 
+<!-- Lightbox -->
+<div id="lightbox" onclick="closeLightbox()" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999; align-items:center; justify-content:center; cursor:zoom-out;">
+    <img id="lightboxImg" src="" alt="" style="width:90vw; height:90vh; object-fit:contain; border-radius:var(--radius);">
+</div>
+
 <script src="script.js"></script>
 </body>
-</html> 
+</html>

@@ -159,7 +159,7 @@ input, textarea, button { font-family: inherit; }
    ============================================================ */
 .hero {
     position: relative;
-    min-height: 100vh;
+    min-height: clamp(480px, 68vh, 760px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -499,8 +499,8 @@ input, textarea, button { font-family: inherit; }
 
 .timeline-item {
     position: relative;
-    margin-bottom: 2.5rem;
-    padding-bottom: 2.5rem;
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.75rem;
     border-bottom: 1px solid var(--clr-border);
 }
 .timeline-item:last-child {
@@ -545,7 +545,7 @@ input, textarea, button { font-family: inherit; }
 .timeline-company {
     font-size: 0.88rem;
     color: var(--clr-text-light);
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.6rem;
     font-weight: 400;
 }
 .timeline-card p {
@@ -563,7 +563,7 @@ input, textarea, button { font-family: inherit; }
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.6rem;
 }
 .timeline-badge {
     font-size: 0.68rem;
@@ -576,7 +576,7 @@ input, textarea, button { font-family: inherit; }
     font-weight: 600;
 }
 .timeline-card-body p {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.6rem;
 }
 .timeline-card-img-wrap {
     margin-top: 1.2rem;
@@ -806,6 +806,34 @@ input, textarea, button { font-family: inherit; }
 .acc-gallery-thumb:hover {
     transform: scale(1.03);
     box-shadow: var(--shadow-md);
+}
+
+/* Rich data-extra content (deep-dive project write-ups) */
+.acc-extra-h4 {
+    font-family: var(--font-display);
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--clr-text);
+    margin: 1.3rem 0 0.4rem;
+}
+.acc-extra-h4:first-child {
+    margin-top: 0;
+}
+.acc-extra-p {
+    color: var(--clr-text-mid);
+    font-size: 0.86rem;
+    line-height: 1.75;
+    margin: 0 0 0.7rem;
+}
+.acc-extra-list {
+    color: var(--clr-text-mid);
+    font-size: 0.86rem;
+    line-height: 1.75;
+    margin: 0 0 0.7rem;
+    padding-left: 1.1rem;
+}
+.acc-extra-list li {
+    margin-bottom: 0.4rem;
 }
 
 .project-card--coming-soon {
@@ -1073,19 +1101,18 @@ input, textarea, button { font-family: inherit; }
 }
 .resume-embed {
     width: 100%;
-    max-width: 1000px;  /* Bigger width */
+    max-width: 980px;
     margin: 0 auto 2rem;
+    padding: 2rem;
     border-radius: var(--radius);
-    overflow: hidden;
     box-shadow: var(--shadow-md);
-    background: var(--clr-surface);
+    background: #000;
 }
 
-.resume-embed iframe {
+.resume-embed img {
     width: 100%;
-    height: 1200px;  /* Much taller */
-    border: none;
     display: block;
+    border-radius: var(--radius-sm);
 }
 .resume-note code {
     background: var(--clr-bg-alt);

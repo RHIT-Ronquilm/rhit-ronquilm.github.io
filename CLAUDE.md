@@ -4,7 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Luis Ronquillo's personal portfolio site — a static, no-build, no-framework HTML/CSS/JS site (`index.html`, `about.html`, `experience.html`, `projects.html`, `resume.html`, `contact.html`, one shared `style.css`, one shared `script.js`). There is no package.json, no build step, no linter, no test suite. To preview a change, just open the relevant `.html` file directly in a browser (or use `start ""` on Windows) and refresh — no server needed.
+Luis Ronquillo's personal portfolio site — a static, no-build, no-framework HTML/CSS/JS site (`index.html`, `experience.html`, `projects.html`, `resume.html`, `contact.html`, one shared `style.css`, one shared `script.js`). There is no package.json, no build step, no linter, no test suite. To preview a change, just open the relevant `.html` file directly in a browser (or use `start ""` on Windows) and refresh — no server needed.
+
+A standalone `about.html` used to exist but was removed (2026-08-17): it duplicated the About Me content already on `index.html` almost verbatim, no other page linked to it (it was only reachable via its own nav link — a dead end), and its one genuinely extra bit of content (a Skills tag list) already lives on `resume.html`. If a request implies bringing back a dedicated About page, confirm what it should contain that index.html's About section doesn't, rather than restoring the old duplicate.
+
+**Lightbox**: `openLightbox(src)` / `closeLightbox()` are global functions defined in `script.js` (outside the `DOMContentLoaded` wrapper, so inline `onclick="openLightbox(this.src)"` attributes anywhere can call them) — they null-guard on `#lightbox`/`#lightboxImg` not existing, so it's safe to call from a page that hasn't added the markup. To use it on a page, add `<div id="lightbox" onclick="closeLightbox()">...<img id="lightboxImg">...</div>` before the `<script src="script.js">` tag (copy the block from `projects.html` or `experience.html`). Originally this lived as a duplicate inline `<script>` block only in `projects.html`; it was promoted to `script.js` when `experience.html` needed to open its certificate image the same way instead of navigating to it in a new tab.
+
+Every page's `<head>` carries Open Graph / Twitter Card meta tags (title, description, `og:image` pointing at `assets/images/og-share-card.png`, absolute `og:url`/`twitter:*` using the `https://lronquillo.com/` domain) so links shared on LinkedIn/social render a proper preview card instead of a bare gray box. When adding a new page or changing a page's title, add/update the matching meta block too — copy the pattern from an existing page's `<head>` rather than reinventing it.
 
 **Deployment**: this repo is `RHIT-Ronquilm/rhit-ronquilm.github.io` on GitHub — pushing to `main` deploys automatically via GitHub Pages. A `CNAME` file points the custom domain `lronquillo.com` at it (the `.github.io` URL 301-redirects there). **Only commit/push when the user explicitly asks** — after making edits, open the file locally so the user can review in-browser first.
 
@@ -14,7 +20,8 @@ Note: local git is authenticated as a personal GitHub account, not the repo-owni
 
 This is the one genuinely non-trivial piece of the site. Every project is a `<div class="project-card">` with data attributes read by `script.js` at click time — there is no per-project markup duplication for the detail view:
 
-- `data-title`, `data-tag` (`"School Project"` / `"Internship"` / `"Personal"` — this exact string doubles as the category filter key), `data-img` (header/primary image), `data-desc`, `data-extra` (raw HTML, rendered via `innerHTML` — used for tool/company lines, and can embed extra inline `<img>`/`<video>` tags directly).
+- `data-title`, `data-tag` (`"School Project"` / `"Internship"` / `"Personal"` — this exact string doubles as the category filter key), `data-img` (header/primary image), `data-desc`, `data-extra` (raw HTML, rendered via `innerHTML` into the narrow left column next to the image — keep this to short key:value lines like tools/company/cost, since it's only half-width).
+- `data-details` (optional, raw HTML, rendered via `innerHTML` into `#accDetails`): a full-width section below the two-column header, for long-form multi-paragraph write-ups (the CNC mill and SCARA arm cards are the reference examples). Use the `.acc-extra-h4` / `.acc-extra-p` / `.acc-extra-list` CSS classes (in `style.css`) for section headers/paragraphs/bullet lists so they read as one consistent system rather than ad hoc inline styling. **Don't put long-form content in `data-extra`** — it lives in the half-width left column next to the image, so anything more than a few key:value lines badly unbalances the two-column layout (huge blank space under the shorter image column). Short quick-facts stay in `data-extra`; everything past that goes in `data-details`.
 - `data-gallery` (optional): comma-separated image URLs. When present, clicking a card populates a thumbnail strip (`.acc-gallery-thumb`) below the hero image in the shared accordion (`#accGallery`); clicking a thumbnail swaps it into the big image spot (`#accImage`) — it does **not** open anything new. The hint text "Click a photo to view it larger" only shows when there's more than one image.
 - Clicking a card calls `openAccordion(card)` in `script.js`, which populates one shared `#projectAccordion` block (moved in the DOM via `grid.before(accordion)`) rather than each card owning its own detail markup.
 
@@ -27,6 +34,19 @@ This is the one genuinely non-trivial piece of the site. Every project is a `<di
 **Card ordering is a deliberate ranking**, not just chronological — cards are ordered by recruiter impact (ambitious self-directed work like the CNC mill and SCARA arm builds are pulled toward the front even as work-in-progress, ahead of routine tasks). If asked to add/reorder projects, ask what tier a new project belongs in rather than defaulting to appending at the end. The homepage's 6 featured project-preview cards (`index.html`) are meant to mirror the current top picks from `projects.html` — update both together.
 
 **Deep links**: `index.html` and `experience.html` link into specific projects via `projects.html#project-N`. `script.js`'s `DOMContentLoaded` hash handler reveals the grid (filtered to Internship if the target card is `data-internship-only`) and auto-clicks the matching card `id`. If a card is renumbered or deleted, grep the whole repo for its `#project-N` id before assuming nothing else references it.
+
+## Resume preview (resume.html)
+
+`resume.html` shows a rendered PNG (`assets/images/resume-preview.png`) inside `.resume-embed`, not an `<iframe src="assets/resume.pdf">`. An iframe embed was tried first, but the browser's built-in PDF viewer controls its own internal zoom/centering and ignores container CSS in ways that couldn't be reliably fixed from the page's own stylesheet (tried a fixed iframe height, then `aspect-ratio` tricks on the iframe and the container — both still left uneven black dead space around the page, because the fit/centering logic lives inside the iframe's opaque native viewer, not in anything `style.css` can reach). A plain `<img>` of the rendered page sidesteps that entirely — normal CSS sizing, identical across browsers, no dead space possible.
+
+**When `assets/resume.pdf` is updated, regenerate the preview image** (PyMuPDF is already used elsewhere in this project's workflow):
+```python
+import fitz
+doc = fitz.open("assets/resume.pdf")
+pix = doc[0].get_pixmap(matrix=fitz.Matrix(2.5, 2.5))  # ~2.5x zoom for a crisp web preview
+pix.save("assets/images/resume-preview.png")
+```
+The Download Resume button still links to the real `assets/resume.pdf` — only the on-page preview is an image.
 
 ## Image/asset conventions
 
