@@ -202,7 +202,29 @@
                 </div>
             </div>
 
-            <!-- 5 — 4-Axis SCARA Robot Arm (work in progress) -->
+            <!-- 5 — Custom Closed-Loop DC Servomechanism & Mechatronic Test Bench (work in progress) -->
+            <div
+                class="project-card"
+                id="project-24"
+                data-title="Custom Closed-Loop DC Servomechanism &amp; Mechatronic Test Bench (Work in Progress)"
+                data-tag="Personal"
+                data-img="assets/images/personal-servo-testbench-parts.png"
+                data-desc="Designing and building a closed-loop smart actuator test bench from discrete components to learn low-level mechatronics from first principles, including closed-loop proportional control, magnetic absolute encoding, motor driver commutation, and power distribution. Deliberately built before tackling multi-axis systems like the SCARA arm, to understand what's actually happening inside a hobby servo."
+                data-extra="<strong>Tools &amp; Software:</strong> Arduino IDE (C++), VS Code, digital multimeter, serial plotter/monitor<br><strong>Key Components:</strong> Arduino Uno (ATmega328P), AS5600 12-bit magnetic rotary encoder (I&sup2;C), brushed DC motor, H-bridge motor driver (L298N/TB6612FNG), 7.4V 2S LiPo battery, 5V buck regulator<br><strong>Status:</strong> Design &amp; component sourcing in progress"
+                data-details="<h4 class='acc-extra-h4'>System Architecture (the BASP Framework)</h4><p class='acc-extra-p'>The test bench is organized around four foundational pillars every mechatronic system shares: the <strong>brain</strong> (an Arduino Uno running custom C++ firmware to read encoder state, compute error, and generate directional PWM), the <strong>actuator</strong> (a brushed DC motor driven through an H-bridge that reverses direction via polarity flip and controls torque via PWM), the <strong>sensor</strong> (an AS5600 12-bit absolute encoder over I&sup2;C on A4/A5, 4096 counts per revolution / 0.088&deg; resolution), and <strong>power</strong> (a 2S LiPo powering the motor bus directly, stepped down to an isolated 5V logic rail for the microcontroller and encoder).</p><h4 class='acc-extra-h4'>Planned Closed-Loop Proportional Control Pipeline</h4><p class='acc-extra-p'>The firmware is designed to continuously poll the AS5600 for absolute shaft position, compute error against a target setpoint (Error = Target &minus; Current), and scale motor output proportionally (Vout = Kp &times; Error), applying full power at large displacement and settling gently as error approaches zero. A software deadband (planned &plusmn;5 counts) is intended to prevent steady-state oscillation (&quot;hunting&quot;), and PWM output will be clamped to a minimum threshold (estimated 40&ndash;255) to overcome motor brush stiction without stalling; the exact floor value will need to be tuned empirically once hardware is running.</p><h4 class='acc-extra-h4'>Power Budgeting</h4><p class='acc-extra-p'>Sizing the battery discharge rate (C-rating) and connector thermal limits against calculated peak motor stall current, and planning to isolate Arduino logic from inductive back-EMF spikes during H-bridge reversals, a known risk for I&sup2;C bus lockups on sensitive encoders like the AS5600. <em>Not shown on the wiring diagram: all three grounds (Arduino, L298N, and LiPo negative) still need to tie together into a common ground reference. It's left out of the diagram to keep it readable, but it's just as critical as the labeled connections.</em></p><h4 class='acc-extra-h4'>Anticipated Engineering Challenges</h4><ul class='acc-extra-list'><li><strong>I&sup2;C noise from motor switching:</strong> motor inductive noise is a known failure mode for I&sup2;C sensors sharing a board with an H-bridge; the plan is to add bypass capacitors across motor terminals and confirm SDA/SCL pull-up resistor values once assembled, adjusting based on observed bus stability.</li><li><strong>Deadband and stiction tuning:</strong> the PWM floor needed to overcome brush/gearbox friction will likely need empirical tuning once hardware is running, since it depends on the specific motor's real-world friction characteristics rather than a value that can be calculated in advance.</li></ul><h4 class='acc-extra-h4'>Reflection</h4><p class='acc-extra-p' style='margin-bottom:0;'>Building a discrete servomechanism from scratch is meant to build a real understanding of what happens inside integrated hobby servos and industrial actuators, by writing the low-level polling, H-bridge switching, and proportional control loop myself rather than treating a servo as a black box. This is meant to lay the groundwork before moving on to multi-axis systems like the SCARA arm.</p>"
+                data-gallery="assets/images/personal-servo-testbench-parts.png,assets/images/personal-servo-testbench-wiring-diagram.png,assets/images/personal-servo-testbench-basp-diagram.png"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/personal-servo-testbench-parts.png" alt="Custom Closed-Loop DC Servomechanism &amp; Mechatronic Test Bench (Work in Progress)" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 5</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>Custom Closed-Loop DC Servomechanism &amp; Mechatronic Test Bench (Work in Progress)</h3>
+                    <span class="project-tag">Personal</span>
+                </div>
+            </div>
+
+            <!-- 6 — 4-Axis SCARA Robot Arm (work in progress) -->
             <div
                 class="project-card"
                 id="project-23"
@@ -216,7 +238,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-scara-arm-cad.jpg" alt="4-Axis SCARA Robotic Manipulator (Work in Progress)" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 5</div>
+                    <div class="project-card-placeholder">Project 6</div>
                 </div>
                 <div class="project-card-info">
                     <h3>4-Axis SCARA Robotic Manipulator (Work in Progress)</h3>
@@ -224,7 +246,7 @@
                 </div>
             </div>
 
-            <!-- 6 — Packing Station Arm Joint Prototypes -->
+            <!-- 7 — Packing Station Arm Joint Prototypes -->
             <div
                 class="project-card"
                 id="project-15"
@@ -237,7 +259,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-packing-station-arms-exploded.jpg" alt="Packing Station Arm Joint Prototypes" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 6</div>
+                    <div class="project-card-placeholder">Project 7</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Packing Station Arm Joint Prototypes</h3>
@@ -245,7 +267,7 @@
                 </div>
             </div>
 
-            <!-- 7 — Modular Packing Station Design -->
+            <!-- 8 — Modular Packing Station Design -->
             <div
                 class="project-card"
                 id="project-7"
@@ -258,7 +280,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-packing-station-carousel.jpg" alt="Modular Packing Station Design" style="object-fit:contain;" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 7</div>
+                    <div class="project-card-placeholder">Project 8</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Modular Packing Station Design</h3>
@@ -266,7 +288,7 @@
                 </div>
             </div>
 
-            <!-- 8 — Machine Safety Guard Design -->
+            <!-- 9 — Machine Safety Guard Design -->
             <div
                 class="project-card"
                 id="project-13"
@@ -278,7 +300,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-safety-guard.jpg" alt="Machine Safety Guard Design" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 8</div>
+                    <div class="project-card-placeholder">Project 9</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Machine Safety Guard Design</h3>
@@ -286,7 +308,7 @@
                 </div>
             </div>
 
-            <!-- 9 — Micro-Flute Nip Roller Redesign -->
+            <!-- 10 — Micro-Flute Nip Roller Redesign -->
             <div
                 class="project-card"
                 id="project-10"
@@ -298,7 +320,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-flute-roller-shaft.jpg" alt="Micro-Flute Nip Roller Redesign" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 9</div>
+                    <div class="project-card-placeholder">Project 10</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Micro-Flute Nip Roller Redesign</h3>
@@ -306,7 +328,7 @@
                 </div>
             </div>
 
-            <!-- 10 — Custom Encoder Test Fixture -->
+            <!-- 11 — Custom Encoder Test Fixture -->
             <div
                 class="project-card"
                 id="project-9"
@@ -319,7 +341,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-encoder-fixture.jpg" alt="Custom Encoder Test Fixture" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 10</div>
+                    <div class="project-card-placeholder">Project 11</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Custom Encoder Test Fixture</h3>
@@ -327,7 +349,7 @@
                 </div>
             </div>
 
-            <!-- 11 — Hand-Machined Hammer & Bar -->
+            <!-- 12 — Hand-Machined Hammer & Bar -->
             <div
                 class="project-card"
                 id="project-17"
@@ -340,7 +362,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/bench-hammer.jpg" alt="Hand-Machined Hammer & Bar" style="object-fit:contain;" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 11</div>
+                    <div class="project-card-placeholder">Project 12</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Hand-Machined Hammer & Bar</h3>
@@ -348,7 +370,7 @@
                 </div>
             </div>
 
-            <!-- 12 -->
+            <!-- 13 -->
             <div
                 class="project-card"
                 id="project-1"
@@ -360,7 +382,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/gearbox.png" alt="Mechanical Differential Assembly" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 12</div>
+                    <div class="project-card-placeholder">Project 13</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Mechanical Differential Assembly</h3>
@@ -368,7 +390,7 @@
                 </div>
             </div>
 
-            <!-- 13 — Precision Punch Mechanism Rebuild -->
+            <!-- 14 — Precision Punch Mechanism Rebuild -->
             <div
                 class="project-card"
                 id="project-11"
@@ -380,7 +402,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-punch-mechanism-packaging.png" alt="Precision Punch Mechanism Rebuild" style="object-fit:contain;" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 13</div>
+                    <div class="project-card-placeholder">Project 14</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Precision Punch Mechanism Rebuild</h3>
@@ -388,7 +410,7 @@
                 </div>
             </div>
 
-            <!-- 14 -->
+            <!-- 15 -->
             <div
                 class="project-card"
                 id="project-2"
@@ -400,7 +422,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/watch.png" alt="Garmin Smartwatch Housing & Strap" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 14</div>
+                    <div class="project-card-placeholder">Project 15</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Garmin Smartwatch Housing & Strap</h3>
@@ -408,7 +430,7 @@
                 </div>
             </div>
 
-            <!-- 15 — FM Radio -->
+            <!-- 16 — FM Radio -->
             <div
                 class="project-card"
                 id="project-5"
@@ -422,7 +444,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/DoneBoard.png" alt="FM-88K Auto-Scan Receiver" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 15</div>
+                    <div class="project-card-placeholder">Project 16</div>
                 </div>
                 <div class="project-card-info">
                     <h3>FM-88K Auto-Scan Receiver Assembly & Analysis</h3>
@@ -430,7 +452,7 @@
                 </div>
             </div>
 
-            <!-- 16 -->
+            <!-- 17 -->
             <div
                 class="project-card"
                 id="project-3"
@@ -442,7 +464,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/crank.png" alt="Single-Cylinder Piston Engine Assembly" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 16</div>
+                    <div class="project-card-placeholder">Project 17</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Single-Cylinder Piston Engine Assembly</h3>
@@ -450,7 +472,7 @@
                 </div>
             </div>
 
-            <!-- 17 — Production Floor Layout Drafting -->
+            <!-- 18 — Production Floor Layout Drafting -->
             <div
                 class="project-card"
                 id="project-12"
@@ -462,7 +484,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-floor-layout.png" alt="Production Floor Layout Drafting" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 17</div>
+                    <div class="project-card-placeholder">Project 18</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Production Floor Layout Drafting</h3>
@@ -470,7 +492,7 @@
                 </div>
             </div>
 
-            <!-- 18 — Custom Ratchet Wrench End Cap -->
+            <!-- 19 — Custom Ratchet Wrench End Cap -->
             <div
                 class="project-card"
                 id="project-14"
@@ -483,7 +505,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-ratchet-endcap.jpg" alt="Custom Ratchet Wrench End Cap" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 18</div>
+                    <div class="project-card-placeholder">Project 19</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Custom Ratchet Wrench End Cap</h3>
@@ -491,7 +513,7 @@
                 </div>
             </div>
 
-            <!-- 19 — Custom PC Build -->
+            <!-- 20 — Custom PC Build -->
             <div
                 class="project-card"
                 id="project-18"
@@ -504,7 +526,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-pcbuild-final.jpg" alt="Custom Gaming PC Build" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 19</div>
+                    <div class="project-card-placeholder">Project 20</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Custom Gaming PC Build</h3>
@@ -512,7 +534,7 @@
                 </div>
             </div>
 
-            <!-- 20 — PS4 Controller Mod -->
+            <!-- 21 — PS4 Controller Mod -->
             <div
                 class="project-card"
                 id="project-19"
@@ -524,7 +546,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-ps4-controller-mod.jpg" alt="PS4 Controller Refurbishment & USB-C Mod" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 20</div>
+                    <div class="project-card-placeholder">Project 21</div>
                 </div>
                 <div class="project-card-info">
                     <h3>PS4 Controller Refurbishment & USB-C Mod</h3>
@@ -532,7 +554,7 @@
                 </div>
             </div>
 
-            <!-- 21 — Mouse Mod -->
+            <!-- 22 — Mouse Mod -->
             <div
                 class="project-card"
                 id="project-20"
@@ -544,7 +566,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-mouse-mod.jpg" alt="Custom Gaming Mouse Build" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 21</div>
+                    <div class="project-card-placeholder">Project 22</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Custom Gaming Mouse Build</h3>
@@ -552,7 +574,7 @@
                 </div>
             </div>
 
-            <!-- 22 — Nerf Mods -->
+            <!-- 23 — Nerf Mods -->
             <div
                 class="project-card"
                 id="project-21"
@@ -565,7 +587,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-nerf-mods.jpg" alt="Nerf Blaster Modifications" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 22</div>
+                    <div class="project-card-placeholder">Project 23</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Nerf Blaster Modifications</h3>
@@ -573,7 +595,7 @@
                 </div>
             </div>
 
-            <!-- 23 — V6 Engine (work in progress, kept last) -->
+            <!-- 24 — V6 Engine (work in progress, kept last) -->
             <div
                 class="project-card"
                 id="project-6"
@@ -586,7 +608,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/Vengine.png" alt="V6 Engine CAD" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 23</div>
+                    <div class="project-card-placeholder">Project 24</div>
                 </div>
                 <div class="project-card-info">
                     <h3>V6 Engine CAD Development (Work in Progress)</h3>
