@@ -26,6 +26,25 @@ document.addEventListener('keydown', (e) => {
 document.addEventListener('DOMContentLoaded', () => {
 
     // --------------------------------------------------------
+    // CONFIDENTIALITY BADGE — auto-injected next to every "Internship"
+    // project-tag pill (grid cards and homepage preview cards) so
+    // redacted/thinner internship write-ups don't read as less
+    // impressive work than they are. Matches by visible tag text
+    // rather than a data-attribute so it covers both the full
+    // data-driven cards on projects.html and the static preview
+    // links on index.html.
+    // --------------------------------------------------------
+    const CONFIDENTIAL_BADGE_TEXT = '🔒 Some details withheld for confidentiality';
+    document.querySelectorAll('.project-tag').forEach(tag => {
+        if (tag.id === 'accTag') return; // accordion tag is handled separately in openAccordion()
+        if (tag.textContent.trim() !== 'Internship') return;
+        const badge = document.createElement('span');
+        badge.className = 'confidential-badge';
+        badge.textContent = CONFIDENTIAL_BADGE_TEXT;
+        tag.after(badge);
+    });
+
+    // --------------------------------------------------------
     // MOBILE NAV TOGGLE
     // --------------------------------------------------------
     const hamburger = document.querySelector('.nav-hamburger');
@@ -53,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const accClose  = document.getElementById('accordionClose');
     const accTitle  = document.getElementById('accTitle');
     const accTag    = document.getElementById('accTag');
+    const accConfidentialBadge = document.getElementById('accConfidentialBadge');
     const accDesc   = document.getElementById('accDesc');
     const accExtra  = document.getElementById('accExtra');
     const accDetails = document.getElementById('accDetails');
@@ -70,6 +90,11 @@ document.addEventListener('DOMContentLoaded', () => {
         function openAccordion(card) {
             accTitle.textContent = card.dataset.title;
             accTag.textContent   = card.dataset.tag;
+            if (accConfidentialBadge) {
+                const isInternship = card.dataset.tag === 'Internship';
+                accConfidentialBadge.textContent = isInternship ? '🔒 Some details withheld for confidentiality' : '';
+                accConfidentialBadge.style.display = isInternship ? 'inline-block' : 'none';
+            }
             accDesc.textContent  = card.dataset.desc;
             accExtra.innerHTML   = card.dataset.extra || '';
             if (accDetails) {

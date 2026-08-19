@@ -793,6 +793,22 @@ input, textarea, button { font-family: inherit; }
     font-weight: 600;
 }
 
+/* Flags an Internship card as having redacted/limited detail for confidentiality
+   reasons, so thinner-looking cards don't read as thinner work. Auto-injected by
+   script.js next to any .project-tag whose card has data-tag="Internship". */
+.confidential-badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    letter-spacing: 0.2px;
+    background: var(--clr-bg-alt);
+    color: var(--clr-text-light);
+    border: 1px solid var(--clr-border);
+    padding: 0.2rem 0.6rem;
+    border-radius: 50px;
+    font-weight: 500;
+    margin-left: 0.4rem;
+}
+
 .acc-gallery-thumb {
     width: 90px;
     height: 90px;

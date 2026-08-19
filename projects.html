@@ -202,47 +202,45 @@
                 </div>
             </div>
 
-            <!-- 5 — Custom Closed-Loop DC Servomechanism & Mechatronic Test Bench (work in progress) -->
+            <!-- 5 — Packing Station Arm Joint Prototypes -->
             <div
                 class="project-card"
-                id="project-24"
-                data-title="Custom Closed-Loop DC Servomechanism &amp; Mechatronic Test Bench (Work in Progress)"
-                data-tag="Personal"
-                data-img="assets/images/personal-servo-testbench-parts.png"
-                data-desc="Designing and building a closed-loop smart actuator test bench from discrete components to learn low-level mechatronics from first principles, including closed-loop proportional control, magnetic absolute encoding, motor driver commutation, and power distribution. Deliberately built before tackling multi-axis systems like the SCARA arm, to understand what's actually happening inside a hobby servo."
-                data-extra="<strong>Tools &amp; Software:</strong> Arduino IDE (C++), VS Code, digital multimeter, serial plotter/monitor<br><strong>Key Components:</strong> Arduino Uno (ATmega328P), AS5600 12-bit magnetic rotary encoder (I&sup2;C), brushed DC motor, H-bridge motor driver (L298N/TB6612FNG), 7.4V 2S LiPo battery, 5V buck regulator<br><strong>Status:</strong> Design &amp; component sourcing in progress"
-                data-details="<h4 class='acc-extra-h4'>System Architecture (the BASP Framework)</h4><p class='acc-extra-p'>The test bench is organized around four foundational pillars every mechatronic system shares: the <strong>brain</strong> (an Arduino Uno running custom C++ firmware to read encoder state, compute error, and generate directional PWM), the <strong>actuator</strong> (a brushed DC motor driven through an H-bridge that reverses direction via polarity flip and controls torque via PWM), the <strong>sensor</strong> (an AS5600 12-bit absolute encoder over I&sup2;C on A4/A5, 4096 counts per revolution / 0.088&deg; resolution), and <strong>power</strong> (a 2S LiPo powering the motor bus directly, stepped down to an isolated 5V logic rail for the microcontroller and encoder).</p><h4 class='acc-extra-h4'>Planned Closed-Loop Proportional Control Pipeline</h4><p class='acc-extra-p'>The firmware is designed to continuously poll the AS5600 for absolute shaft position, compute error against a target setpoint (Error = Target &minus; Current), and scale motor output proportionally (Vout = Kp &times; Error), applying full power at large displacement and settling gently as error approaches zero. A software deadband (planned &plusmn;5 counts) is intended to prevent steady-state oscillation (&quot;hunting&quot;), and PWM output will be clamped to a minimum threshold (estimated 40&ndash;255) to overcome motor brush stiction without stalling; the exact floor value will need to be tuned empirically once hardware is running.</p><h4 class='acc-extra-h4'>Power Budgeting</h4><p class='acc-extra-p'>Sizing the battery discharge rate (C-rating) and connector thermal limits against calculated peak motor stall current, and planning to isolate Arduino logic from inductive back-EMF spikes during H-bridge reversals, a known risk for I&sup2;C bus lockups on sensitive encoders like the AS5600. <em>Not shown on the wiring diagram: all three grounds (Arduino, L298N, and LiPo negative) still need to tie together into a common ground reference. It's left out of the diagram to keep it readable, but it's just as critical as the labeled connections.</em></p><h4 class='acc-extra-h4'>Anticipated Engineering Challenges</h4><ul class='acc-extra-list'><li><strong>I&sup2;C noise from motor switching:</strong> motor inductive noise is a known failure mode for I&sup2;C sensors sharing a board with an H-bridge; the plan is to add bypass capacitors across motor terminals and confirm SDA/SCL pull-up resistor values once assembled, adjusting based on observed bus stability.</li><li><strong>Deadband and stiction tuning:</strong> the PWM floor needed to overcome brush/gearbox friction will likely need empirical tuning once hardware is running, since it depends on the specific motor's real-world friction characteristics rather than a value that can be calculated in advance.</li></ul><h4 class='acc-extra-h4'>Reflection</h4><p class='acc-extra-p' style='margin-bottom:0;'>Building a discrete servomechanism from scratch is meant to build a real understanding of what happens inside integrated hobby servos and industrial actuators, by writing the low-level polling, H-bridge switching, and proportional control loop myself rather than treating a servo as a black box. This is meant to lay the groundwork before moving on to multi-axis systems like the SCARA arm.</p>"
-                data-gallery="assets/images/personal-servo-testbench-parts.png,assets/images/personal-servo-testbench-wiring-diagram.png,assets/images/personal-servo-testbench-basp-diagram.png"
+                id="project-15"
+                data-title="Packing Station Arm Joint Prototypes"
+                data-tag="Internship"
+                data-img="assets/images/proampac-packing-station-arms-exploded.jpg"
+                data-desc="Designed distinct prototype double-joint arms — sheet metal and machined — for the packing station's articulating mount, testing movement, joint rigidity, and deflection under load."
+                data-extra="<strong>Approach:</strong> Iterated joint geometries to keep costs down while maintaining operational optimization.<br><strong>Tools:</strong> SolidWorks<br><strong>Company:</strong> ProAmpac · Summer 2026"
+                data-gallery="assets/images/proampac-packing-station-arms-exploded.jpg,assets/images/proampac-packing-station-arms-assembled.jpg,assets/images/proampac-packing-station-arms-fea-1.jpg,assets/images/proampac-packing-station-arms-fea-2.jpg,assets/images/proampac-packing-station-arms-fea-3.jpg,assets/images/proampac-packing-station-arms-fea-4.jpg"
             >
                 <div class="project-card-img">
-                    <img src="assets/images/personal-servo-testbench-parts.png" alt="Custom Closed-Loop DC Servomechanism &amp; Mechatronic Test Bench (Work in Progress)" onerror="this.style.display='none'">
+                    <img src="assets/images/proampac-packing-station-arms-exploded.jpg" alt="Packing Station Arm Joint Prototypes" onerror="this.style.display='none'">
                     <div class="project-card-placeholder">Project 5</div>
                 </div>
                 <div class="project-card-info">
-                    <h3>Custom Closed-Loop DC Servomechanism &amp; Mechatronic Test Bench (Work in Progress)</h3>
-                    <span class="project-tag">Personal</span>
+                    <h3>Packing Station Arm Joint Prototypes</h3>
+                    <span class="project-tag">Internship</span>
                 </div>
             </div>
 
-            <!-- 6 — Desktop 3-Axis CNC Router & Milling Machine (work in progress) -->
+            <!-- 6 — Modular Packing Station Design -->
             <div
                 class="project-card"
-                id="project-22"
-                data-title="Desktop 3-Axis CNC Router &amp; Milling Machine (Work in Progress)"
-                data-tag="Personal"
-                data-img="assets/images/personal-cnc-mill-cad.jpg"
-                data-desc="Designing and building a rigid 300×400 mm desktop CNC milling machine engineered for precision subtractive manufacturing across hardwoods, engineering plastics (acetal, acrylic), and soft non-ferrous metals (6061 aluminum), focused on machine structure design, linear motion architecture, and a planned GRBL control and CAM pipeline."
-                data-extra="<strong>Tools &amp; Software:</strong> SolidWorks (CAD), VS Code, multimeter, dial indicator (Fusion 360 CAM and Universal Gcode Sender/Candle planned for toolpath generation and G-code streaming)<br><strong>Motion &amp; Kinematics:</strong> NEMA17 stepper motors, T8 leadscrews with spring-loaded anti-backlash nuts, MGN12 supported linear profile rails (X, Y, Z)<br><strong>Electronics &amp; Control:</strong> Arduino Uno running GRBL firmware, CNC Shield V3 with A4988 stepper drivers, 500W DC spindle motor (ER11 collet), mechanical limit/homing switches<br><strong>Bill of Materials (31 line items):</strong> Electrical: 7 ($163.50); Mechanical/Structural: 12 ($448.50); 3D Printed: 12 ($23.50) — Total: ~$635<br><strong>Status:</strong> CAD design in progress; component sourcing underway"
-                data-details="<h4 class='acc-extra-h4'>Planned System Architecture &amp; Subtractive Workflow</h4><p class='acc-extra-p'>Once assembled, the mill is engineered to execute a 4-stage digital manufacturing pipeline: CAD modeling in SolidWorks, constrained by standard end-mill radii and stock dimensions; CAM toolpath generation (planned in Fusion 360) defining cutter geometry for facing, pocketing, adaptive clearing, and contouring; G-code generation calculating feed rate (F), spindle speed (S), stepdown, and stepover; and real-time execution on Arduino + GRBL, streaming G-code over serial into coordinated step/direction pulses with trapezoidal acceleration profiles.</p><h4 class='acc-extra-h4'>Linear Motion &amp; Mechanical Rigidity</h4><p class='acc-extra-p'>The mechanical architecture is built around MGN12 supported linear profile rails across all three axes rather than unsupported smooth rod, isolating the NEMA17 motor shafts and leadscrews from dynamic cutting loads by routing radial and overturning moment forces into the rigid aluminum extrusion chassis instead of through the drive components. Spring-loaded anti-backlash nuts on the T8 leadscrews are specified to eliminate axial play and hysteresis during high-frequency directional reversals, such as adaptive pocketing passes, once assembled.</p><h4 class='acc-extra-h4'>Power System Architecture &amp; Trade-offs</h4><p class='acc-extra-p'>The baseline design routes both the stepper drivers and the 500W DC spindle through a shared 24V/10A power rail to minimize initial hardware cost. At full load, the spindle alone draws approximately 20.8A (500W ÷ 24V) — meaningfully above the supply's 10A rating — so the design explicitly accounts for the risk of inrush or stall current sagging the rail and causing skipped steps under heavy cutting loads. The validation plan is to monitor rail stability with a multimeter during initial cutting trials, with a pre-planned schematic separation to a dedicated spindle supply if brownouts occur.</p><h4 class='acc-extra-h4'>Intended End-Use Applications</h4><ul class='acc-extra-list'><li><strong>Custom enclosures &amp; brackets</strong> — machining motor mounts, standoffs, and electronics faceplates in Delrin (acetal) and 6061 aluminum plate.</li><li><strong>PCB isolation routing</strong> — tracing isolation paths and drilling through-hole patterns on copper-clad FR1 boards using 30° V-bits.</li><li><strong>Precision woodworking</strong> — surfacing, pocketing, and engraving hardwood stock with multi-flute carbide end mills.</li></ul><h4 class='acc-extra-h4'>Anticipated Engineering Challenges</h4><ul class='acc-extra-list'><li><strong>Gantry deflection &amp; resonant chatter</strong> — tuning feeds, speeds, and depth of cut during aluminum passes to keep cutting forces below the frame's structural deflection threshold.</li><li><strong>Axis orthogonality &amp; tramming</strong> — squaring the X/Y axes to true 90° and tramming the spindle perpendicular to the wasteboard via dial indicator sweep, once assembled.</li><li><strong>Power stability validation</strong> — planned testing of stepper driver VREF limits and voltage ripple under simultaneous axis motion and spindle load, once the machine is powered on.</li></ul><h4 class='acc-extra-h4'>Reflection</h4><p class='acc-extra-p' style='margin-bottom:0;'>This project connects mechanical statics, machine dynamics, and digital manufacturing. Designing the platform from component-level constraints — selecting supported profile rails over unsupported rods to decouple cutting loads, and sizing the power bus with a calculated, pre-planned mitigation for a known current deficit — is building direct, defensible machine-design experience applicable to industrial CNC and mechatronic systems.</p>"
-                data-gallery="assets/images/personal-cnc-mill-cad.jpg,assets/images/personal-cnc-mill-render.jpg,assets/images/personal-cnc-mill-parts.jpg"
+                id="project-7"
+                data-title="Modular Packing Station Design"
+                data-tag="Internship"
+                data-img="assets/images/proampac-packing-station-carousel.jpg"
+                data-desc="Designed and iterated multiple versions of a floating/adjustable packing station for e-commerce fulfillment lines, optimizing for stability, operator workflow, cost, and mobility."
+                data-extra="<strong>Approach:</strong> Explored three structural configurations — tube frame, sheet metal, and a rotating carousel — to balance manufacturability against ergonomics and cost.<br><strong>Tools:</strong> SolidWorks<br><strong>Company:</strong> ProAmpac · Summer 2026"
+                data-gallery="assets/images/proampac-packing-station.jpg,assets/images/proampac-packing-station-tube.jpg,assets/images/proampac-packing-station-sheetmetal.jpg,assets/images/proampac-packing-station-carousel.jpg"
             >
                 <div class="project-card-img">
-                    <img src="assets/images/personal-cnc-mill-cad.jpg" alt="Desktop 3-Axis CNC Router &amp; Milling Machine (Work in Progress)" onerror="this.style.display='none'">
+                    <img src="assets/images/proampac-packing-station-carousel.jpg" alt="Modular Packing Station Design" style="object-fit:contain;" onerror="this.style.display='none'">
                     <div class="project-card-placeholder">Project 6</div>
                 </div>
                 <div class="project-card-info">
-                    <h3>Desktop 3-Axis CNC Router &amp; Milling Machine (Work in Progress)</h3>
-                    <span class="project-tag">Personal</span>
+                    <h3>Modular Packing Station Design</h3>
+                    <span class="project-tag">Internship</span>
                 </div>
             </div>
 
@@ -268,7 +266,51 @@
                 </div>
             </div>
 
-            <!-- 8 — 4-Axis SCARA Robot Arm (work in progress) -->
+            <!-- 8 — Custom Closed-Loop DC Servomechanism & Mechatronic Test Bench (work in progress) -->
+            <div
+                class="project-card"
+                id="project-24"
+                data-title="Custom Closed-Loop DC Servomechanism &amp; Mechatronic Test Bench (Work in Progress)"
+                data-tag="Personal"
+                data-img="assets/images/personal-servo-testbench-parts.png"
+                data-desc="Designing and building a closed-loop smart actuator test bench from discrete components to learn low-level mechatronics from first principles, including closed-loop proportional control, magnetic absolute encoding, motor driver commutation, and power distribution. Deliberately built before tackling multi-axis systems like the SCARA arm, to understand what's actually happening inside a hobby servo."
+                data-extra="<strong>Tools &amp; Software:</strong> Arduino IDE (C++), VS Code, digital multimeter, serial plotter/monitor<br><strong>Key Components:</strong> Arduino Uno (ATmega328P), AS5600 12-bit magnetic rotary encoder (I&sup2;C), brushed DC motor, H-bridge motor driver (L298N/TB6612FNG), 7.4V 2S LiPo battery, 5V buck regulator<br><strong>Status:</strong> Design &amp; component sourcing in progress"
+                data-details="<h4 class='acc-extra-h4'>System Architecture (the BASP Framework)</h4><p class='acc-extra-p'>The test bench is organized around four foundational pillars every mechatronic system shares: the <strong>brain</strong> (an Arduino Uno running custom C++ firmware to read encoder state, compute error, and generate directional PWM), the <strong>actuator</strong> (a brushed DC motor driven through an H-bridge that reverses direction via polarity flip and controls torque via PWM), the <strong>sensor</strong> (an AS5600 12-bit absolute encoder over I&sup2;C on A4/A5, 4096 counts per revolution / 0.088&deg; resolution), and <strong>power</strong> (a 2S LiPo powering the motor bus directly, stepped down to an isolated 5V logic rail for the microcontroller and encoder).</p><h4 class='acc-extra-h4'>Planned Closed-Loop Proportional Control Pipeline</h4><p class='acc-extra-p'>The firmware is designed to continuously poll the AS5600 for absolute shaft position, compute error against a target setpoint (Error = Target &minus; Current), and scale motor output proportionally (Vout = Kp &times; Error), applying full power at large displacement and settling gently as error approaches zero. A software deadband (planned &plusmn;5 counts) is intended to prevent steady-state oscillation (&quot;hunting&quot;), and PWM output will be clamped to a minimum threshold (estimated 40&ndash;255) to overcome motor brush stiction without stalling; the exact floor value will need to be tuned empirically once hardware is running.</p><h4 class='acc-extra-h4'>Power Budgeting</h4><p class='acc-extra-p'>Sizing the battery discharge rate (C-rating) and connector thermal limits against calculated peak motor stall current, and planning to isolate Arduino logic from inductive back-EMF spikes during H-bridge reversals, a known risk for I&sup2;C bus lockups on sensitive encoders like the AS5600. <em>Not shown on the wiring diagram: all three grounds (Arduino, L298N, and LiPo negative) still need to tie together into a common ground reference. It's left out of the diagram to keep it readable, but it's just as critical as the labeled connections.</em></p><h4 class='acc-extra-h4'>Anticipated Engineering Challenges</h4><ul class='acc-extra-list'><li><strong>I&sup2;C noise from motor switching:</strong> motor inductive noise is a known failure mode for I&sup2;C sensors sharing a board with an H-bridge; the plan is to add bypass capacitors across motor terminals and confirm SDA/SCL pull-up resistor values once assembled, adjusting based on observed bus stability.</li><li><strong>Deadband and stiction tuning:</strong> the PWM floor needed to overcome brush/gearbox friction will likely need empirical tuning once hardware is running, since it depends on the specific motor's real-world friction characteristics rather than a value that can be calculated in advance.</li></ul><h4 class='acc-extra-h4'>Reflection</h4><p class='acc-extra-p' style='margin-bottom:0;'>Building a discrete servomechanism from scratch is meant to build a real understanding of what happens inside integrated hobby servos and industrial actuators, by writing the low-level polling, H-bridge switching, and proportional control loop myself rather than treating a servo as a black box. This is meant to lay the groundwork before moving on to multi-axis systems like the SCARA arm.</p>"
+                data-gallery="assets/images/personal-servo-testbench-parts.png,assets/images/personal-servo-testbench-wiring-diagram.png,assets/images/personal-servo-testbench-basp-diagram.png"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/personal-servo-testbench-parts.png" alt="Custom Closed-Loop DC Servomechanism &amp; Mechatronic Test Bench (Work in Progress)" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 8</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>Custom Closed-Loop DC Servomechanism &amp; Mechatronic Test Bench (Work in Progress)</h3>
+                    <span class="project-tag">Personal</span>
+                </div>
+            </div>
+
+            <!-- 9 — Desktop 3-Axis CNC Router & Milling Machine (work in progress) -->
+            <div
+                class="project-card"
+                id="project-22"
+                data-title="Desktop 3-Axis CNC Router &amp; Milling Machine (Work in Progress)"
+                data-tag="Personal"
+                data-img="assets/images/personal-cnc-mill-cad.jpg"
+                data-desc="Designing and building a rigid 300×400 mm desktop CNC milling machine engineered for precision subtractive manufacturing across hardwoods, engineering plastics (acetal, acrylic), and soft non-ferrous metals (6061 aluminum), focused on machine structure design, linear motion architecture, and a planned GRBL control and CAM pipeline."
+                data-extra="<strong>Tools &amp; Software:</strong> SolidWorks (CAD), VS Code, multimeter, dial indicator (Fusion 360 CAM and Universal Gcode Sender/Candle planned for toolpath generation and G-code streaming)<br><strong>Motion &amp; Kinematics:</strong> NEMA17 stepper motors, T8 leadscrews with spring-loaded anti-backlash nuts, MGN12 supported linear profile rails (X, Y, Z)<br><strong>Electronics &amp; Control:</strong> Arduino Uno running GRBL firmware, CNC Shield V3 with A4988 stepper drivers, 500W DC spindle motor (ER11 collet), mechanical limit/homing switches<br><strong>Bill of Materials (31 line items):</strong> Electrical: 7 ($163.50); Mechanical/Structural: 12 ($448.50); 3D Printed: 12 ($23.50) — Total: ~$635<br><strong>Status:</strong> CAD design in progress; component sourcing underway"
+                data-details="<h4 class='acc-extra-h4'>Planned System Architecture &amp; Subtractive Workflow</h4><p class='acc-extra-p'>Once assembled, the mill is engineered to execute a 4-stage digital manufacturing pipeline: CAD modeling in SolidWorks, constrained by standard end-mill radii and stock dimensions; CAM toolpath generation (planned in Fusion 360) defining cutter geometry for facing, pocketing, adaptive clearing, and contouring; G-code generation calculating feed rate (F), spindle speed (S), stepdown, and stepover; and real-time execution on Arduino + GRBL, streaming G-code over serial into coordinated step/direction pulses with trapezoidal acceleration profiles.</p><h4 class='acc-extra-h4'>Linear Motion &amp; Mechanical Rigidity</h4><p class='acc-extra-p'>The mechanical architecture is built around MGN12 supported linear profile rails across all three axes rather than unsupported smooth rod, isolating the NEMA17 motor shafts and leadscrews from dynamic cutting loads by routing radial and overturning moment forces into the rigid aluminum extrusion chassis instead of through the drive components. Spring-loaded anti-backlash nuts on the T8 leadscrews are specified to eliminate axial play and hysteresis during high-frequency directional reversals, such as adaptive pocketing passes, once assembled.</p><h4 class='acc-extra-h4'>Power System Architecture &amp; Trade-offs</h4><p class='acc-extra-p'>The baseline design routes both the stepper drivers and the 500W DC spindle through a shared 24V/10A power rail to minimize initial hardware cost. At full load, the spindle alone draws approximately 20.8A (500W ÷ 24V) — meaningfully above the supply's 10A rating — so the design explicitly accounts for the risk of inrush or stall current sagging the rail and causing skipped steps under heavy cutting loads. The validation plan is to monitor rail stability with a multimeter during initial cutting trials, with a pre-planned schematic separation to a dedicated spindle supply if brownouts occur.</p><h4 class='acc-extra-h4'>Intended End-Use Applications</h4><ul class='acc-extra-list'><li><strong>Custom enclosures &amp; brackets</strong> — machining motor mounts, standoffs, and electronics faceplates in Delrin (acetal) and 6061 aluminum plate.</li><li><strong>PCB isolation routing</strong> — tracing isolation paths and drilling through-hole patterns on copper-clad FR1 boards using 30° V-bits.</li><li><strong>Precision woodworking</strong> — surfacing, pocketing, and engraving hardwood stock with multi-flute carbide end mills.</li></ul><h4 class='acc-extra-h4'>Anticipated Engineering Challenges</h4><ul class='acc-extra-list'><li><strong>Gantry deflection &amp; resonant chatter</strong> — tuning feeds, speeds, and depth of cut during aluminum passes to keep cutting forces below the frame's structural deflection threshold.</li><li><strong>Axis orthogonality &amp; tramming</strong> — squaring the X/Y axes to true 90° and tramming the spindle perpendicular to the wasteboard via dial indicator sweep, once assembled.</li><li><strong>Power stability validation</strong> — planned testing of stepper driver VREF limits and voltage ripple under simultaneous axis motion and spindle load, once the machine is powered on.</li></ul><h4 class='acc-extra-h4'>Reflection</h4><p class='acc-extra-p' style='margin-bottom:0;'>This project connects mechanical statics, machine dynamics, and digital manufacturing. Designing the platform from component-level constraints — selecting supported profile rails over unsupported rods to decouple cutting loads, and sizing the power bus with a calculated, pre-planned mitigation for a known current deficit — is building direct, defensible machine-design experience applicable to industrial CNC and mechatronic systems.</p>"
+                data-gallery="assets/images/personal-cnc-mill-cad.jpg,assets/images/personal-cnc-mill-render.jpg,assets/images/personal-cnc-mill-parts.jpg"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/personal-cnc-mill-cad.jpg" alt="Desktop 3-Axis CNC Router &amp; Milling Machine (Work in Progress)" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 9</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>Desktop 3-Axis CNC Router &amp; Milling Machine (Work in Progress)</h3>
+                    <span class="project-tag">Personal</span>
+                </div>
+            </div>
+
+            <!-- 10 — 4-Axis SCARA Robot Arm (work in progress) -->
             <div
                 class="project-card"
                 id="project-23"
@@ -282,53 +324,11 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-scara-arm-cad.jpg" alt="4-Axis SCARA Robotic Manipulator (Work in Progress)" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 8</div>
+                    <div class="project-card-placeholder">Project 10</div>
                 </div>
                 <div class="project-card-info">
                     <h3>4-Axis SCARA Robotic Manipulator (Work in Progress)</h3>
                     <span class="project-tag">Personal</span>
-                </div>
-            </div>
-
-            <!-- 9 — Packing Station Arm Joint Prototypes -->
-            <div
-                class="project-card"
-                id="project-15"
-                data-title="Packing Station Arm Joint Prototypes"
-                data-tag="Internship"
-                data-img="assets/images/proampac-packing-station-arms-exploded.jpg"
-                data-desc="Designed distinct prototype double-joint arms — sheet metal and machined — for the packing station's articulating mount, testing movement, joint rigidity, and deflection under load."
-                data-extra="<strong>Approach:</strong> Iterated joint geometries to keep costs down while maintaining operational optimization.<br><strong>Tools:</strong> SolidWorks<br><strong>Company:</strong> ProAmpac · Summer 2026"
-                data-gallery="assets/images/proampac-packing-station-arms-exploded.jpg,assets/images/proampac-packing-station-arms-assembled.jpg,assets/images/proampac-packing-station-arms-fea-1.jpg,assets/images/proampac-packing-station-arms-fea-2.jpg,assets/images/proampac-packing-station-arms-fea-3.jpg,assets/images/proampac-packing-station-arms-fea-4.jpg"
-            >
-                <div class="project-card-img">
-                    <img src="assets/images/proampac-packing-station-arms-exploded.jpg" alt="Packing Station Arm Joint Prototypes" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 9</div>
-                </div>
-                <div class="project-card-info">
-                    <h3>Packing Station Arm Joint Prototypes</h3>
-                    <span class="project-tag">Internship</span>
-                </div>
-            </div>
-
-            <!-- 10 — Modular Packing Station Design -->
-            <div
-                class="project-card"
-                id="project-7"
-                data-title="Modular Packing Station Design"
-                data-tag="Internship"
-                data-img="assets/images/proampac-packing-station-carousel.jpg"
-                data-desc="Designed and iterated multiple versions of a floating/adjustable packing station for e-commerce fulfillment lines, optimizing for stability, operator workflow, cost, and mobility."
-                data-extra="<strong>Approach:</strong> Explored three structural configurations — tube frame, sheet metal, and a rotating carousel — to balance manufacturability against ergonomics and cost.<br><strong>Tools:</strong> SolidWorks<br><strong>Company:</strong> ProAmpac · Summer 2026"
-                data-gallery="assets/images/proampac-packing-station.jpg,assets/images/proampac-packing-station-tube.jpg,assets/images/proampac-packing-station-sheetmetal.jpg,assets/images/proampac-packing-station-carousel.jpg"
-            >
-                <div class="project-card-img">
-                    <img src="assets/images/proampac-packing-station-carousel.jpg" alt="Modular Packing Station Design" style="object-fit:contain;" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 10</div>
-                </div>
-                <div class="project-card-info">
-                    <h3>Modular Packing Station Design</h3>
-                    <span class="project-tag">Internship</span>
                 </div>
             </div>
 
@@ -672,6 +672,7 @@
                     <div>
                         <h2 id="accTitle" style="font-family:var(--font-display); font-size:1.7rem; font-weight:700; margin-bottom:0.4rem;"></h2>
                         <span class="project-tag" id="accTag" style="margin-bottom:1rem; display:inline-block;"></span>
+                        <span class="confidential-badge" id="accConfidentialBadge" style="display:none; margin-bottom:1rem;"></span>
                         <p id="accDesc" style="color:var(--clr-text-mid); font-size:0.94rem; line-height:1.75; margin-bottom:1rem;"></p>
                         <div id="accExtra" style="font-size:0.84rem; color:var(--clr-text-light); line-height:1.9;"></div>
                     </div>
