@@ -246,7 +246,29 @@
                 </div>
             </div>
 
-            <!-- 7 — 4-Axis SCARA Robot Arm (work in progress) -->
+            <!-- 7 — CNC Mill Power Distribution Board -->
+            <div
+                class="project-card"
+                id="project-26"
+                data-title="CNC Mill Power Distribution Board: Dual-Rail PCB Design in KiCad"
+                data-tag="Personal"
+                data-img="assets/images/personal-cnc-power-board-3d-render.png"
+                data-desc="Designed a dual-rail power distribution PCB in KiCad to resolve a real power budget conflict on the desktop CNC mill build: splitting stepper driver and spindle power onto independently fused rails with current-appropriate trace widths. Fully validated in KiCad (ERC and DRC clean) and ready for fabrication, though not yet physically built."
+                data-extra="<strong>Tools &amp; Software:</strong> KiCad (schematic capture, PCB layout, 3D viewer)<br><strong>Board Specs:</strong> 60mm x 40mm two-layer PCB, terminal block connectors, 5A stepper rail and 25A spindle rail<br><strong>Status:</strong> Schematic and layout complete, ERC and DRC clean, fabrication-ready; not yet physically built"
+                data-details="<h4 class='acc-extra-h4'>The Problem</h4><p class='acc-extra-p'>While scoping the bill of materials for the desktop CNC mill build, a power budget conflict came up: the shared 24V/10A supply could not simultaneously drive the stepper motor drivers and the 500W spindle (about 20.8A draw) without risking voltage sag or overload. Rather than oversizing a single supply, this board splits the system into two independently protected rails.</p><h4 class='acc-extra-h4'>Design Process</h4><ul class='acc-extra-list'><li><strong>Schematic capture:</strong> two parallel rails (stepper/24V and spindle), each fused appropriately (5A and 25A) and tied to a common ground reference.</li><li><strong>Electrical Rules Check (ERC):</strong> ran clean before moving to layout, catching connectivity issues early.</li><li><strong>PCB layout:</strong> a 60mm x 40mm board with terminal block connectors sized for real wire gauge compatibility.</li><li><strong>Current-aware trace sizing:</strong> 1mm copper on the low-current stepper rail, 2.5mm on the high-current spindle rail and shared ground return, following standard 1oz copper current-carrying guidelines.</li><li><strong>Design Rules Check (DRC):</strong> passed for manufacturability, including board-edge clearance and trace-to-pad spacing.</li></ul><h4 class='acc-extra-h4'>Outcome</h4><p class='acc-extra-p' style='margin-bottom:0;'>A fully validated, fabrication-ready PCB design (Gerbers ready to generate) that resolves the mill's power budget constraint with proper current isolation and protection. The board has not been fabricated or populated yet; this project demonstrates schematic capture, PCB layout, and current-aware trace sizing end to end.</p>"
+                data-gallery="assets/images/personal-cnc-power-board-3d-render.png,assets/images/personal-cnc-power-board-schematic.png,assets/images/personal-cnc-power-board-layout.png"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/personal-cnc-power-board-3d-render.png" alt="CNC Mill Power Distribution Board: Dual-Rail PCB Design in KiCad" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 7</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>CNC Mill Power Distribution Board: Dual-Rail PCB Design in KiCad</h3>
+                    <span class="project-tag">Personal</span>
+                </div>
+            </div>
+
+            <!-- 8 — 4-Axis SCARA Robot Arm (work in progress) -->
             <div
                 class="project-card"
                 id="project-23"
@@ -260,7 +282,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-scara-arm-cad.jpg" alt="4-Axis SCARA Robotic Manipulator (Work in Progress)" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 7</div>
+                    <div class="project-card-placeholder">Project 8</div>
                 </div>
                 <div class="project-card-info">
                     <h3>4-Axis SCARA Robotic Manipulator (Work in Progress)</h3>
@@ -268,7 +290,7 @@
                 </div>
             </div>
 
-            <!-- 8 — Packing Station Arm Joint Prototypes -->
+            <!-- 9 — Packing Station Arm Joint Prototypes -->
             <div
                 class="project-card"
                 id="project-15"
@@ -281,7 +303,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-packing-station-arms-exploded.jpg" alt="Packing Station Arm Joint Prototypes" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 8</div>
+                    <div class="project-card-placeholder">Project 9</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Packing Station Arm Joint Prototypes</h3>
@@ -289,7 +311,7 @@
                 </div>
             </div>
 
-            <!-- 9 — Modular Packing Station Design -->
+            <!-- 10 — Modular Packing Station Design -->
             <div
                 class="project-card"
                 id="project-7"
@@ -302,7 +324,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-packing-station-carousel.jpg" alt="Modular Packing Station Design" style="object-fit:contain;" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 9</div>
+                    <div class="project-card-placeholder">Project 10</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Modular Packing Station Design</h3>
@@ -310,7 +332,7 @@
                 </div>
             </div>
 
-            <!-- 10 — Machine Safety Guard Design -->
+            <!-- 11 — Machine Safety Guard Design -->
             <div
                 class="project-card"
                 id="project-13"
@@ -322,7 +344,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-safety-guard.jpg" alt="Machine Safety Guard Design" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 10</div>
+                    <div class="project-card-placeholder">Project 11</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Machine Safety Guard Design</h3>
@@ -330,7 +352,7 @@
                 </div>
             </div>
 
-            <!-- 11 — Micro-Flute Nip Roller Redesign -->
+            <!-- 12 — Micro-Flute Nip Roller Redesign -->
             <div
                 class="project-card"
                 id="project-10"
@@ -342,7 +364,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-flute-roller-shaft.jpg" alt="Micro-Flute Nip Roller Redesign" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 11</div>
+                    <div class="project-card-placeholder">Project 12</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Micro-Flute Nip Roller Redesign</h3>
@@ -350,7 +372,7 @@
                 </div>
             </div>
 
-            <!-- 12 — Custom Encoder Test Fixture -->
+            <!-- 13 — Custom Encoder Test Fixture -->
             <div
                 class="project-card"
                 id="project-9"
@@ -363,7 +385,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-encoder-fixture.jpg" alt="Custom Encoder Test Fixture" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 12</div>
+                    <div class="project-card-placeholder">Project 13</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Custom Encoder Test Fixture</h3>
@@ -371,7 +393,7 @@
                 </div>
             </div>
 
-            <!-- 13 — Hand-Machined Hammer & Bar -->
+            <!-- 14 — Hand-Machined Hammer & Bar -->
             <div
                 class="project-card"
                 id="project-17"
@@ -384,7 +406,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/bench-hammer.jpg" alt="Hand-Machined Hammer & Bar" style="object-fit:contain;" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 13</div>
+                    <div class="project-card-placeholder">Project 14</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Hand-Machined Hammer & Bar</h3>
@@ -392,7 +414,7 @@
                 </div>
             </div>
 
-            <!-- 14 -->
+            <!-- 15 -->
             <div
                 class="project-card"
                 id="project-1"
@@ -404,7 +426,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/gearbox.png" alt="Mechanical Differential Assembly" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 14</div>
+                    <div class="project-card-placeholder">Project 15</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Mechanical Differential Assembly</h3>
@@ -412,7 +434,7 @@
                 </div>
             </div>
 
-            <!-- 15 — Precision Punch Mechanism Rebuild -->
+            <!-- 16 — Precision Punch Mechanism Rebuild -->
             <div
                 class="project-card"
                 id="project-11"
@@ -424,7 +446,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-punch-mechanism-packaging.png" alt="Precision Punch Mechanism Rebuild" style="object-fit:contain;" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 15</div>
+                    <div class="project-card-placeholder">Project 16</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Precision Punch Mechanism Rebuild</h3>
@@ -432,7 +454,7 @@
                 </div>
             </div>
 
-            <!-- 16 -->
+            <!-- 17 -->
             <div
                 class="project-card"
                 id="project-2"
@@ -444,7 +466,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/watch.png" alt="Garmin Smartwatch Housing & Strap" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 16</div>
+                    <div class="project-card-placeholder">Project 17</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Garmin Smartwatch Housing & Strap</h3>
@@ -452,7 +474,7 @@
                 </div>
             </div>
 
-            <!-- 17 — FM Radio -->
+            <!-- 18 — FM Radio -->
             <div
                 class="project-card"
                 id="project-5"
@@ -466,7 +488,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/DoneBoard.png" alt="FM-88K Auto-Scan Receiver" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 17</div>
+                    <div class="project-card-placeholder">Project 18</div>
                 </div>
                 <div class="project-card-info">
                     <h3>FM-88K Auto-Scan Receiver Assembly & Analysis</h3>
@@ -474,7 +496,7 @@
                 </div>
             </div>
 
-            <!-- 18 -->
+            <!-- 19 -->
             <div
                 class="project-card"
                 id="project-3"
@@ -486,7 +508,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/crank.png" alt="Single-Cylinder Piston Engine Assembly" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 18</div>
+                    <div class="project-card-placeholder">Project 19</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Single-Cylinder Piston Engine Assembly</h3>
@@ -494,7 +516,7 @@
                 </div>
             </div>
 
-            <!-- 19 — Production Floor Layout Drafting -->
+            <!-- 20 — Production Floor Layout Drafting -->
             <div
                 class="project-card"
                 id="project-12"
@@ -506,7 +528,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-floor-layout.png" alt="Production Floor Layout Drafting" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 19</div>
+                    <div class="project-card-placeholder">Project 20</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Production Floor Layout Drafting</h3>
@@ -514,7 +536,7 @@
                 </div>
             </div>
 
-            <!-- 20 — Custom Ratchet Wrench End Cap -->
+            <!-- 21 — Custom Ratchet Wrench End Cap -->
             <div
                 class="project-card"
                 id="project-14"
@@ -527,7 +549,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-ratchet-endcap.jpg" alt="Custom Ratchet Wrench End Cap" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 20</div>
+                    <div class="project-card-placeholder">Project 21</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Custom Ratchet Wrench End Cap</h3>
@@ -535,7 +557,7 @@
                 </div>
             </div>
 
-            <!-- 21 — Custom PC Build -->
+            <!-- 22 — Custom PC Build -->
             <div
                 class="project-card"
                 id="project-18"
@@ -548,7 +570,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-pcbuild-final.jpg" alt="Custom Gaming PC Build" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 21</div>
+                    <div class="project-card-placeholder">Project 22</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Custom Gaming PC Build</h3>
@@ -556,7 +578,7 @@
                 </div>
             </div>
 
-            <!-- 22 — PS4 Controller Mod -->
+            <!-- 23 — PS4 Controller Mod -->
             <div
                 class="project-card"
                 id="project-19"
@@ -568,7 +590,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-ps4-controller-mod.jpg" alt="PS4 Controller Refurbishment & USB-C Mod" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 22</div>
+                    <div class="project-card-placeholder">Project 23</div>
                 </div>
                 <div class="project-card-info">
                     <h3>PS4 Controller Refurbishment & USB-C Mod</h3>
@@ -576,7 +598,7 @@
                 </div>
             </div>
 
-            <!-- 23 — Mouse Mod -->
+            <!-- 24 — Mouse Mod -->
             <div
                 class="project-card"
                 id="project-20"
@@ -588,7 +610,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-mouse-mod.jpg" alt="Custom Gaming Mouse Build" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 23</div>
+                    <div class="project-card-placeholder">Project 24</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Custom Gaming Mouse Build</h3>
@@ -596,7 +618,7 @@
                 </div>
             </div>
 
-            <!-- 24 — Nerf Mods -->
+            <!-- 25 — Nerf Mods -->
             <div
                 class="project-card"
                 id="project-21"
@@ -609,7 +631,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-nerf-mods.jpg" alt="Nerf Blaster Modifications" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 24</div>
+                    <div class="project-card-placeholder">Project 25</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Nerf Blaster Modifications</h3>
@@ -617,7 +639,7 @@
                 </div>
             </div>
 
-            <!-- 25 — V6 Engine (work in progress, kept last) -->
+            <!-- 26 — V6 Engine (work in progress, kept last) -->
             <div
                 class="project-card"
                 id="project-6"
@@ -630,7 +652,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/Vengine.png" alt="V6 Engine CAD" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 25</div>
+                    <div class="project-card-placeholder">Project 26</div>
                 </div>
                 <div class="project-card-info">
                     <h3>V6 Engine CAD Development (Work in Progress)</h3>
