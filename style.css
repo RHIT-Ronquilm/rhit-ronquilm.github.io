@@ -852,6 +852,71 @@ input, textarea, button { font-family: inherit; }
     margin-bottom: 0.4rem;
 }
 
+/* Captioned images inside a rich data-details write-up */
+.acc-figure {
+    margin: 0 0 1.5rem;
+}
+.acc-figure-img-wrap {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--clr-bg-alt);
+    box-shadow: var(--shadow-sm);
+}
+.acc-figure-img-wrap img {
+    display: block;
+    width: 100%;
+}
+.acc-figure-placeholder {
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--clr-text-light);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background: linear-gradient(135deg, var(--clr-bg-alt) 0%, #ddd9d2 100%);
+}
+.acc-figcaption {
+    font-size: 0.8rem;
+    color: var(--clr-text-light);
+    line-height: 1.6;
+    margin-top: 0.6rem;
+}
+
+/* Quantitative data tables inside a rich data-details write-up */
+.acc-table-wrap {
+    overflow-x: auto;
+    margin: 0 0 1.4rem;
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius);
+}
+.acc-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    white-space: nowrap;
+}
+.acc-table th,
+.acc-table td {
+    padding: 0.6rem 0.9rem;
+    text-align: left;
+    border-bottom: 1px solid var(--clr-border);
+}
+.acc-table thead th {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--clr-text);
+    background: var(--clr-bg-alt);
+}
+.acc-table tbody tr:last-child td {
+    border-bottom: none;
+}
+.acc-table tbody tr:nth-child(even) {
+    background: var(--clr-bg-alt);
+}
+
 .project-card--coming-soon {
     cursor: default;
     opacity: 0.5;

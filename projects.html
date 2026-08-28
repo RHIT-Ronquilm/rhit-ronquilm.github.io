@@ -332,7 +332,29 @@
                 </div>
             </div>
 
-            <!-- 11 — Machine Safety Guard Design -->
+            <!-- 11 — Aerodynamic CFD Validation: NACA Airfoil Meshing Study -->
+            <div
+                class="project-card"
+                id="project-27"
+                data-title="Aerodynamic CFD Validation: From Unstructured O-Meshes to Multi-Block Structured C-Grids"
+                data-tag="Personal"
+                data-img="assets/images/personal-cfd-leading-edge-phase1.jpg"
+                data-desc="Validated a 2D external aerodynamics CFD workflow in ANSYS Fluent against published wind-tunnel data across two progressive phases: an unstructured O-mesh baseline on a symmetric NACA 0012 airfoil that stood up the toolchain and diagnosed a mesh-driven drag error, followed by a multi-block structured C-grid rebuild on a cambered NACA 2412 that resolved the viscous sublayer to Y+ &asymp; 1 without degenerate cells."
+                data-extra="<strong>Tools &amp; Environment:</strong> ANSYS Fluent 2026 R1 (Student), DesignModeler, Meshing<br><strong>Focus Areas:</strong> Compressible 2D Aerodynamics, Boundary Layer Discretization, Structured vs. Unstructured Meshing, Y+ Wall Modeling<br><strong>Experimental Baselines:</strong> NASA Turbulence Modeling Resource (Ladson NACA 0012); Abbott &amp; von Doenhoff, <em>Theory of Wing Sections</em> (NACA 2412)<br><strong>Status:</strong> Two-phase validation study complete"
+                data-details="<h4 class='acc-extra-h4'>Project Overview</h4><p class='acc-extra-p'>This project validates a 2D external aerodynamics simulation workflow in ANSYS Fluent against published experimental wind-tunnel datasets, carried out in two progressive phases rather than as a single automated run: a preliminary unstructured O-mesh baseline used to stand up the end-to-end toolchain (coordinate ingestion, domain construction, solver setup) and diagnose the physical and geometric limits of automated inflation meshing, followed by a multi-block structured C-mesh rebuild engineered to hit a strict boundary-layer Y+ &asymp; 1 target without degenerate cells.</p><h4 class='acc-extra-h4'>Phase 1: Software Onboarding &amp; Failure Diagnosis (NACA 0012)</h4><p class='acc-extra-p'><strong>Setup &amp; execution:</strong> imported raw NASA/Ladson coordinate data, filtered down to 300 points, and built a 10 m radius circular O-domain. Generated an unstructured triangular mesh with 5 smooth-transition inflation layers and ran a steady Spalart-Allmaras compressible flow model at Re = 6.0 &times; 10^6 and Mach 0.15.</p><p class='acc-extra-p'><strong>Numerical results:</strong> lift converged to CL &asymp; 0.000 at &alpha; = 0&deg;, confirming geometric symmetry and solver convergence down to 10^-14 residuals &mdash; but computed drag came out to CD &asymp; 0.0330, roughly 4&times; higher than the experimental benchmark (CD &asymp; 0.0076&ndash;0.0080).</p><p class='acc-extra-p'><strong>Root-cause analysis:</strong> post-processing the wall Y+ profile showed values ranging from 159.9 to 1005.2 &mdash; nowhere near the viscous sublayer &mdash; forcing the solver onto empirical wall functions instead of resolving the boundary layer directly. Refining the inflation to target Y+ &asymp; 1 (y&#8321; = 5 &times; 10^-6 m) either crashed the mesher or produced a cell with an aspect ratio of 1.04 &times; 10^17 and orthogonal quality of 0.0 at the sharp trailing-edge cusp.</p><ul class='acc-extra-list'><li><strong>Engineering takeaway:</strong> automated triangular inflation meshing has a geometric ceiling on sharp trailing-edge profiles &mdash; high-accuracy drag prediction needs a structured, multi-block quadrilateral grid instead.</li></ul><figure class='acc-figure'><div class='acc-figure-img-wrap'><img src='assets/images/personal-cfd-mesh-comparison.jpg' alt='Mesh comparison: unstructured degenerate triangular mesh close-up vs. mapped quadrilateral C-grid domain' loading='lazy' onerror='this.style.display=&quot;none&quot;;this.nextElementSibling.style.display=&quot;flex&quot;;'><div class='acc-figure-placeholder' style='display:none;'>Image Pending</div></div><figcaption class='acc-figcaption'>Mesh comparison &mdash; left: the unstructured mesh's automated inflation degenerates into a near-zero-quality sliver triangle at the sharp trailing-edge cusp (aspect ratio &asymp; 1.04 &times; 10^17). Right: the mapped quadrilateral C-grid domain (shown zoomed out for now; a matching trailing-edge close-up is pending) holds clean, structured cells down to y&#8321; = 6.3 &times; 10^-6 m at the wall.</figcaption></figure><h4 class='acc-extra-h4'>Phase 2: Methodology Rebuild &mdash; Structured C-Grid Architecture (NACA 2412)</h4><p class='acc-extra-p'>To master structured domain splitting and mapped quad meshing, the workflow was rebuilt on a cambered NACA 2412 profile validated against Abbott &amp; von Doenhoff wind-tunnel data (Re = 3.1 &times; 10^6, U&#8734; = 45.6 m/s).</p><p class='acc-extra-p'><strong>Structured domain &amp; mapped mesh:</strong> built a C-shaped domain (7.5 m radius forward semicircle, 15 m rectangular downstream extension), then partitioned the fluid domain into 6 structured quadrilateral faces using internal construction lines at the trailing edge (x = 1.0 m) and near the leading edge (x = 0.08 m). Division-based edge sizings (up to 250 divisions, 50,000 bias factor) with &quot;Hard&quot; behavior forced exact node matching across opposing block boundaries. Initial wall spacing was set to y&#8321; = 6.3 &times; 10^-6 m, below the theoretical Y+ = 1 limit of 8.0 &times; 10^-6 m, eliminating degenerate cells entirely.</p><ul class='acc-extra-list'><li><strong>Mapped face failures:</strong> diagnosed and corrected node-count imbalances across internal interface edges and manually defined four-corner boundaries (Specified Sides).</li><li><strong>Defeaturing limits:</strong> adjusted geometry defeaturing tolerances to stop ANSYS from automatically collapsing the small leading-edge radius curves.</li><li><strong>Angle-of-attack transformation:</strong> rather than rotating the CAD domain, non-zero incidence (&alpha; = 8&deg;) was solved by transforming inlet velocity vectors (u_x = 45.16 m/s, u_y = 6.35 m/s) and projecting custom lift and drag force report vectors trigonometrically.</li></ul><figure class='acc-figure'><div class='acc-figure-img-wrap'><img src='assets/images/personal-cfd-pressure-velocity-contours.jpg' alt='Surface pressure coefficient and velocity contour fields around the NACA 2412 airfoil at 8 degrees angle of attack' loading='lazy' onerror='this.style.display=&quot;none&quot;;this.nextElementSibling.style.display=&quot;flex&quot;;'><div class='acc-figure-placeholder' style='display:none;'>Image Pending</div></div><figcaption class='acc-figcaption'>Surface pressure coefficient (Cp) and velocity contour fields on the converged NACA 2412 solution (&alpha; = 8&deg;, Re = 3.1 &times; 10^6), showing the suction-side low-pressure/high-velocity region consistent with the predicted CL &asymp; 1.0.</figcaption></figure><figure class='acc-figure'><div class='acc-figure-img-wrap'><img src='assets/images/personal-cfd-yplus-boundary-layer.jpg' alt='Wall Y+ versus chord position boundary layer plot for the structured C-grid solution' loading='lazy' onerror='this.style.display=&quot;none&quot;;this.nextElementSibling.style.display=&quot;flex&quot;;'><div class='acc-figure-placeholder' style='display:none;'>Image Pending</div></div><figcaption class='acc-figcaption'>Wall Y+ vs. chord position for the structured C-grid, holding between 0.007 and 1.041 across the full chord &mdash; a direct, order-of-magnitude improvement over Phase 1's 159.9&ndash;1005.2 range and confirmation the viscous sublayer is fully resolved.</figcaption></figure><h4 class='acc-extra-h4'>Results Comparison</h4><p class='acc-extra-p'>Quantitative validation against both experimental datasets, before and after the structured-mesh rebuild:</p><div class='acc-table-wrap'><table class='acc-table'><thead><tr><th>Parameter / Metric</th><th>Phase 1: Unstructured O-Grid (NACA 0012)</th><th>Phase 2: Structured C-Grid (NACA 2412)</th><th>Experimental Reference</th></tr></thead><tbody><tr><td>Angle of Attack (&alpha;)</td><td>0&deg;</td><td>8&deg;</td><td>Matched &alpha;</td></tr><tr><td>Reynolds Number (Re)</td><td>6.0 &times; 10^6</td><td>3.1 &times; 10^6</td><td>Matched Re</td></tr><tr><td>Turbulence Model</td><td>Spalart-Allmaras (1-Eq)</td><td>k-&omega; SST (2-Eq)</td><td>Wind Tunnel Data</td></tr><tr><td>Near-Wall Y+</td><td>159.9&ndash;1005.2 (Y+ &gg; 1)</td><td>0.007&ndash;1.041 (Fully Resolved)</td><td>Y+ &le; 1.0</td></tr><tr><td>Computed Lift (CL)</td><td>0.000</td><td>1.0024</td><td>&asymp; 1.05 (Abbott)</td></tr><tr><td>Lift Error</td><td>0.0% (Symmetric Baseline)</td><td>-4.5%</td><td>Reference</td></tr><tr><td>Computed Drag (CD)</td><td>0.0330</td><td>0.0218</td><td>&asymp; 0.011&ndash;0.012</td></tr><tr><td>Drag Relative Error</td><td>+312% to +334%</td><td>+80% to +95%</td><td>Reference</td></tr></tbody></table></div><h4 class='acc-extra-h4'>Key Technical Competencies Demonstrated</h4><ul class='acc-extra-list'><li><strong>Discretization physics:</strong> connected high near-wall Y+ metrics directly to skin-friction overprediction rather than misdiagnosing it as solver error.</li><li><strong>Mesh diagnostics:</strong> audited orthogonal quality and aspect ratio distributions to differentiate numerical instability from geometric singularities.</li><li><strong>Structured grid generation:</strong> built multi-block mapped C-grid domains, managing node-matching constraints and boundary-layer growth biasing.</li><li><strong>Vector mechanics:</strong> derived and applied coordinate transformations for inflow velocity and force-coefficient projections at arbitrary angles of attack.</li></ul><h4 class='acc-extra-h4'>References &amp; Attributions</h4><p class='acc-extra-p' style='margin-bottom:0;'><strong>Experimental benchmarks:</strong> NASA Langley Research Center Turbulence Modeling Resource (Ladson NACA 0012 dataset); Abbott, I. H., &amp; von Doenhoff, A. E., <em>Theory of Wing Sections</em> (NACA 2412 experimental data). <strong>Methodology references:</strong> adapted multi-block C-mesh topology principles from community verification literature (C. Thomas, ANSYS Fluent C-mesh workflow), with independent adjustments for geometric defeaturing tolerances and boundary condition transformations.</p>"
+                data-gallery="assets/images/personal-cfd-leading-edge-phase1.jpg,assets/images/personal-cfd-domain-geometry.jpg,assets/images/personal-cfd-o-mesh-domain.jpg,assets/images/personal-cfd-mesh-comparison.jpg,assets/images/personal-cfd-phase1-pressure-detail.jpg,assets/images/personal-cfd-phase1-velocity-detail.jpg,assets/images/personal-cfd-pressure-velocity-contours.jpg,assets/images/personal-cfd-velocity-vectors.jpg,assets/images/personal-cfd-leading-edge-phase2.jpg,assets/images/personal-cfd-yplus-boundary-layer.jpg,assets/images/personal-cfd-residual-convergence.jpg"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/personal-cfd-leading-edge-phase1.jpg" alt="Aerodynamic CFD Validation: From Unstructured O-Meshes to Multi-Block Structured C-Grids" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 11</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>Aerodynamic CFD Validation: From Unstructured O-Meshes to Multi-Block Structured C-Grids</h3>
+                    <span class="project-tag">Personal</span>
+                </div>
+            </div>
+
+            <!-- 12 — Machine Safety Guard Design -->
             <div
                 class="project-card"
                 id="project-13"
@@ -344,7 +366,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-safety-guard.jpg" alt="Machine Safety Guard Design" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 11</div>
+                    <div class="project-card-placeholder">Project 12</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Machine Safety Guard Design</h3>
@@ -352,7 +374,7 @@
                 </div>
             </div>
 
-            <!-- 12 — Micro-Flute Nip Roller Redesign -->
+            <!-- 13 — Micro-Flute Nip Roller Redesign -->
             <div
                 class="project-card"
                 id="project-10"
@@ -364,7 +386,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-flute-roller-shaft.jpg" alt="Micro-Flute Nip Roller Redesign" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 12</div>
+                    <div class="project-card-placeholder">Project 13</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Micro-Flute Nip Roller Redesign</h3>
@@ -372,7 +394,7 @@
                 </div>
             </div>
 
-            <!-- 13 — Custom Encoder Test Fixture -->
+            <!-- 14 — Custom Encoder Test Fixture -->
             <div
                 class="project-card"
                 id="project-9"
@@ -385,7 +407,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-encoder-fixture.jpg" alt="Custom Encoder Test Fixture" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 13</div>
+                    <div class="project-card-placeholder">Project 14</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Custom Encoder Test Fixture</h3>
@@ -393,7 +415,7 @@
                 </div>
             </div>
 
-            <!-- 14 — Hand-Machined Hammer & Bar -->
+            <!-- 15 — Hand-Machined Hammer & Bar -->
             <div
                 class="project-card"
                 id="project-17"
@@ -406,7 +428,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/bench-hammer.jpg" alt="Hand-Machined Hammer & Bar" style="object-fit:contain;" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 14</div>
+                    <div class="project-card-placeholder">Project 15</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Hand-Machined Hammer & Bar</h3>
@@ -414,7 +436,7 @@
                 </div>
             </div>
 
-            <!-- 15 -->
+            <!-- 16 -->
             <div
                 class="project-card"
                 id="project-1"
@@ -426,7 +448,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/gearbox.png" alt="Mechanical Differential Assembly" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 15</div>
+                    <div class="project-card-placeholder">Project 16</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Mechanical Differential Assembly</h3>
@@ -434,7 +456,7 @@
                 </div>
             </div>
 
-            <!-- 16 — Precision Punch Mechanism Rebuild -->
+            <!-- 17 — Precision Punch Mechanism Rebuild -->
             <div
                 class="project-card"
                 id="project-11"
@@ -446,7 +468,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-punch-mechanism-packaging.png" alt="Precision Punch Mechanism Rebuild" style="object-fit:contain;" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 16</div>
+                    <div class="project-card-placeholder">Project 17</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Precision Punch Mechanism Rebuild</h3>
@@ -454,7 +476,7 @@
                 </div>
             </div>
 
-            <!-- 17 -->
+            <!-- 18 -->
             <div
                 class="project-card"
                 id="project-2"
@@ -466,7 +488,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/watch.png" alt="Garmin Smartwatch Housing & Strap" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 17</div>
+                    <div class="project-card-placeholder">Project 18</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Garmin Smartwatch Housing & Strap</h3>
@@ -474,7 +496,7 @@
                 </div>
             </div>
 
-            <!-- 18 — FM Radio -->
+            <!-- 19 — FM Radio -->
             <div
                 class="project-card"
                 id="project-5"
@@ -488,7 +510,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/DoneBoard.png" alt="FM-88K Auto-Scan Receiver" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 18</div>
+                    <div class="project-card-placeholder">Project 19</div>
                 </div>
                 <div class="project-card-info">
                     <h3>FM-88K Auto-Scan Receiver Assembly & Analysis</h3>
@@ -496,7 +518,7 @@
                 </div>
             </div>
 
-            <!-- 19 -->
+            <!-- 20 -->
             <div
                 class="project-card"
                 id="project-3"
@@ -508,7 +530,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/crank.png" alt="Single-Cylinder Piston Engine Assembly" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 19</div>
+                    <div class="project-card-placeholder">Project 20</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Single-Cylinder Piston Engine Assembly</h3>
@@ -516,7 +538,7 @@
                 </div>
             </div>
 
-            <!-- 20 — Production Floor Layout Drafting -->
+            <!-- 21 — Production Floor Layout Drafting -->
             <div
                 class="project-card"
                 id="project-12"
@@ -528,7 +550,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-floor-layout.png" alt="Production Floor Layout Drafting" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 20</div>
+                    <div class="project-card-placeholder">Project 21</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Production Floor Layout Drafting</h3>
@@ -536,7 +558,7 @@
                 </div>
             </div>
 
-            <!-- 21 — Custom Ratchet Wrench End Cap -->
+            <!-- 22 — Custom Ratchet Wrench End Cap -->
             <div
                 class="project-card"
                 id="project-14"
@@ -549,7 +571,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-ratchet-endcap.jpg" alt="Custom Ratchet Wrench End Cap" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 21</div>
+                    <div class="project-card-placeholder">Project 22</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Custom Ratchet Wrench End Cap</h3>
@@ -557,7 +579,7 @@
                 </div>
             </div>
 
-            <!-- 22 — Custom PC Build -->
+            <!-- 23 — Custom PC Build -->
             <div
                 class="project-card"
                 id="project-18"
@@ -570,7 +592,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-pcbuild-final.jpg" alt="Custom Gaming PC Build" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 22</div>
+                    <div class="project-card-placeholder">Project 23</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Custom Gaming PC Build</h3>
@@ -578,7 +600,7 @@
                 </div>
             </div>
 
-            <!-- 23 — PS4 Controller Mod -->
+            <!-- 24 — PS4 Controller Mod -->
             <div
                 class="project-card"
                 id="project-19"
@@ -590,7 +612,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-ps4-controller-mod.jpg" alt="PS4 Controller Refurbishment & USB-C Mod" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 23</div>
+                    <div class="project-card-placeholder">Project 24</div>
                 </div>
                 <div class="project-card-info">
                     <h3>PS4 Controller Refurbishment & USB-C Mod</h3>
@@ -598,7 +620,7 @@
                 </div>
             </div>
 
-            <!-- 24 — Mouse Mod -->
+            <!-- 25 — Mouse Mod -->
             <div
                 class="project-card"
                 id="project-20"
@@ -610,7 +632,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-mouse-mod.jpg" alt="Custom Gaming Mouse Build" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 24</div>
+                    <div class="project-card-placeholder">Project 25</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Custom Gaming Mouse Build</h3>
@@ -618,7 +640,7 @@
                 </div>
             </div>
 
-            <!-- 25 — Nerf Mods -->
+            <!-- 26 — Nerf Mods -->
             <div
                 class="project-card"
                 id="project-21"
@@ -631,7 +653,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-nerf-mods.jpg" alt="Nerf Blaster Modifications" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 25</div>
+                    <div class="project-card-placeholder">Project 26</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Nerf Blaster Modifications</h3>
@@ -639,7 +661,7 @@
                 </div>
             </div>
 
-            <!-- 26 — V6 Engine (work in progress, kept last) -->
+            <!-- 27 — V6 Engine (work in progress, kept last) -->
             <div
                 class="project-card"
                 id="project-6"
@@ -652,7 +674,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/Vengine.png" alt="V6 Engine CAD" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 26</div>
+                    <div class="project-card-placeholder">Project 27</div>
                 </div>
                 <div class="project-card-info">
                     <h3>V6 Engine CAD Development (Work in Progress)</h3>
