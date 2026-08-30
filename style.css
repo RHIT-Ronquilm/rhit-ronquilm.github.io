@@ -853,8 +853,36 @@ input, textarea, button { font-family: inherit; }
 }
 
 /* Captioned images inside a rich data-details write-up */
+.acc-figure-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin: 0 0 0.3rem;
+}
+.acc-figure-row .acc-figure {
+    flex: 1 1 260px;
+    min-width: 0;
+}
 .acc-figure {
     margin: 0 0 1.5rem;
+}
+
+/* Heading + paragraph beside a single figure, each taking half the row */
+.acc-text-figure-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin: 0 0 1.5rem;
+}
+.acc-text-figure-row > .acc-text-figure-text,
+.acc-text-figure-row > .acc-figure {
+    flex: 1 1 260px;
+    min-width: 0;
+    margin: 0;
+}
+.acc-text-figure-row > .acc-text-figure-text > h4.acc-extra-h4:first-child {
+    margin-top: 0;
 }
 .acc-figure-img-wrap {
     position: relative;
@@ -866,6 +894,7 @@ input, textarea, button { font-family: inherit; }
 .acc-figure-img-wrap img {
     display: block;
     width: 100%;
+    cursor: zoom-in;
 }
 .acc-figure-placeholder {
     align-items: center;

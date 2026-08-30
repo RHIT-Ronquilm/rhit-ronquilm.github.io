@@ -117,7 +117,29 @@
                 </div>
             </div>
 
-            <!-- 1 — Landing Gear Link -->
+            <!-- 1 — Aerodynamic CFD Validation: NACA Airfoil Meshing Study -->
+            <div
+                class="project-card"
+                id="project-27"
+                data-title="Aerodynamic CFD Validation: From Unstructured O-Meshes to Multi-Block Structured C-Meshes"
+                data-tag="Personal"
+                data-img="assets/images/personal-cfd-leading-edge-phase1.jpg"
+                data-desc="Validated a 2D external aerodynamics CFD workflow in ANSYS Fluent against published wind-tunnel data across two progressive phases: an unstructured O-mesh baseline on a symmetric NACA 0012 airfoil that stood up the toolchain and diagnosed a mesh-driven drag error, followed by a multi-block structured C-mesh rebuild on a cambered NACA 2412 that resolved the viscous sublayer to Y+ &asymp; 1 without degenerate cells."
+                data-extra="<strong>Tools &amp; Environment:</strong> ANSYS Fluent 2026 R1 (Student), DesignModeler, Meshing<br><strong>Focus Areas:</strong> Compressible 2D Aerodynamics, Boundary Layer Discretization, Structured vs. Unstructured Meshing, Y+ Wall Modeling<br><strong>Experimental Baselines:</strong> NASA Turbulence Modeling Resource (Ladson NACA 0012); Abbott &amp; von Doenhoff, <em>Theory of Wing Sections</em> (NACA 2412)<br><strong>Status:</strong> Two-phase validation study complete"
+                data-details="<div class='acc-text-figure-row'><div class='acc-text-figure-text'><h4 class='acc-extra-h4'>Project Overview</h4><p class='acc-extra-p'>This project validates a 2D external aerodynamics simulation workflow in ANSYS Fluent against published experimental wind-tunnel datasets, carried out in two progressive phases rather than as a single automated run: a preliminary unstructured O-mesh baseline used to stand up the end-to-end toolchain (coordinate ingestion, domain construction, solver setup) and diagnose the physical and geometric limits of automated inflation meshing, followed by a multi-block structured C-mesh rebuild engineered to hit a strict boundary-layer Y+ &asymp; 1 target without degenerate cells.</p><h4 class='acc-extra-h4'>Phase 1: Software Onboarding &amp; Failure Diagnosis (NACA 0012)</h4><p class='acc-extra-p'><strong>Setup &amp; execution:</strong> imported raw NASA/Ladson coordinate data, filtered down to 300 points, and built a 10 m radius circular O-domain. Generated an unstructured triangular mesh with 5 smooth-transition inflation layers and ran a steady Spalart-Allmaras compressible flow model at Re = 6.0 &times; 10^6 and Mach 0.15.</p><h4 class='acc-extra-h4'>Domain &amp; Geometry</h4><p class='acc-extra-p'>The NACA 0012 profile was rebuilt in DesignModeler from the filtered 300-point NASA/Ladson coordinate set, closed into a single spline curve, and centered in a 10 m radius circular fluid domain.</p></div><figure class='acc-figure'><div class='acc-figure-img-wrap'><img src='assets/images/personal-cfd-domain-geometry.jpg' alt='DesignModeler airfoil curve and O-domain construction' loading='lazy' onclick='openLightbox(this.src)' onerror='this.style.display=&quot;none&quot;;this.nextElementSibling.style.display=&quot;flex&quot;;'><div class='acc-figure-placeholder' style='display:none;'>Image Pending</div></div><figcaption class='acc-figcaption'>Airfoil curve and O-domain construction in DesignModeler &mdash; the 300-point NASA/Ladson NACA 0012 coordinate set closed into a single spline and centered in a 10 m radius circular fluid domain.</figcaption></figure></div><h4 class='acc-extra-h4'>Unstructured O-Mesh (Phase 1)</h4><p class='acc-extra-p'>The background O-domain meshed cleanly into a coarse, low-count triangular grid, but the automated inflation layer at the airfoil surface told a different story at the sharp trailing-edge cusp.</p><div class='acc-figure-row'><figure class='acc-figure'><div class='acc-figure-img-wrap'><img src='assets/images/personal-cfd-o-mesh-domain.jpg' alt='Full unstructured O-mesh domain overview' loading='lazy' onclick='openLightbox(this.src)' onerror='this.style.display=&quot;none&quot;;this.nextElementSibling.style.display=&quot;flex&quot;;'><div class='acc-figure-placeholder' style='display:none;'>Image Pending</div></div><figcaption class='acc-figcaption'>Full O-mesh domain &mdash; a smooth, low-count triangular background mesh radiating out to the 10 m domain boundary.</figcaption></figure><figure class='acc-figure'><div class='acc-figure-img-wrap'><img src='assets/images/personal-cfd-unstructured-mesh-detail.jpg' alt='Zoomed trailing-edge unstructured mesh detail showing a degenerate sliver triangle' loading='lazy' onclick='openLightbox(this.src)' onerror='this.style.display=&quot;none&quot;;this.nextElementSibling.style.display=&quot;flex&quot;;'><div class='acc-figure-placeholder' style='display:none;'>Image Pending</div></div><figcaption class='acc-figcaption'>Zoomed trailing-edge detail &mdash; automated inflation degenerates into a near-zero-quality sliver triangle at the sharp cusp (aspect ratio &asymp; 1.04 &times; 10^17), the root cause of the Quad Mesher failure warning.</figcaption></figure></div><p class='acc-extra-p'><strong>Numerical results:</strong> lift converged to CL &asymp; 0.000 at &alpha; = 0&deg;, confirming geometric symmetry and solver convergence down to 10^-14 residuals &mdash; but computed drag came out to CD &asymp; 0.0330, roughly 4&times; higher than the experimental benchmark (CD &asymp; 0.0076&ndash;0.0080).</p><h4 class='acc-extra-h4'>0&deg; Flow Field Results (NACA 0012)</h4><p class='acc-extra-p'>Converged Spalart-Allmaras solution fields at &alpha; = 0&deg;, symmetric top-to-bottom as expected for an uncambered profile at zero incidence &mdash; but with the boundary layer under-resolved due to the Y+ issue diagnosed below.</p><div class='acc-figure-row'><figure class='acc-figure'><div class='acc-figure-img-wrap'><img src='assets/images/personal-cfd-phase1-pressure-detail.jpg' alt='Static pressure contour at 0 degrees angle of attack, symmetric top to bottom' loading='lazy' onclick='openLightbox(this.src)' onerror='this.style.display=&quot;none&quot;;this.nextElementSibling.style.display=&quot;flex&quot;;'><div class='acc-figure-placeholder' style='display:none;'>Image Pending</div></div><figcaption class='acc-figcaption'>Static pressure contour &mdash; symmetric stagnation/suction pattern consistent with zero incidence.</figcaption></figure><figure class='acc-figure'><div class='acc-figure-img-wrap'><img src='assets/images/personal-cfd-phase1-velocity-detail.jpg' alt='Velocity magnitude contour at 0 degrees angle of attack, symmetric top to bottom' loading='lazy' onclick='openLightbox(this.src)' onerror='this.style.display=&quot;none&quot;;this.nextElementSibling.style.display=&quot;flex&quot;;'><div class='acc-figure-placeholder' style='display:none;'>Image Pending</div></div><figcaption class='acc-figcaption'>Velocity magnitude contour &mdash; symmetric acceleration around the thickness, with a wake forming aft of the trailing edge.</figcaption></figure><figure class='acc-figure'><div class='acc-figure-img-wrap'><img src='assets/images/personal-cfd-leading-edge-phase1.jpg' alt='Leading-edge velocity vectors at 0 degrees angle of attack showing a symmetric stagnation point' loading='lazy' onclick='openLightbox(this.src)' onerror='this.style.display=&quot;none&quot;;this.nextElementSibling.style.display=&quot;flex&quot;;'><div class='acc-figure-placeholder' style='display:none;'>Image Pending</div></div><figcaption class='acc-figcaption'>Leading-edge velocity vectors &mdash; the stagnation point splits flow symmetrically top and bottom at &alpha; = 0&deg;.</figcaption></figure></div><p class='acc-extra-p'><strong>Root-cause analysis:</strong> post-processing the wall Y+ profile showed values ranging from 159.9 to 1005.2 &mdash; nowhere near the viscous sublayer &mdash; forcing the solver onto empirical wall functions instead of resolving the boundary layer directly. Refining the inflation to target Y+ &asymp; 1 (y&#8321; = 5 &times; 10^-6 m) either crashed the mesher or produced a cell with an aspect ratio of 1.04 &times; 10^17 and orthogonal quality of 0.0 at the sharp trailing-edge cusp.</p><ul class='acc-extra-list'><li><strong>Engineering takeaway:</strong> automated triangular inflation meshing has a geometric ceiling on sharp trailing-edge profiles &mdash; high-accuracy drag prediction needs a structured, multi-block quadrilateral grid instead.</li></ul><h4 class='acc-extra-h4'>Phase 2: Methodology Rebuild &mdash; Structured C-Mesh Architecture (NACA 2412)</h4><p class='acc-extra-p'>To master structured domain splitting and mapped quad meshing, the workflow was rebuilt on a cambered NACA 2412 profile validated against Abbott &amp; von Doenhoff wind-tunnel data (Re = 3.1 &times; 10^6, U&#8734; = 45.6 m/s).</p><p class='acc-extra-p'><strong>Structured domain &amp; mapped mesh:</strong> built a C-shaped domain (7.5 m radius forward semicircle, 15 m rectangular downstream extension), then partitioned the fluid domain into 6 structured quadrilateral faces using internal construction lines at the trailing edge (x = 1.0 m) and near the leading edge (x = 0.08 m). Division-based edge sizings (up to 250 divisions, 50,000 bias factor) with &quot;Hard&quot; behavior forced exact node matching across opposing block boundaries. Initial wall spacing was set to y&#8321; = 6.3 &times; 10^-6 m, below the theoretical Y+ = 1 limit of 8.0 &times; 10^-6 m, eliminating degenerate cells entirely.</p><h4 class='acc-extra-h4'>Structured C-Mesh (Phase 2)</h4><p class='acc-extra-p'>The 6-face split and mapped node-matching produced a clean, fully quadrilateral block structure across the domain, with no degenerate cells anywhere near the sharp trailing edge.</p><div class='acc-figure-row'><figure class='acc-figure'><div class='acc-figure-img-wrap'><img src='assets/images/personal-cfd-structured-mesh-domain.jpg' alt='Mapped quadrilateral C-mesh domain, zoomed out' loading='lazy' onclick='openLightbox(this.src)' onerror='this.style.display=&quot;none&quot;;this.nextElementSibling.style.display=&quot;flex&quot;;'><div class='acc-figure-placeholder' style='display:none;'>Image Pending</div></div><figcaption class='acc-figcaption'>Full C-mesh domain &mdash; the 6-face mapped block structure spanning the 7.5 m forward semicircle and 15 m downstream extension.</figcaption></figure><figure class='acc-figure'><div class='acc-figure-img-wrap'><img src='assets/images/personal-cfd-structured-mesh-detail.jpg' alt='Zoomed trailing-edge structured mesh detail showing clean quadrilateral cells at the cusp' loading='lazy' onclick='openLightbox(this.src)' onerror='this.style.display=&quot;none&quot;;this.nextElementSibling.style.display=&quot;flex&quot;;'><div class='acc-figure-placeholder' style='display:none;'>Image Pending</div></div><figcaption class='acc-figcaption'>Zoomed trailing-edge detail &mdash; clean, orthogonal quadrilateral cells hold their shape all the way to the sharp cusp, resolving wall spacing down to y&#8321; = 6.3 &times; 10^-6 m with none of Phase 1's degenerate slivers.</figcaption></figure></div><ul class='acc-extra-list'><li><strong>Mapped face failures:</strong> diagnosed and corrected node-count imbalances across internal interface edges and manually defined four-corner boundaries (Specified Sides).</li><li><strong>Defeaturing limits:</strong> adjusted geometry defeaturing tolerances to stop ANSYS from automatically collapsing the small leading-edge radius curves.</li><li><strong>Angle-of-attack transformation:</strong> rather than rotating the CAD domain, non-zero incidence (&alpha; = 8&deg;) was solved by transforming inlet velocity vectors (u_x = 45.16 m/s, u_y = 6.35 m/s) and projecting custom lift and drag force report vectors trigonometrically.</li></ul><h4 class='acc-extra-h4'>8&deg; Flow Field Results (NACA 2412)</h4><p class='acc-extra-p'>Converged k-&omega; SST solution fields at &alpha; = 8&deg;, now clearly asymmetric top-to-bottom &mdash; consistent with the cambered profile's suction-side lift generation and the predicted CL &asymp; 1.0.</p><div class='acc-figure-row'><figure class='acc-figure'><div class='acc-figure-img-wrap'><img src='assets/images/personal-cfd-phase2-pressure-contour.jpg' alt='Static pressure contour at 8 degrees angle of attack, asymmetric with suction on the upper surface' loading='lazy' onclick='openLightbox(this.src)' onerror='this.style.display=&quot;none&quot;;this.nextElementSibling.style.display=&quot;flex&quot;;'><div class='acc-figure-placeholder' style='display:none;'>Image Pending</div></div><figcaption class='acc-figcaption'>Static pressure contour &mdash; low pressure concentrated on the upper (suction) surface and high pressure on the lower surface, the source of the predicted lift.</figcaption></figure><figure class='acc-figure'><div class='acc-figure-img-wrap'><img src='assets/images/personal-cfd-phase2-velocity-contour.jpg' alt='Velocity magnitude contour at 8 degrees angle of attack, asymmetric' loading='lazy' onclick='openLightbox(this.src)' onerror='this.style.display=&quot;none&quot;;this.nextElementSibling.style.display=&quot;flex&quot;;'><div class='acc-figure-placeholder' style='display:none;'>Image Pending</div></div><figcaption class='acc-figcaption'>Velocity magnitude contour &mdash; flow accelerates over the upper surface and decelerates below, mirroring the pressure asymmetry.</figcaption></figure></div><div class='acc-figure-row'><figure class='acc-figure'><div class='acc-figure-img-wrap'><img src='assets/images/personal-cfd-velocity-vectors.jpg' alt='Velocity vector field at 8 degrees angle of attack showing attached flow' loading='lazy' onclick='openLightbox(this.src)' onerror='this.style.display=&quot;none&quot;;this.nextElementSibling.style.display=&quot;flex&quot;;'><div class='acc-figure-placeholder' style='display:none;'>Image Pending</div></div><figcaption class='acc-figcaption'>Velocity vector field &mdash; direction and magnitude confirm attached flow with no separation at this incidence.</figcaption></figure><figure class='acc-figure'><div class='acc-figure-img-wrap'><img src='assets/images/personal-cfd-leading-edge-phase2.jpg' alt='Leading-edge velocity vectors at 8 degrees angle of attack, stagnation point shifted below the nose' loading='lazy' onclick='openLightbox(this.src)' onerror='this.style.display=&quot;none&quot;;this.nextElementSibling.style.display=&quot;flex&quot;;'><div class='acc-figure-placeholder' style='display:none;'>Image Pending</div></div><figcaption class='acc-figcaption'>Leading-edge velocity vectors &mdash; the stagnation point shifts below the nose at &alpha; = 8&deg;, unlike the symmetric Phase 1 case.</figcaption></figure></div><h4 class='acc-extra-h4'>Graphs &amp; Analysis</h4><p class='acc-extra-p'>Boundary-layer resolution and solver convergence for the Phase 2 structured-mesh run, followed by the full before/after validation matrix.</p><div class='acc-figure-row'><figure class='acc-figure'><div class='acc-figure-img-wrap'><img src='assets/images/personal-cfd-yplus-boundary-layer.jpg' alt='Wall Y+ versus chord position boundary layer plot for the structured C-mesh solution' loading='lazy' onclick='openLightbox(this.src)' onerror='this.style.display=&quot;none&quot;;this.nextElementSibling.style.display=&quot;flex&quot;;'><div class='acc-figure-placeholder' style='display:none;'>Image Pending</div></div><figcaption class='acc-figcaption'>Wall Y+ vs. chord position for the structured C-mesh, holding between 0.007 and 1.041 across the full chord &mdash; a direct, order-of-magnitude improvement over Phase 1's 159.9&ndash;1005.2 range and confirmation the viscous sublayer is fully resolved.</figcaption></figure><figure class='acc-figure'><div class='acc-figure-img-wrap'><img src='assets/images/personal-cfd-residual-convergence.jpg' alt='Scaled residuals convergence plot for the Phase 2 k-omega SST solution' loading='lazy' onclick='openLightbox(this.src)' onerror='this.style.display=&quot;none&quot;;this.nextElementSibling.style.display=&quot;flex&quot;;'><div class='acc-figure-placeholder' style='display:none;'>Image Pending</div></div><figcaption class='acc-figcaption'>Scaled residuals for the Phase 2 k-&omega; SST solution &mdash; continuity, momentum, k, and &omega; all flatten by roughly 1000 iterations, confirming a converged result before extracting force coefficients.</figcaption></figure></div><h4 class='acc-extra-h4'>Results Comparison</h4><p class='acc-extra-p'>Quantitative validation against both experimental datasets, before and after the structured-mesh rebuild:</p><div class='acc-table-wrap'><table class='acc-table'><thead><tr><th>Parameter / Metric</th><th>Phase 1: Unstructured O-Mesh (NACA 0012)</th><th>Phase 2: Structured C-Mesh (NACA 2412)</th><th>Experimental Reference</th></tr></thead><tbody><tr><td>Angle of Attack (&alpha;)</td><td>0&deg;</td><td>8&deg;</td><td>Matched &alpha;</td></tr><tr><td>Reynolds Number (Re)</td><td>6.0 &times; 10^6</td><td>3.1 &times; 10^6</td><td>Matched Re</td></tr><tr><td>Turbulence Model</td><td>Spalart-Allmaras (1-Eq)</td><td>k-&omega; SST (2-Eq)</td><td>Wind Tunnel Data</td></tr><tr><td>Near-Wall Y+</td><td>159.9&ndash;1005.2 (Y+ &gg; 1)</td><td>0.007&ndash;1.041 (Fully Resolved)</td><td>Y+ &le; 1.0</td></tr><tr><td>Computed Lift (CL)</td><td>0.000</td><td>1.0024</td><td>&asymp; 1.05 (Abbott)</td></tr><tr><td>Lift Error</td><td>0.0% (Symmetric Baseline)</td><td>-4.5%</td><td>Reference</td></tr><tr><td>Computed Drag (CD)</td><td>0.0330</td><td>0.0218</td><td>&asymp; 0.011&ndash;0.012</td></tr><tr><td>Drag Relative Error</td><td>+312% to +334%</td><td>+80% to +95%</td><td>Reference</td></tr></tbody></table></div><h4 class='acc-extra-h4'>Key Technical Competencies Demonstrated</h4><ul class='acc-extra-list'><li><strong>Discretization physics:</strong> connected high near-wall Y+ metrics directly to skin-friction overprediction rather than misdiagnosing it as solver error.</li><li><strong>Mesh diagnostics:</strong> audited orthogonal quality and aspect ratio distributions to differentiate numerical instability from geometric singularities.</li><li><strong>Structured grid generation:</strong> built multi-block mapped C-mesh domains, managing node-matching constraints and boundary-layer growth biasing.</li><li><strong>Vector mechanics:</strong> derived and applied coordinate transformations for inflow velocity and force-coefficient projections at arbitrary angles of attack.</li></ul><h4 class='acc-extra-h4'>References &amp; Attributions</h4><p class='acc-extra-p' style='margin-bottom:0;'><strong>Experimental benchmarks:</strong> NASA Langley Research Center Turbulence Modeling Resource (Ladson NACA 0012 dataset); Abbott, I. H., &amp; von Doenhoff, A. E., <em>Theory of Wing Sections</em> (NACA 2412 experimental data). <strong>Methodology references:</strong> adapted multi-block C-mesh topology principles from community verification literature (C. Thomas, ANSYS Fluent C-mesh workflow), with independent adjustments for geometric defeaturing tolerances and boundary condition transformations.</p>"
+                data-gallery="assets/images/personal-cfd-leading-edge-phase1.jpg,assets/images/personal-cfd-domain-geometry.jpg,assets/images/personal-cfd-o-mesh-domain.jpg,assets/images/personal-cfd-unstructured-mesh-detail.jpg,assets/images/personal-cfd-structured-mesh-domain.jpg,assets/images/personal-cfd-structured-mesh-detail.jpg,assets/images/personal-cfd-phase1-pressure-detail.jpg,assets/images/personal-cfd-phase1-velocity-detail.jpg,assets/images/personal-cfd-phase2-pressure-contour.jpg,assets/images/personal-cfd-phase2-velocity-contour.jpg,assets/images/personal-cfd-velocity-vectors.jpg,assets/images/personal-cfd-leading-edge-phase2.jpg,assets/images/personal-cfd-yplus-boundary-layer.jpg,assets/images/personal-cfd-residual-convergence.jpg"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/personal-cfd-leading-edge-phase1.jpg" alt="Aerodynamic CFD Validation: From Unstructured O-Meshes to Multi-Block Structured C-Meshes" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 1</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>Aerodynamic CFD Validation: From Unstructured O-Meshes to Multi-Block Structured C-Meshes</h3>
+                    <span class="project-tag">Personal</span>
+                </div>
+            </div>
+
+            <!-- 2 — Landing Gear Link -->
             <div
                 class="project-card"
                 id="project-4"
@@ -130,7 +152,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/Link2.jpeg" alt="Landing Gear Link" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 1</div>
+                    <div class="project-card-placeholder">Project 2</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Optimized Aircraft Landing Gear Link Design</h3>
@@ -138,7 +160,7 @@
                 </div>
             </div>
 
-            <!-- 2 — Custom ESP32-C3 Micro Quadcopter -->
+            <!-- 3 — Custom ESP32-C3 Micro Quadcopter -->
             <div
                 class="project-card"
                 id="project-25"
@@ -152,7 +174,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-quadcopter-assembled.png" alt="Custom ESP32-C3 Micro Quadcopter: Flight Dynamics &amp; Discrete Power Architecture" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 2</div>
+                    <div class="project-card-placeholder">Project 3</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Custom ESP32-C3 Micro Quadcopter: Flight Dynamics &amp; Discrete Power Architecture</h3>
@@ -160,7 +182,7 @@
                 </div>
             </div>
 
-            <!-- 3 — Reverse-Engineered Vacuum Plate -->
+            <!-- 4 — Reverse-Engineered Vacuum Plate -->
             <div
                 class="project-card"
                 id="project-8"
@@ -173,7 +195,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-vacuum-plate.jpg" alt="Reverse-Engineered Vacuum Plate" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 3</div>
+                    <div class="project-card-placeholder">Project 4</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Reverse-Engineered Vacuum Plate</h3>
@@ -181,7 +203,7 @@
                 </div>
             </div>
 
-            <!-- 4 — Hovercraft Engine Mount -->
+            <!-- 5 — Hovercraft Engine Mount -->
             <div
                 class="project-card"
                 id="project-16"
@@ -194,7 +216,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/hovercraft-mount-cad-engine1.jpg" alt="Hovercraft Engine Mount Design" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 4</div>
+                    <div class="project-card-placeholder">Project 5</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Hovercraft Engine Mount Design</h3>
@@ -202,7 +224,7 @@
                 </div>
             </div>
 
-            <!-- 5 — Packing Station Arm Joint Prototypes -->
+            <!-- 6 — Packing Station Arm Joint Prototypes -->
             <div
                 class="project-card"
                 id="project-15"
@@ -215,7 +237,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-packing-station-arms-exploded.jpg" alt="Packing Station Arm Joint Prototypes" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 5</div>
+                    <div class="project-card-placeholder">Project 6</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Packing Station Arm Joint Prototypes</h3>
@@ -223,7 +245,7 @@
                 </div>
             </div>
 
-            <!-- 6 — Modular Packing Station Design -->
+            <!-- 7 — Modular Packing Station Design -->
             <div
                 class="project-card"
                 id="project-7"
@@ -236,7 +258,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-packing-station-carousel.jpg" alt="Modular Packing Station Design" style="object-fit:contain;" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 6</div>
+                    <div class="project-card-placeholder">Project 7</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Modular Packing Station Design</h3>
@@ -244,7 +266,7 @@
                 </div>
             </div>
 
-            <!-- 7 — CNC Mill Power Distribution Board -->
+            <!-- 8 — CNC Mill Power Distribution Board -->
             <div
                 class="project-card"
                 id="project-26"
@@ -258,7 +280,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-cnc-power-board-3d-render.png" alt="CNC Mill Power Distribution Board: Dual-Rail PCB Design in KiCad" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 7</div>
+                    <div class="project-card-placeholder">Project 8</div>
                 </div>
                 <div class="project-card-info">
                     <h3>CNC Mill Power Distribution Board: Dual-Rail PCB Design in KiCad</h3>
@@ -266,7 +288,7 @@
                 </div>
             </div>
 
-            <!-- 8 — Custom Closed-Loop DC Servomechanism & Mechatronic Test Bench (work in progress) -->
+            <!-- 9 — Custom Closed-Loop DC Servomechanism & Mechatronic Test Bench (work in progress) -->
             <div
                 class="project-card"
                 id="project-24"
@@ -280,7 +302,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-servo-testbench-parts.png" alt="Custom Closed-Loop DC Servomechanism &amp; Mechatronic Test Bench (Work in Progress)" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 8</div>
+                    <div class="project-card-placeholder">Project 9</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Custom Closed-Loop DC Servomechanism &amp; Mechatronic Test Bench (Work in Progress)</h3>
@@ -288,7 +310,7 @@
                 </div>
             </div>
 
-            <!-- 9 — Desktop 3-Axis CNC Router & Milling Machine (work in progress) -->
+            <!-- 10 — Desktop 3-Axis CNC Router & Milling Machine (work in progress) -->
             <div
                 class="project-card"
                 id="project-22"
@@ -302,7 +324,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-cnc-mill-cad.jpg" alt="Desktop 3-Axis CNC Router &amp; Milling Machine (Work in Progress)" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 9</div>
+                    <div class="project-card-placeholder">Project 10</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Desktop 3-Axis CNC Router &amp; Milling Machine (Work in Progress)</h3>
@@ -310,7 +332,7 @@
                 </div>
             </div>
 
-            <!-- 10 — 4-Axis SCARA Robot Arm (work in progress) -->
+            <!-- 11 — 4-Axis SCARA Robot Arm (work in progress) -->
             <div
                 class="project-card"
                 id="project-23"
@@ -324,32 +346,10 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-scara-arm-cad.jpg" alt="4-Axis SCARA Robotic Manipulator (Work in Progress)" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 10</div>
-                </div>
-                <div class="project-card-info">
-                    <h3>4-Axis SCARA Robotic Manipulator (Work in Progress)</h3>
-                    <span class="project-tag">Personal</span>
-                </div>
-            </div>
-
-            <!-- 11 — Aerodynamic CFD Validation: NACA Airfoil Meshing Study -->
-            <div
-                class="project-card"
-                id="project-27"
-                data-title="Aerodynamic CFD Validation: From Unstructured O-Meshes to Multi-Block Structured C-Grids"
-                data-tag="Personal"
-                data-img="assets/images/personal-cfd-leading-edge-phase1.jpg"
-                data-desc="Validated a 2D external aerodynamics CFD workflow in ANSYS Fluent against published wind-tunnel data across two progressive phases: an unstructured O-mesh baseline on a symmetric NACA 0012 airfoil that stood up the toolchain and diagnosed a mesh-driven drag error, followed by a multi-block structured C-grid rebuild on a cambered NACA 2412 that resolved the viscous sublayer to Y+ &asymp; 1 without degenerate cells."
-                data-extra="<strong>Tools &amp; Environment:</strong> ANSYS Fluent 2026 R1 (Student), DesignModeler, Meshing<br><strong>Focus Areas:</strong> Compressible 2D Aerodynamics, Boundary Layer Discretization, Structured vs. Unstructured Meshing, Y+ Wall Modeling<br><strong>Experimental Baselines:</strong> NASA Turbulence Modeling Resource (Ladson NACA 0012); Abbott &amp; von Doenhoff, <em>Theory of Wing Sections</em> (NACA 2412)<br><strong>Status:</strong> Two-phase validation study complete"
-                data-details="<h4 class='acc-extra-h4'>Project Overview</h4><p class='acc-extra-p'>This project validates a 2D external aerodynamics simulation workflow in ANSYS Fluent against published experimental wind-tunnel datasets, carried out in two progressive phases rather than as a single automated run: a preliminary unstructured O-mesh baseline used to stand up the end-to-end toolchain (coordinate ingestion, domain construction, solver setup) and diagnose the physical and geometric limits of automated inflation meshing, followed by a multi-block structured C-mesh rebuild engineered to hit a strict boundary-layer Y+ &asymp; 1 target without degenerate cells.</p><h4 class='acc-extra-h4'>Phase 1: Software Onboarding &amp; Failure Diagnosis (NACA 0012)</h4><p class='acc-extra-p'><strong>Setup &amp; execution:</strong> imported raw NASA/Ladson coordinate data, filtered down to 300 points, and built a 10 m radius circular O-domain. Generated an unstructured triangular mesh with 5 smooth-transition inflation layers and ran a steady Spalart-Allmaras compressible flow model at Re = 6.0 &times; 10^6 and Mach 0.15.</p><p class='acc-extra-p'><strong>Numerical results:</strong> lift converged to CL &asymp; 0.000 at &alpha; = 0&deg;, confirming geometric symmetry and solver convergence down to 10^-14 residuals &mdash; but computed drag came out to CD &asymp; 0.0330, roughly 4&times; higher than the experimental benchmark (CD &asymp; 0.0076&ndash;0.0080).</p><p class='acc-extra-p'><strong>Root-cause analysis:</strong> post-processing the wall Y+ profile showed values ranging from 159.9 to 1005.2 &mdash; nowhere near the viscous sublayer &mdash; forcing the solver onto empirical wall functions instead of resolving the boundary layer directly. Refining the inflation to target Y+ &asymp; 1 (y&#8321; = 5 &times; 10^-6 m) either crashed the mesher or produced a cell with an aspect ratio of 1.04 &times; 10^17 and orthogonal quality of 0.0 at the sharp trailing-edge cusp.</p><ul class='acc-extra-list'><li><strong>Engineering takeaway:</strong> automated triangular inflation meshing has a geometric ceiling on sharp trailing-edge profiles &mdash; high-accuracy drag prediction needs a structured, multi-block quadrilateral grid instead.</li></ul><figure class='acc-figure'><div class='acc-figure-img-wrap'><img src='assets/images/personal-cfd-mesh-comparison.jpg' alt='Mesh comparison: unstructured degenerate triangular mesh close-up vs. mapped quadrilateral C-grid domain' loading='lazy' onerror='this.style.display=&quot;none&quot;;this.nextElementSibling.style.display=&quot;flex&quot;;'><div class='acc-figure-placeholder' style='display:none;'>Image Pending</div></div><figcaption class='acc-figcaption'>Mesh comparison &mdash; left: the unstructured mesh's automated inflation degenerates into a near-zero-quality sliver triangle at the sharp trailing-edge cusp (aspect ratio &asymp; 1.04 &times; 10^17). Right: the mapped quadrilateral C-grid domain (shown zoomed out for now; a matching trailing-edge close-up is pending) holds clean, structured cells down to y&#8321; = 6.3 &times; 10^-6 m at the wall.</figcaption></figure><h4 class='acc-extra-h4'>Phase 2: Methodology Rebuild &mdash; Structured C-Grid Architecture (NACA 2412)</h4><p class='acc-extra-p'>To master structured domain splitting and mapped quad meshing, the workflow was rebuilt on a cambered NACA 2412 profile validated against Abbott &amp; von Doenhoff wind-tunnel data (Re = 3.1 &times; 10^6, U&#8734; = 45.6 m/s).</p><p class='acc-extra-p'><strong>Structured domain &amp; mapped mesh:</strong> built a C-shaped domain (7.5 m radius forward semicircle, 15 m rectangular downstream extension), then partitioned the fluid domain into 6 structured quadrilateral faces using internal construction lines at the trailing edge (x = 1.0 m) and near the leading edge (x = 0.08 m). Division-based edge sizings (up to 250 divisions, 50,000 bias factor) with &quot;Hard&quot; behavior forced exact node matching across opposing block boundaries. Initial wall spacing was set to y&#8321; = 6.3 &times; 10^-6 m, below the theoretical Y+ = 1 limit of 8.0 &times; 10^-6 m, eliminating degenerate cells entirely.</p><ul class='acc-extra-list'><li><strong>Mapped face failures:</strong> diagnosed and corrected node-count imbalances across internal interface edges and manually defined four-corner boundaries (Specified Sides).</li><li><strong>Defeaturing limits:</strong> adjusted geometry defeaturing tolerances to stop ANSYS from automatically collapsing the small leading-edge radius curves.</li><li><strong>Angle-of-attack transformation:</strong> rather than rotating the CAD domain, non-zero incidence (&alpha; = 8&deg;) was solved by transforming inlet velocity vectors (u_x = 45.16 m/s, u_y = 6.35 m/s) and projecting custom lift and drag force report vectors trigonometrically.</li></ul><figure class='acc-figure'><div class='acc-figure-img-wrap'><img src='assets/images/personal-cfd-pressure-velocity-contours.jpg' alt='Surface pressure coefficient and velocity contour fields around the NACA 2412 airfoil at 8 degrees angle of attack' loading='lazy' onerror='this.style.display=&quot;none&quot;;this.nextElementSibling.style.display=&quot;flex&quot;;'><div class='acc-figure-placeholder' style='display:none;'>Image Pending</div></div><figcaption class='acc-figcaption'>Surface pressure coefficient (Cp) and velocity contour fields on the converged NACA 2412 solution (&alpha; = 8&deg;, Re = 3.1 &times; 10^6), showing the suction-side low-pressure/high-velocity region consistent with the predicted CL &asymp; 1.0.</figcaption></figure><figure class='acc-figure'><div class='acc-figure-img-wrap'><img src='assets/images/personal-cfd-yplus-boundary-layer.jpg' alt='Wall Y+ versus chord position boundary layer plot for the structured C-grid solution' loading='lazy' onerror='this.style.display=&quot;none&quot;;this.nextElementSibling.style.display=&quot;flex&quot;;'><div class='acc-figure-placeholder' style='display:none;'>Image Pending</div></div><figcaption class='acc-figcaption'>Wall Y+ vs. chord position for the structured C-grid, holding between 0.007 and 1.041 across the full chord &mdash; a direct, order-of-magnitude improvement over Phase 1's 159.9&ndash;1005.2 range and confirmation the viscous sublayer is fully resolved.</figcaption></figure><h4 class='acc-extra-h4'>Results Comparison</h4><p class='acc-extra-p'>Quantitative validation against both experimental datasets, before and after the structured-mesh rebuild:</p><div class='acc-table-wrap'><table class='acc-table'><thead><tr><th>Parameter / Metric</th><th>Phase 1: Unstructured O-Grid (NACA 0012)</th><th>Phase 2: Structured C-Grid (NACA 2412)</th><th>Experimental Reference</th></tr></thead><tbody><tr><td>Angle of Attack (&alpha;)</td><td>0&deg;</td><td>8&deg;</td><td>Matched &alpha;</td></tr><tr><td>Reynolds Number (Re)</td><td>6.0 &times; 10^6</td><td>3.1 &times; 10^6</td><td>Matched Re</td></tr><tr><td>Turbulence Model</td><td>Spalart-Allmaras (1-Eq)</td><td>k-&omega; SST (2-Eq)</td><td>Wind Tunnel Data</td></tr><tr><td>Near-Wall Y+</td><td>159.9&ndash;1005.2 (Y+ &gg; 1)</td><td>0.007&ndash;1.041 (Fully Resolved)</td><td>Y+ &le; 1.0</td></tr><tr><td>Computed Lift (CL)</td><td>0.000</td><td>1.0024</td><td>&asymp; 1.05 (Abbott)</td></tr><tr><td>Lift Error</td><td>0.0% (Symmetric Baseline)</td><td>-4.5%</td><td>Reference</td></tr><tr><td>Computed Drag (CD)</td><td>0.0330</td><td>0.0218</td><td>&asymp; 0.011&ndash;0.012</td></tr><tr><td>Drag Relative Error</td><td>+312% to +334%</td><td>+80% to +95%</td><td>Reference</td></tr></tbody></table></div><h4 class='acc-extra-h4'>Key Technical Competencies Demonstrated</h4><ul class='acc-extra-list'><li><strong>Discretization physics:</strong> connected high near-wall Y+ metrics directly to skin-friction overprediction rather than misdiagnosing it as solver error.</li><li><strong>Mesh diagnostics:</strong> audited orthogonal quality and aspect ratio distributions to differentiate numerical instability from geometric singularities.</li><li><strong>Structured grid generation:</strong> built multi-block mapped C-grid domains, managing node-matching constraints and boundary-layer growth biasing.</li><li><strong>Vector mechanics:</strong> derived and applied coordinate transformations for inflow velocity and force-coefficient projections at arbitrary angles of attack.</li></ul><h4 class='acc-extra-h4'>References &amp; Attributions</h4><p class='acc-extra-p' style='margin-bottom:0;'><strong>Experimental benchmarks:</strong> NASA Langley Research Center Turbulence Modeling Resource (Ladson NACA 0012 dataset); Abbott, I. H., &amp; von Doenhoff, A. E., <em>Theory of Wing Sections</em> (NACA 2412 experimental data). <strong>Methodology references:</strong> adapted multi-block C-mesh topology principles from community verification literature (C. Thomas, ANSYS Fluent C-mesh workflow), with independent adjustments for geometric defeaturing tolerances and boundary condition transformations.</p>"
-                data-gallery="assets/images/personal-cfd-leading-edge-phase1.jpg,assets/images/personal-cfd-domain-geometry.jpg,assets/images/personal-cfd-o-mesh-domain.jpg,assets/images/personal-cfd-mesh-comparison.jpg,assets/images/personal-cfd-phase1-pressure-detail.jpg,assets/images/personal-cfd-phase1-velocity-detail.jpg,assets/images/personal-cfd-pressure-velocity-contours.jpg,assets/images/personal-cfd-velocity-vectors.jpg,assets/images/personal-cfd-leading-edge-phase2.jpg,assets/images/personal-cfd-yplus-boundary-layer.jpg,assets/images/personal-cfd-residual-convergence.jpg"
-            >
-                <div class="project-card-img">
-                    <img src="assets/images/personal-cfd-leading-edge-phase1.jpg" alt="Aerodynamic CFD Validation: From Unstructured O-Meshes to Multi-Block Structured C-Grids" onerror="this.style.display='none'">
                     <div class="project-card-placeholder">Project 11</div>
                 </div>
                 <div class="project-card-info">
-                    <h3>Aerodynamic CFD Validation: From Unstructured O-Meshes to Multi-Block Structured C-Grids</h3>
+                    <h3>4-Axis SCARA Robotic Manipulator (Work in Progress)</h3>
                     <span class="project-tag">Personal</span>
                 </div>
             </div>
