@@ -1273,6 +1273,28 @@ input, textarea, button { font-family: inherit; }
 .contact-info-item svg { color: var(--clr-accent); flex-shrink: 0; }
 .contact-info-item a { color: var(--clr-accent); font-weight: 500; }
 
+.contact-qr {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 1.8rem;
+    padding: 1rem;
+    background: var(--clr-surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}
+.contact-qr img {
+    display: block;
+    width: 250px;
+    height: 250px;
+    border-radius: 6px;
+}
+.contact-qr span {
+    font-size: 0.78rem;
+    color: var(--clr-text-light);
+}
+
 /* Form */
 .contact-form {
     background: var(--clr-surface);
