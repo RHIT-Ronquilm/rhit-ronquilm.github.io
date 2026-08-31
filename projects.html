@@ -310,51 +310,7 @@
                 </div>
             </div>
 
-            <!-- 10 — Desktop 3-Axis CNC Router & Milling Machine (work in progress) -->
-            <div
-                class="project-card"
-                id="project-22"
-                data-title="Desktop 3-Axis CNC Router &amp; Milling Machine (Work in Progress)"
-                data-tag="Personal"
-                data-img="assets/images/personal-cnc-mill-cad.jpg"
-                data-desc="Designing and building a rigid 300×400 mm desktop CNC milling machine engineered for precision subtractive manufacturing across hardwoods, engineering plastics (acetal, acrylic), and soft non-ferrous metals (6061 aluminum), focused on machine structure design, linear motion architecture, and a planned GRBL control and CAM pipeline."
-                data-extra="<strong>Tools &amp; Software:</strong> SolidWorks (CAD), VS Code, multimeter, dial indicator (Fusion 360 CAM and Universal Gcode Sender/Candle planned for toolpath generation and G-code streaming)<br><strong>Motion &amp; Kinematics:</strong> NEMA17 stepper motors, T8 leadscrews with spring-loaded anti-backlash nuts, MGN12 supported linear profile rails (X, Y, Z)<br><strong>Electronics &amp; Control:</strong> Arduino Uno running GRBL firmware, CNC Shield V3 with A4988 stepper drivers, 500W DC spindle motor (ER11 collet), mechanical limit/homing switches<br><strong>Bill of Materials (31 line items):</strong> Electrical: 7 ($163.50); Mechanical/Structural: 12 ($448.50); 3D Printed: 12 ($23.50) — Total: ~$635<br><strong>Status:</strong> CAD design in progress; component sourcing underway"
-                data-details="<h4 class='acc-extra-h4'>Planned System Architecture &amp; Subtractive Workflow</h4><p class='acc-extra-p'>Once assembled, the mill is engineered to execute a 4-stage digital manufacturing pipeline: CAD modeling in SolidWorks, constrained by standard end-mill radii and stock dimensions; CAM toolpath generation (planned in Fusion 360) defining cutter geometry for facing, pocketing, adaptive clearing, and contouring; G-code generation calculating feed rate (F), spindle speed (S), stepdown, and stepover; and real-time execution on Arduino + GRBL, streaming G-code over serial into coordinated step/direction pulses with trapezoidal acceleration profiles.</p><h4 class='acc-extra-h4'>Linear Motion &amp; Mechanical Rigidity</h4><p class='acc-extra-p'>The mechanical architecture is built around MGN12 supported linear profile rails across all three axes rather than unsupported smooth rod, isolating the NEMA17 motor shafts and leadscrews from dynamic cutting loads by routing radial and overturning moment forces into the rigid aluminum extrusion chassis instead of through the drive components. Spring-loaded anti-backlash nuts on the T8 leadscrews are specified to eliminate axial play and hysteresis during high-frequency directional reversals, such as adaptive pocketing passes, once assembled.</p><h4 class='acc-extra-h4'>Power System Architecture &amp; Trade-offs</h4><p class='acc-extra-p'>The baseline design routes both the stepper drivers and the 500W DC spindle through a shared 24V/10A power rail to minimize initial hardware cost. At full load, the spindle alone draws approximately 20.8A (500W ÷ 24V) — meaningfully above the supply's 10A rating — so the design explicitly accounts for the risk of inrush or stall current sagging the rail and causing skipped steps under heavy cutting loads. The validation plan is to monitor rail stability with a multimeter during initial cutting trials, with a pre-planned schematic separation to a dedicated spindle supply if brownouts occur.</p><h4 class='acc-extra-h4'>Intended End-Use Applications</h4><ul class='acc-extra-list'><li><strong>Custom enclosures &amp; brackets</strong> — machining motor mounts, standoffs, and electronics faceplates in Delrin (acetal) and 6061 aluminum plate.</li><li><strong>PCB isolation routing</strong> — tracing isolation paths and drilling through-hole patterns on copper-clad FR1 boards using 30° V-bits.</li><li><strong>Precision woodworking</strong> — surfacing, pocketing, and engraving hardwood stock with multi-flute carbide end mills.</li></ul><h4 class='acc-extra-h4'>Anticipated Engineering Challenges</h4><ul class='acc-extra-list'><li><strong>Gantry deflection &amp; resonant chatter</strong> — tuning feeds, speeds, and depth of cut during aluminum passes to keep cutting forces below the frame's structural deflection threshold.</li><li><strong>Axis orthogonality &amp; tramming</strong> — squaring the X/Y axes to true 90° and tramming the spindle perpendicular to the wasteboard via dial indicator sweep, once assembled.</li><li><strong>Power stability validation</strong> — planned testing of stepper driver VREF limits and voltage ripple under simultaneous axis motion and spindle load, once the machine is powered on.</li></ul><h4 class='acc-extra-h4'>Reflection</h4><p class='acc-extra-p' style='margin-bottom:0;'>This project connects mechanical statics, machine dynamics, and digital manufacturing. Designing the platform from component-level constraints — selecting supported profile rails over unsupported rods to decouple cutting loads, and sizing the power bus with a calculated, pre-planned mitigation for a known current deficit — is building direct, defensible machine-design experience applicable to industrial CNC and mechatronic systems.</p>"
-                data-gallery="assets/images/personal-cnc-mill-cad.jpg,assets/images/personal-cnc-mill-render.jpg,assets/images/personal-cnc-mill-parts.jpg"
-            >
-                <div class="project-card-img">
-                    <img src="assets/images/personal-cnc-mill-cad.jpg" alt="Desktop 3-Axis CNC Router &amp; Milling Machine (Work in Progress)" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 10</div>
-                </div>
-                <div class="project-card-info">
-                    <h3>Desktop 3-Axis CNC Router &amp; Milling Machine (Work in Progress)</h3>
-                    <span class="project-tag">Personal</span>
-                </div>
-            </div>
-
-            <!-- 11 — 4-Axis SCARA Robot Arm (work in progress) -->
-            <div
-                class="project-card"
-                id="project-23"
-                data-title="4-Axis SCARA Robotic Manipulator (Work in Progress)"
-                data-tag="Personal"
-                data-img="assets/images/personal-scara-arm-cad.jpg"
-                data-desc="Designing a 4-degree-of-freedom SCARA (Selective Compliance Assembly Robot Arm) manipulator engineered for planar pick-and-place operations, focusing on multi-axis kinematic modeling, load-bearing mechanical isolation, additive-manufacturing tolerancing, and embedded motor control."
-                data-extra="<strong>Tools &amp; Software:</strong> SolidWorks (CAD), Bambu Studio / PrusaSlicer, VS Code, digital calipers, multimeter<br><strong>Key Components:</strong> ESP32-WROOM-32D MCU, TowerPro MG996R servos (base, shoulder, elbow), SG90 micro servo (end effector), 608ZZ deep-groove bearings, 6061-T6 aluminum plate, 5V 10A DC power supply<br><strong>Est. Cost:</strong> ~$105<br><strong>Status:</strong> CAD modeling complete; component sourcing &amp; fabrication in progress"
-                data-details="<h4 class='acc-extra-h4'>System Overview</h4><p class='acc-extra-p'>The manipulator consists of four core subsystems: a rotating base (J1) providing horizontal slewing, a two-link articulated arm (J2 shoulder, J3 elbow) driving planar X-Y positioning, a parallel-jaw micro gripper (J4), and a central ESP32 microcontroller managing PWM signal generation and coordinated trajectory profiles.</p><h4 class='acc-extra-h4'>Kinematics &amp; Motion Planning</h4><p class='acc-extra-p'>The design uses 2D inverse kinematics to translate Cartesian coordinates (X, Y) into joint angles (θ₁, θ₂) — to be validated with SolidWorks Motion studies against physical joint travel once assembled. Firmware plans trapezoidal velocity profiles, ramping acceleration and deceleration rather than issuing step inputs, to minimize inertial shock, gear backlash chatter, and dynamic overshoot during high-speed repositioning. The MG996R and SG90 servos have closed-loop position control via their onboard potentiometers, but are open-loop with respect to the ESP32 — there's no telemetry feedback to the microcontroller.</p><h4 class='acc-extra-h4'>Structural Mechanics &amp; Load Isolation</h4><p class='acc-extra-p'>Cantilevered links see peak bending moments at full reach (τ = F × L). To prevent side-loading and premature wear of the J1 servo's internal gear train, the base isolates the motor shaft by routing all overturning moments and axial loads through a dual-spaced 608ZZ bearing hub anchored to a 6061 aluminum plate — the servo provides pure rotational torque, decoupled from external structural loads.</p><h4 class='acc-extra-h4'>End Effector &amp; Actuation</h4><p class='acc-extra-p'>Gripper actuation is driven by an SG90 micro-servo via PWM. Since standard micro-servos lack internal torque feedback, the design leans on geometric compliance in the printed jaw mechanism to avoid crushing payloads, with a current-sensing shunt resistor for force thresholding as a possible future revision.</p><h4 class='acc-extra-h4'>Manufacturing &amp; DFM</h4><p class='acc-extra-p'>Structural links and motor brackets are designed for FDM 3D printing in PETG for stiffness-to-weight ratio and impact resistance. Bearing seats and servo spline press-fits are modeled with empirical compensation for polymer thermal shrinkage, targeting a reliable interference fit without inter-layer stress cracking.</p><h4 class='acc-extra-h4'>Anticipated Challenges</h4><ul class='acc-extra-list'><li><strong>Cantilever deflection</strong> — managing torsional flex at full horizontal extension, with room to scale the vertical area moment of inertia (I = b·h³/12) on the shoulder link if sag exceeds tolerance.</li><li><strong>Power distribution &amp; inductive spikes</strong> — mitigating simultaneous servo stall current during high-acceleration moves with a dedicated high-current 5V bus and bulk decoupling capacitors to prevent ESP32 logic brownouts.</li></ul><h4 class='acc-extra-h4'>Reflection</h4><p class='acc-extra-p' style='margin-bottom:0;'>Ties mechanics of materials (bending stress σ = M·y/I) and multi-body kinematics to practical mechatronics design — working through load isolation, tolerance stack-ups, and actuator trade-offs before assembly, aiming for a more robust, repeatable, and cost-effective build once fabrication begins.</p>"
-                data-gallery="assets/images/personal-scara-arm-cad.jpg,assets/images/personal-scara-arm-render.jpg,assets/images/personal-scara-arm-parts.jpg"
-            >
-                <div class="project-card-img">
-                    <img src="assets/images/personal-scara-arm-cad.jpg" alt="4-Axis SCARA Robotic Manipulator (Work in Progress)" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 11</div>
-                </div>
-                <div class="project-card-info">
-                    <h3>4-Axis SCARA Robotic Manipulator (Work in Progress)</h3>
-                    <span class="project-tag">Personal</span>
-                </div>
-            </div>
-
-            <!-- 12 — Machine Safety Guard Design -->
+            <!-- 10 — Machine Safety Guard Design -->
             <div
                 class="project-card"
                 id="project-13"
@@ -366,7 +322,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-safety-guard.jpg" alt="Machine Safety Guard Design" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 12</div>
+                    <div class="project-card-placeholder">Project 10</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Machine Safety Guard Design</h3>
@@ -374,7 +330,7 @@
                 </div>
             </div>
 
-            <!-- 13 — Micro-Flute Nip Roller Redesign -->
+            <!-- 11 — Micro-Flute Nip Roller Redesign -->
             <div
                 class="project-card"
                 id="project-10"
@@ -386,7 +342,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-flute-roller-shaft.jpg" alt="Micro-Flute Nip Roller Redesign" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 13</div>
+                    <div class="project-card-placeholder">Project 11</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Micro-Flute Nip Roller Redesign</h3>
@@ -394,7 +350,7 @@
                 </div>
             </div>
 
-            <!-- 14 — Custom Encoder Test Fixture -->
+            <!-- 12 — Custom Encoder Test Fixture -->
             <div
                 class="project-card"
                 id="project-9"
@@ -407,7 +363,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-encoder-fixture.jpg" alt="Custom Encoder Test Fixture" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 14</div>
+                    <div class="project-card-placeholder">Project 12</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Custom Encoder Test Fixture</h3>
@@ -415,7 +371,7 @@
                 </div>
             </div>
 
-            <!-- 15 — Hand-Machined Hammer & Bar -->
+            <!-- 13 — Hand-Machined Hammer & Bar -->
             <div
                 class="project-card"
                 id="project-17"
@@ -428,7 +384,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/bench-hammer.jpg" alt="Hand-Machined Hammer & Bar" style="object-fit:contain;" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 15</div>
+                    <div class="project-card-placeholder">Project 13</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Hand-Machined Hammer & Bar</h3>
@@ -436,7 +392,7 @@
                 </div>
             </div>
 
-            <!-- 16 -->
+            <!-- 14 -->
             <div
                 class="project-card"
                 id="project-1"
@@ -448,7 +404,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/gearbox.png" alt="Mechanical Differential Assembly" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 16</div>
+                    <div class="project-card-placeholder">Project 14</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Mechanical Differential Assembly</h3>
@@ -456,7 +412,7 @@
                 </div>
             </div>
 
-            <!-- 17 — Precision Punch Mechanism Rebuild -->
+            <!-- 15 — Precision Punch Mechanism Rebuild -->
             <div
                 class="project-card"
                 id="project-11"
@@ -468,7 +424,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-punch-mechanism-packaging.png" alt="Precision Punch Mechanism Rebuild" style="object-fit:contain;" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 17</div>
+                    <div class="project-card-placeholder">Project 15</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Precision Punch Mechanism Rebuild</h3>
@@ -476,7 +432,7 @@
                 </div>
             </div>
 
-            <!-- 18 -->
+            <!-- 16 -->
             <div
                 class="project-card"
                 id="project-2"
@@ -488,7 +444,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/watch.png" alt="Garmin Smartwatch Housing & Strap" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 18</div>
+                    <div class="project-card-placeholder">Project 16</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Garmin Smartwatch Housing & Strap</h3>
@@ -496,7 +452,7 @@
                 </div>
             </div>
 
-            <!-- 19 — FM Radio -->
+            <!-- 17 — FM Radio -->
             <div
                 class="project-card"
                 id="project-5"
@@ -510,7 +466,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/DoneBoard.png" alt="FM-88K Auto-Scan Receiver" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 19</div>
+                    <div class="project-card-placeholder">Project 17</div>
                 </div>
                 <div class="project-card-info">
                     <h3>FM-88K Auto-Scan Receiver Assembly & Analysis</h3>
@@ -518,7 +474,7 @@
                 </div>
             </div>
 
-            <!-- 20 -->
+            <!-- 18 -->
             <div
                 class="project-card"
                 id="project-3"
@@ -530,7 +486,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/crank.png" alt="Single-Cylinder Piston Engine Assembly" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 20</div>
+                    <div class="project-card-placeholder">Project 18</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Single-Cylinder Piston Engine Assembly</h3>
@@ -538,7 +494,7 @@
                 </div>
             </div>
 
-            <!-- 21 — Production Floor Layout Drafting -->
+            <!-- 19 — Production Floor Layout Drafting -->
             <div
                 class="project-card"
                 id="project-12"
@@ -550,7 +506,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-floor-layout.png" alt="Production Floor Layout Drafting" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 21</div>
+                    <div class="project-card-placeholder">Project 19</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Production Floor Layout Drafting</h3>
@@ -558,7 +514,7 @@
                 </div>
             </div>
 
-            <!-- 22 — Custom Ratchet Wrench End Cap -->
+            <!-- 20 — Custom Ratchet Wrench End Cap -->
             <div
                 class="project-card"
                 id="project-14"
@@ -571,7 +527,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/proampac-ratchet-endcap.jpg" alt="Custom Ratchet Wrench End Cap" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 22</div>
+                    <div class="project-card-placeholder">Project 20</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Custom Ratchet Wrench End Cap</h3>
@@ -579,7 +535,7 @@
                 </div>
             </div>
 
-            <!-- 23 — Custom PC Build -->
+            <!-- 21 — Custom PC Build -->
             <div
                 class="project-card"
                 id="project-18"
@@ -592,7 +548,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-pcbuild-final.jpg" alt="Custom Gaming PC Build" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 23</div>
+                    <div class="project-card-placeholder">Project 21</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Custom Gaming PC Build</h3>
@@ -600,7 +556,7 @@
                 </div>
             </div>
 
-            <!-- 24 — PS4 Controller Mod -->
+            <!-- 22 — PS4 Controller Mod -->
             <div
                 class="project-card"
                 id="project-19"
@@ -612,7 +568,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-ps4-controller-mod.jpg" alt="PS4 Controller Refurbishment & USB-C Mod" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 24</div>
+                    <div class="project-card-placeholder">Project 22</div>
                 </div>
                 <div class="project-card-info">
                     <h3>PS4 Controller Refurbishment & USB-C Mod</h3>
@@ -620,7 +576,7 @@
                 </div>
             </div>
 
-            <!-- 25 — Mouse Mod -->
+            <!-- 23 — Mouse Mod -->
             <div
                 class="project-card"
                 id="project-20"
@@ -632,7 +588,7 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-mouse-mod.jpg" alt="Custom Gaming Mouse Build" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 25</div>
+                    <div class="project-card-placeholder">Project 23</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Custom Gaming Mouse Build</h3>
@@ -640,7 +596,7 @@
                 </div>
             </div>
 
-            <!-- 26 — Nerf Mods -->
+            <!-- 24 — Nerf Mods -->
             <div
                 class="project-card"
                 id="project-21"
@@ -653,10 +609,54 @@
             >
                 <div class="project-card-img">
                     <img src="assets/images/personal-nerf-mods.jpg" alt="Nerf Blaster Modifications" onerror="this.style.display='none'">
-                    <div class="project-card-placeholder">Project 26</div>
+                    <div class="project-card-placeholder">Project 24</div>
                 </div>
                 <div class="project-card-info">
                     <h3>Nerf Blaster Modifications</h3>
+                    <span class="project-tag">Personal</span>
+                </div>
+            </div>
+
+            <!-- 25 — Desktop 3-Axis CNC Router & Milling Machine (work in progress) -->
+            <div
+                class="project-card"
+                id="project-22"
+                data-title="Desktop 3-Axis CNC Router &amp; Milling Machine (Work in Progress)"
+                data-tag="Personal"
+                data-img="assets/images/personal-cnc-mill-cad.jpg"
+                data-desc="Designing and building a rigid 300×400 mm desktop CNC milling machine engineered for precision subtractive manufacturing across hardwoods, engineering plastics (acetal, acrylic), and soft non-ferrous metals (6061 aluminum), focused on machine structure design, linear motion architecture, and a planned GRBL control and CAM pipeline."
+                data-extra="<strong>Tools &amp; Software:</strong> SolidWorks (CAD), VS Code, multimeter, dial indicator (Fusion 360 CAM and Universal Gcode Sender/Candle planned for toolpath generation and G-code streaming)<br><strong>Motion &amp; Kinematics:</strong> NEMA17 stepper motors, T8 leadscrews with spring-loaded anti-backlash nuts, MGN12 supported linear profile rails (X, Y, Z)<br><strong>Electronics &amp; Control:</strong> Arduino Uno running GRBL firmware, CNC Shield V3 with A4988 stepper drivers, 500W DC spindle motor (ER11 collet), mechanical limit/homing switches<br><strong>Bill of Materials (31 line items):</strong> Electrical: 7 ($163.50); Mechanical/Structural: 12 ($448.50); 3D Printed: 12 ($23.50) — Total: ~$635<br><strong>Status:</strong> CAD design in progress; component sourcing underway"
+                data-details="<h4 class='acc-extra-h4'>Planned System Architecture &amp; Subtractive Workflow</h4><p class='acc-extra-p'>Once assembled, the mill is engineered to execute a 4-stage digital manufacturing pipeline: CAD modeling in SolidWorks, constrained by standard end-mill radii and stock dimensions; CAM toolpath generation (planned in Fusion 360) defining cutter geometry for facing, pocketing, adaptive clearing, and contouring; G-code generation calculating feed rate (F), spindle speed (S), stepdown, and stepover; and real-time execution on Arduino + GRBL, streaming G-code over serial into coordinated step/direction pulses with trapezoidal acceleration profiles.</p><h4 class='acc-extra-h4'>Linear Motion &amp; Mechanical Rigidity</h4><p class='acc-extra-p'>The mechanical architecture is built around MGN12 supported linear profile rails across all three axes rather than unsupported smooth rod, isolating the NEMA17 motor shafts and leadscrews from dynamic cutting loads by routing radial and overturning moment forces into the rigid aluminum extrusion chassis instead of through the drive components. Spring-loaded anti-backlash nuts on the T8 leadscrews are specified to eliminate axial play and hysteresis during high-frequency directional reversals, such as adaptive pocketing passes, once assembled.</p><h4 class='acc-extra-h4'>Power System Architecture &amp; Trade-offs</h4><p class='acc-extra-p'>The baseline design routes both the stepper drivers and the 500W DC spindle through a shared 24V/10A power rail to minimize initial hardware cost. At full load, the spindle alone draws approximately 20.8A (500W ÷ 24V) — meaningfully above the supply's 10A rating — so the design explicitly accounts for the risk of inrush or stall current sagging the rail and causing skipped steps under heavy cutting loads. The validation plan is to monitor rail stability with a multimeter during initial cutting trials, with a pre-planned schematic separation to a dedicated spindle supply if brownouts occur.</p><h4 class='acc-extra-h4'>Intended End-Use Applications</h4><ul class='acc-extra-list'><li><strong>Custom enclosures &amp; brackets</strong> — machining motor mounts, standoffs, and electronics faceplates in Delrin (acetal) and 6061 aluminum plate.</li><li><strong>PCB isolation routing</strong> — tracing isolation paths and drilling through-hole patterns on copper-clad FR1 boards using 30° V-bits.</li><li><strong>Precision woodworking</strong> — surfacing, pocketing, and engraving hardwood stock with multi-flute carbide end mills.</li></ul><h4 class='acc-extra-h4'>Anticipated Engineering Challenges</h4><ul class='acc-extra-list'><li><strong>Gantry deflection &amp; resonant chatter</strong> — tuning feeds, speeds, and depth of cut during aluminum passes to keep cutting forces below the frame's structural deflection threshold.</li><li><strong>Axis orthogonality &amp; tramming</strong> — squaring the X/Y axes to true 90° and tramming the spindle perpendicular to the wasteboard via dial indicator sweep, once assembled.</li><li><strong>Power stability validation</strong> — planned testing of stepper driver VREF limits and voltage ripple under simultaneous axis motion and spindle load, once the machine is powered on.</li></ul><h4 class='acc-extra-h4'>Reflection</h4><p class='acc-extra-p' style='margin-bottom:0;'>This project connects mechanical statics, machine dynamics, and digital manufacturing. Designing the platform from component-level constraints — selecting supported profile rails over unsupported rods to decouple cutting loads, and sizing the power bus with a calculated, pre-planned mitigation for a known current deficit — is building direct, defensible machine-design experience applicable to industrial CNC and mechatronic systems.</p>"
+                data-gallery="assets/images/personal-cnc-mill-cad.jpg,assets/images/personal-cnc-mill-render.jpg,assets/images/personal-cnc-mill-parts.jpg"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/personal-cnc-mill-cad.jpg" alt="Desktop 3-Axis CNC Router &amp; Milling Machine (Work in Progress)" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 25</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>Desktop 3-Axis CNC Router &amp; Milling Machine (Work in Progress)</h3>
+                    <span class="project-tag">Personal</span>
+                </div>
+            </div>
+
+            <!-- 26 — 4-Axis SCARA Robot Arm (work in progress) -->
+            <div
+                class="project-card"
+                id="project-23"
+                data-title="4-Axis SCARA Robotic Manipulator (Work in Progress)"
+                data-tag="Personal"
+                data-img="assets/images/personal-scara-arm-cad.jpg"
+                data-desc="Designing a 4-degree-of-freedom SCARA (Selective Compliance Assembly Robot Arm) manipulator engineered for planar pick-and-place operations, focusing on multi-axis kinematic modeling, load-bearing mechanical isolation, additive-manufacturing tolerancing, and embedded motor control."
+                data-extra="<strong>Tools &amp; Software:</strong> SolidWorks (CAD), Bambu Studio / PrusaSlicer, VS Code, digital calipers, multimeter<br><strong>Key Components:</strong> ESP32-WROOM-32D MCU, TowerPro MG996R servos (base, shoulder, elbow), SG90 micro servo (end effector), 608ZZ deep-groove bearings, 6061-T6 aluminum plate, 5V 10A DC power supply<br><strong>Est. Cost:</strong> ~$105<br><strong>Status:</strong> CAD modeling complete; component sourcing &amp; fabrication in progress"
+                data-details="<h4 class='acc-extra-h4'>System Overview</h4><p class='acc-extra-p'>The manipulator consists of four core subsystems: a rotating base (J1) providing horizontal slewing, a two-link articulated arm (J2 shoulder, J3 elbow) driving planar X-Y positioning, a parallel-jaw micro gripper (J4), and a central ESP32 microcontroller managing PWM signal generation and coordinated trajectory profiles.</p><h4 class='acc-extra-h4'>Kinematics &amp; Motion Planning</h4><p class='acc-extra-p'>The design uses 2D inverse kinematics to translate Cartesian coordinates (X, Y) into joint angles (θ₁, θ₂) — to be validated with SolidWorks Motion studies against physical joint travel once assembled. Firmware plans trapezoidal velocity profiles, ramping acceleration and deceleration rather than issuing step inputs, to minimize inertial shock, gear backlash chatter, and dynamic overshoot during high-speed repositioning. The MG996R and SG90 servos have closed-loop position control via their onboard potentiometers, but are open-loop with respect to the ESP32 — there's no telemetry feedback to the microcontroller.</p><h4 class='acc-extra-h4'>Structural Mechanics &amp; Load Isolation</h4><p class='acc-extra-p'>Cantilevered links see peak bending moments at full reach (τ = F × L). To prevent side-loading and premature wear of the J1 servo's internal gear train, the base isolates the motor shaft by routing all overturning moments and axial loads through a dual-spaced 608ZZ bearing hub anchored to a 6061 aluminum plate — the servo provides pure rotational torque, decoupled from external structural loads.</p><h4 class='acc-extra-h4'>End Effector &amp; Actuation</h4><p class='acc-extra-p'>Gripper actuation is driven by an SG90 micro-servo via PWM. Since standard micro-servos lack internal torque feedback, the design leans on geometric compliance in the printed jaw mechanism to avoid crushing payloads, with a current-sensing shunt resistor for force thresholding as a possible future revision.</p><h4 class='acc-extra-h4'>Manufacturing &amp; DFM</h4><p class='acc-extra-p'>Structural links and motor brackets are designed for FDM 3D printing in PETG for stiffness-to-weight ratio and impact resistance. Bearing seats and servo spline press-fits are modeled with empirical compensation for polymer thermal shrinkage, targeting a reliable interference fit without inter-layer stress cracking.</p><h4 class='acc-extra-h4'>Anticipated Challenges</h4><ul class='acc-extra-list'><li><strong>Cantilever deflection</strong> — managing torsional flex at full horizontal extension, with room to scale the vertical area moment of inertia (I = b·h³/12) on the shoulder link if sag exceeds tolerance.</li><li><strong>Power distribution &amp; inductive spikes</strong> — mitigating simultaneous servo stall current during high-acceleration moves with a dedicated high-current 5V bus and bulk decoupling capacitors to prevent ESP32 logic brownouts.</li></ul><h4 class='acc-extra-h4'>Reflection</h4><p class='acc-extra-p' style='margin-bottom:0;'>Ties mechanics of materials (bending stress σ = M·y/I) and multi-body kinematics to practical mechatronics design — working through load isolation, tolerance stack-ups, and actuator trade-offs before assembly, aiming for a more robust, repeatable, and cost-effective build once fabrication begins.</p>"
+                data-gallery="assets/images/personal-scara-arm-cad.jpg,assets/images/personal-scara-arm-render.jpg,assets/images/personal-scara-arm-parts.jpg"
+            >
+                <div class="project-card-img">
+                    <img src="assets/images/personal-scara-arm-cad.jpg" alt="4-Axis SCARA Robotic Manipulator (Work in Progress)" onerror="this.style.display='none'">
+                    <div class="project-card-placeholder">Project 26</div>
+                </div>
+                <div class="project-card-info">
+                    <h3>4-Axis SCARA Robotic Manipulator (Work in Progress)</h3>
                     <span class="project-tag">Personal</span>
                 </div>
             </div>
